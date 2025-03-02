@@ -1,17 +1,15 @@
+import Dashboard from "@/components/dashboard";
+import Sidebar from "@/components/sidebar";
 import { MyComposition } from "@/remotion/Composition";
 import { Player } from "@remotion/player";
 import React from "react";
 
 const Home = () => {
   return (
-    <Player
-      component={MyComposition}
-      compositionHeight={720}
-      compositionWidth={1280}
-      fps={60}
-      durationInFrames={96 * 60}
-      controls
-    />
+    <main className="h-screen max-h-screen flex">
+      <Sidebar />
+      <Dashboard />
+    </main>
   );
 };
 
