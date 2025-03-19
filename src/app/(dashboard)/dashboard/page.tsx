@@ -1,5 +1,12 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import {
   Captions,
   Clapperboard,
@@ -7,9 +14,18 @@ import {
   Palette,
   Sparkles,
 } from "lucide-react";
-import React, { useRef } from "react";
+import React, { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 const Dashboard = () => {
+  const [openModal, setOpenModal] = useState<string | null>(null);
+
   return (
     <div className="w-full max-w-5xl mx-auto h-full flex justify-center items-center">
       <div className="w-full max-w-2xl rounded-xl flex flex-col gap-4 justify-center p-3 shadow-xl">
@@ -30,18 +46,65 @@ const Dashboard = () => {
           />
           <div className="flex justify-between">
             <div className="flex gap-1">
-              <button className="hover:text-primary transition-colors p-2">
-                <Palette width={25} />
-              </button>
-              <button className="hover:text-primary transition-colors p-2">
-                <Clapperboard />
-              </button>
-              <button className="hover:text-primary transition-colors p-2">
-                <MicVocal />
-              </button>
-              <button className="hover:text-primary transition-colors p-2">
-                <Captions />
-              </button>
+              {/* Palette Modal */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="hover:text-primary transition-colors p-2">
+                    <Palette width={25} />
+                  </button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Choose Style of Images</DialogTitle>
+                  </DialogHeader>
+                  <p>Select the style you want for your generated images.</p>
+                </DialogContent>
+              </Dialog>
+
+              {/* Video Template Modal */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="hover:text-primary transition-colors p-2">
+                    <Clapperboard />
+                  </button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Select Video Template</DialogTitle>
+                  </DialogHeader>
+                  <p>Pick a template that fits your content.</p>
+                </DialogContent>
+              </Dialog>
+
+              {/* Voice Over Modal */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="hover:text-primary transition-colors p-2">
+                    <MicVocal />
+                  </button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Choose a Voice Over</DialogTitle>
+                  </DialogHeader>
+                  <p>Pick a voice style for narration.</p>
+                </DialogContent>
+              </Dialog>
+
+              {/* Captions Modal */}
+              <Dialog>
+                <DialogTrigger asChild>
+                  <button className="hover:text-primary transition-colors p-2">
+                    <Captions />
+                  </button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Customize Captions</DialogTitle>
+                  </DialogHeader>
+                  <p>Enable captions and adjust their settings.</p>
+                </DialogContent>
+              </Dialog>
             </div>
 
             <Button

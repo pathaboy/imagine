@@ -1,7 +1,7 @@
 import React from "react";
 import { Composition } from "remotion";
 import { MyComposition } from "./Composition";
-import "@/app/globals.css";
+import "../app/globals.css";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -9,8 +9,8 @@ export const RemotionRoot: React.FC = () => {
       <Composition
         id="Empty"
         component={MyComposition}
-        durationInFrames={60}
-        fps={30}
+        durationInFrames={60 * 60}
+        fps={60}
         width={1280}
         height={720}
       />

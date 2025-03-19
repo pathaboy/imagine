@@ -1,18 +1,18 @@
 "use client";
-import { story } from "@/lib/data";
+import { story } from "../lib/data";
 import { linearTiming, TransitionSeries } from "@remotion/transitions";
 import { clockWipe } from "@remotion/transitions/clock-wipe";
 import { fade } from "@remotion/transitions/fade";
 import { wipe } from "@remotion/transitions/wipe";
 import React from "react";
-import { AbsoluteFill, Img, Audio, useVideoConfig } from "remotion";
+import { AbsoluteFill, Img, Audio, useVideoConfig, staticFile } from "remotion";
 
 export const MyComposition = () => {
   const { width, height } = useVideoConfig();
 
   return (
     <AbsoluteFill className="bg-blue-500 text-white font-bold">
-      <Audio src="/tenali.mp3" volume={1} />
+      <Audio src={staticFile("/tenali.mp3")} volume={1} />
       <TransitionSeries>
         {story.images.map((item, index) => {
           return (
