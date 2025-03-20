@@ -18,8 +18,13 @@ import {
 } from "@/components/ui/dialog";
 import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import { imageStyles, vocals } from "@/lib/data";
+import Audio from "next";
 
 const Dashboard = () => {
+  const [style, setStyle] = useState("anime");
+  const [voiceName, setVoiceName] = useState("alloy");
+
   const session = useSession();
   if (session.status === "unauthenticated") {
     redirect("/");
@@ -52,11 +57,35 @@ const Dashboard = () => {
                     <Palette width={25} />
                   </button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="w-full max-w-4xl text-center h-full overflow-y-visible">
                   <DialogHeader>
                     <DialogTitle>Choose Style of Images</DialogTitle>
+                    <p>Select the style you want for your generated images.</p>
                   </DialogHeader>
-                  <p>Select the style you want for your generated images.</p>
+
+                  <div className="w-full p-2 flex justify-center sm:justify-start gap-4 h-full flex-wrap overflow-y-scroll">
+                    {imageStyles.map((item, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className={`cursor-pointer max-sm:w-[70%] w-[40%] aspect-square rounded-md ${
+                            style === item.name ? "border-4 border-primary" : ""
+                          }`}
+                          style={{
+                            backgroundImage: `url('${item.imageUrl}')`,
+                            backgroundSize: "cover",
+                          }}
+                          onClick={() => {
+                            setStyle(item.name);
+                          }}
+                        >
+                          <h1 className="bg-black/60 text-xl font-bold text-white rounded-t-md tracking-tighter">
+                            {item.name}
+                          </h1>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </DialogContent>
               </Dialog>
 
@@ -67,7 +96,7 @@ const Dashboard = () => {
                     <Clapperboard />
                   </button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="w-full max-w-4xl text-center h-full overflow-y-visible">
                   <DialogHeader>
                     <DialogTitle>Select Video Template</DialogTitle>
                   </DialogHeader>
@@ -82,11 +111,32 @@ const Dashboard = () => {
                     <MicVocal />
                   </button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="w-full max-w-4xl text-center h-full overflow-y-visible">
                   <DialogHeader>
                     <DialogTitle>Choose a Voice Over</DialogTitle>
+                    <p>Pick a voice style for narration.</p>
                   </DialogHeader>
-                  <p>Pick a voice style for narration.</p>
+                  <div className="w-full p-4 flex justify-center sm:justify-start gap-4 h-full flex-wrap overflow-y-scroll">
+                    {vocals.map((item, index) => (
+                      <div
+                        key={index}
+                        onClick={() => setVoiceName(item.voice)}
+                        className={`flex flex-col items-center gap-2 p-4 bg-gray-100 rounded-lg shadow-lg cursor-pointer hover:bg-gray-200 transition-all duration-300 ${
+                          item.voice === voiceName
+                            ? "border-4 border-primary"
+                            : ""
+                        }`}
+                      >
+                        <span className="text-lg font-semibold text-gray-700">
+                          {item.voice}
+                        </span>
+                        <audio controls className="w-48">
+                          <source src={item.previewUrl} type="audio/mp3" />
+                          Your browser does not support the audio element.
+                        </audio>
+                      </div>
+                    ))}
+                  </div>
                 </DialogContent>
               </Dialog>
 
@@ -97,17 +147,43 @@ const Dashboard = () => {
                     <Captions />
                   </button>
                 </DialogTrigger>
-                <DialogContent>
+                <DialogContent className="w-full max-w-4xl text-center h-full overflow-y-visible">
                   <DialogHeader>
                     <DialogTitle>Customize Captions</DialogTitle>
+                    <p>Enable captions and adjust their settings.</p>
                   </DialogHeader>
-                  <p>Enable captions and adjust their settings.</p>
+                  <div className="w-full p-2 flex justify-center sm:justify-start gap-4 h-full flex-wrap overflow-y-scroll">
+                    {imageStyles.map((item, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className={`cursor-pointer max-sm:w-[70%] w-[40%] aspect-square rounded-md ${
+                            style === item.name ? "border-4 border-primary" : ""
+                          }`}
+                          style={{
+                            backgroundImage: `url('${item.imageUrl}')`,
+                            backgroundSize: "cover",
+                          }}
+                          onClick={() => {
+                            setStyle(item.name);
+                          }}
+                        >
+                          <h1 className="bg-black/60 text-xl font-bold text-white rounded-t-md tracking-tighter">
+                            {item.name}
+                          </h1>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </DialogContent>
               </Dialog>
             </div>
 
             <Button
-              type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                console.log("fORM SUBMITTED");
+              }}
               className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg shadow-md active:scale-95 transition-all"
             >
               <Sparkles size={18} />

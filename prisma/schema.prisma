@@ -15,9 +15,79 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  credits       Int       @default(3)
+  videos        Video[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Video {
+  id          String         @id @default(cuid())
+  fps         Int
+  totalFrames Int
+  title       String
+  prompt      String
+  scenes      Scene[]
+  vocals      VoiceContent[]
+  script      Script[]
+  bgmId       String
+  bgm         Bgm            @relation(fields: [bgmId], references: [id])
+  userId      String
+  user        User           @relation(fields: [userId], references: [id])
+}
+
+model Script {
+  id      String  @id @default(cuid())
+  title   String
+  content String
+  videoId String?
+  video   Video?  @relation(fields: [videoId], references: [id])
+}
+
+model Scene {
+  id              String  @id @default(cuid())
+  number          Int
+  fromFrameNumber Int
+  totalFrames     Int
+  sceneTemplateId String
+  images          Image[]
+  videoId         String
+  video           Video   @relation(fields: [videoId], references: [id])
+}
+
+model Image {
+  id      String @id @default(cuid())
+  number  Int
+  prompt  String
+  url     String
+  sceneId String
+  scene   Scene  @relation(fields: [sceneId], references: [id])
+}
+
+model VoiceContent {
+  id          String    @id @default(cuid())
+  content     String
+  audioUrl    String
+  voiceOverId String
+  voiceOver   Voiceover @relation(fields: [voiceOverId], references: [id])
+  videoId     String    @unique
+  video       Video     @relation(fields: [videoId], references: [id])
+}
+
+model Voiceover {
+  id           String         @id @default(cuid())
+  name         String         @unique
+  sampleUrl    String
+  vocalId      String         @unique
+  voiceContent VoiceContent[]
+}
+
+model Bgm {
+  id     String  @id @default(cuid())
+  name   String  @unique
+  bgmUrl String
+  videos Video[]
 }
 
 model Account {
