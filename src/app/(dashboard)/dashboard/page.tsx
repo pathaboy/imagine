@@ -2,12 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import {
   Captions,
   Clapperboard,
   MicVocal,
@@ -22,9 +16,14 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 const Dashboard = () => {
-  const [openModal, setOpenModal] = useState<string | null>(null);
+  const session = useSession();
+  if (session.status === "unauthenticated") {
+    redirect("/");
+  }
 
   return (
     <div className="w-full max-w-5xl mx-auto h-full flex justify-center items-center">

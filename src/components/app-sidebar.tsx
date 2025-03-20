@@ -7,21 +7,11 @@ import {
   SidebarHeader,
   useSidebar,
 } from "@/components/ui/sidebar";
-import Logo from "./logo";
-import {
-  BadgeJapaneseYen,
-  Calendar,
-  Clapperboard,
-  Home,
-  Inbox,
-  LogOut,
-  Search,
-  Settings,
-  Video,
-} from "lucide-react";
-import { Button } from "./ui/button";
+import { BadgeJapaneseYen, Clapperboard, Home, Video } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import Logout from "./logout";
+import { useSession } from "next-auth/react";
 
 const items = [
   {
@@ -38,6 +28,7 @@ const items = [
 
 export function AppSidebar() {
   const { open } = useSidebar();
+  const session = useSession();
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -69,31 +60,31 @@ export function AppSidebar() {
         </SidebarGroup>
       </SidebarContent>
       <SidebarFooter>
-        <div className="flex items-center border hover:bg-secondary rounded-full p-1 gap-3">
+        <div className="max-sm:mb-4 flex items-center border hover:bg-secondary rounded-full p-1 gap-3">
           <div>
-            <Image
-              src={"/assets/images/jp-girl-8.jpg"}
-              width={50}
-              height={50}
-              alt="user"
-              className="rounded-full"
-            />
+            {session.status === "loading" ? (
+              <div className="w-[50px] h-[50px] rounded-full bg-slate-400 animate-pulse" />
+            ) : (
+              <Image
+                src={session.data?.user?.image!}
+                width={50}
+                height={50}
+                alt="user avatar"
+                className="rounded-full"
+              />
+            )}
           </div>
 
           {open && (
             <div className="flex flex-col">
-              <span>Rajendra Patha</span>
+              <span>{session.data?.user?.name}</span>
               <div className="flex items-center gap-2">
                 <BadgeJapaneseYen className="text-primary" />
                 <span className="font-bold">20</span>
               </div>
             </div>
           )}
-          {open && (
-            <button>
-              <LogOut className="w-5" />
-            </button>
-          )}
+          {open && <Logout />}
         </div>
       </SidebarFooter>
     </Sidebar>

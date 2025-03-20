@@ -1,8 +1,14 @@
 import React from "react";
 import Header from "@/components/header";
 import Hero from "@/components/hero";
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 
-const Home = () => {
+const Home = async () => {
+  const session = await auth();
+  if (session?.user?.email) {
+    redirect("/dashboard");
+  }
   return (
     <main className="max-w-7xl mx-auto">
       <Header />

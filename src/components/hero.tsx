@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { PlayCircle, Sparkles } from "lucide-react";
 import { Spotlight } from "@/components/ui/spotlight";
+import Signin from "./sign-in";
 
 const Hero = () => {
   return (
@@ -21,14 +22,12 @@ const Hero = () => {
           voiceovers, animations, and music—ready to share instantly.
         </p>
         <div className="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button size="lg" className="flex items-center gap-2">
-            <Sparkles size={20} /> Generate Your First Video
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="flex items-center gap-2"
-          >
+          <Signin>
+            <div className="flex items-center gap-2">
+              <Sparkles size={20} /> Generate Your First Video
+            </div>
+          </Signin>
+          <Button variant="outline" className="flex items-center gap-2">
             <PlayCircle size={20} /> Watch Demo
           </Button>
         </div>
