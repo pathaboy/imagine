@@ -26,23 +26,17 @@ model Video {
   id          String         @id @default(cuid())
   fps         Int
   totalFrames Int
+  imageStyle  String
   title       String
   prompt      String
   scenes      Scene[]
-  vocals      VoiceContent[]
-  script      Script[]
+  script      String
   bgmId       String
   bgm         Bgm            @relation(fields: [bgmId], references: [id])
+  captions    Caption[]
+  vocals      VoiceContent[]
   userId      String
   user        User           @relation(fields: [userId], references: [id])
-}
-
-model Script {
-  id      String  @id @default(cuid())
-  title   String
-  content String
-  videoId String?
-  video   Video?  @relation(fields: [videoId], references: [id])
 }
 
 model Scene {
@@ -56,6 +50,16 @@ model Scene {
   video           Video   @relation(fields: [videoId], references: [id])
 }
 
+model Caption {
+  id           String @id @default(cuid())
+  start        Int // starting frame number
+  end          Int // ending frame number
+  content      String
+  captionStyle String
+  video        Video  @relation(fields: [videoId], references: [id])
+  videoId      String
+}
+
 model Image {
   id      String @id @default(cuid())
   number  Int
@@ -66,21 +70,19 @@ model Image {
 }
 
 model VoiceContent {
-  id          String    @id @default(cuid())
-  content     String
-  audioUrl    String
-  voiceOverId String
-  voiceOver   Voiceover @relation(fields: [voiceOverId], references: [id])
-  videoId     String    @unique
-  video       Video     @relation(fields: [videoId], references: [id])
+  id            String @id @default(cuid())
+  content       String
+  narrationTone String
+  audioUrl      String
+  voiceOverId   String
+  video         Video  @relation(fields: [videoId], references: [id])
+  videoId       String
 }
 
 model Voiceover {
-  id           String         @id @default(cuid())
-  name         String         @unique
-  sampleUrl    String
-  vocalId      String         @unique
-  voiceContent VoiceContent[]
+  id        String @id @default(cuid())
+  name      String @unique
+  sampleUrl String
 }
 
 model Bgm {

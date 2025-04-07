@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 const Home = async () => {
   const session = await auth();
   if (session?.user?.email) {
-    redirect("/dashboard");
+    redirect("/explore");
   }
   return (
     <main className="max-w-7xl mx-auto">
