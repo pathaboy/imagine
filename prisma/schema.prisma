@@ -79,12 +79,6 @@ model VoiceContent {
   videoId       String
 }
 
-model Voiceover {
-  id        String @id @default(cuid())
-  name      String @unique
-  sampleUrl String
-}
-
 model Bgm {
   id     String  @id @default(cuid())
   name   String  @unique

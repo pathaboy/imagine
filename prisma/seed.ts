@@ -1,9 +1,10 @@
+import { captionStyles, vocals } from "@/lib/data"
 import {PrismaClient} from "@prisma/client"
 
 const prisma = new PrismaClient()
 
 async function main() {
-  // 
+  
 }
 
 main().catch(e => {

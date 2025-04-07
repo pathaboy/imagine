@@ -276,19 +276,19 @@ export const imageStyles = [
     id: 20,
     name: "ghibli",
     tags: ", in the style of Studio Ghibli, Anime, magical realism, environmental themes, unique characters, breathtaking landscapes, highly detailed",
-    imageUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/image-styles/fantasy.jpg`,
+    imageUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/image-styles/ghibli-style.jpg`,
   },
   {
     id: 21,
     name: "semi-realistic-cinematic",
     tags: ", illustrated in a cinematic storytelling style, semi-realistic digital painting, soft lighting, muted vintage color palette, mid-journey inspired, emotionally expressive, subtle line art, character-focused composition",
-    imageUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/image-styles/fantasy.jpg`,
+    imageUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/image-styles/semi-realistic-cinematic.jpg`,
   },
   {
     id: 22,
     name: "pixar-tintin",
     tags: ", bold outlines with smooth shading, vivid colors, warm and slightly nostalgic tones, stylized proportions (slightly exaggerated head/eyes, cartoony face), detailed environment with rural aesthetics ,sunlit, cinematic lighting with dramatic rays ,a mix between Pixar concept art and Tintin-style comic realism",
-    imageUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/image-styles/fantasy.jpg`,
+    imageUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/image-styles/pixar-tintin.jpg`,
   },
 ];
 
@@ -366,5 +366,158 @@ export const captionStyles = [
     name: "caption-style-one",
     component: CaptionStyleOne,
     previewUrl: "/assets/images/captions/caption-style-one.png",
+  },
+];
+
+export const bgms = [
+  {
+    id: 1,
+    name: "chill-lofi",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/chill-lofi.mp3",
+  },
+  {
+    id: 2,
+    name: "comedic-jazz",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/comedic-jazz.mp3",
+  },
+  {
+    id: 3,
+    name: "dramatic-intense-buildup",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/dramatic-intense-buildup.mp3",
+  },
+  {
+    id: 4,
+    name: "emotional-comeback-hero-journey-personal-transformation-style-1",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/emotional-comeback-hero-journey-personal-transformation-style-1.mp3",
+  },
+  {
+    id: 5,
+    name: "emotional-comeback-hero-journey-personal-transformation-style-2",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/emotional-comeback-hero-journey-personal-transformation-style-2.mp3",
+  },
+  {
+    id: 6,
+    name: "epic-crescendo-high-pitched-synths-rapid-strings-tension-peak-sudden-impact-stop-1",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/epic-crescendo-high-pitched-synths-rapid-strings-tension-peak-sudden-impact-stop-1.mp3",
+  },
+  {
+    id: 7,
+    name: "epic-crescendo-high-pitched-synths-rapid-strings-tension-peak-sudden-impact-stop-2",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/epic-crescendo-high-pitched-synths-rapid-strings-tension-peak-sudden-impact-stop-2.mp3",
+  },
+  {
+    id: 8,
+    name: "fight-for-your-dreams-motivation-never-give-up energy-style-1",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/fight-for-your-dreams-motivation-never-give-up%20energy-style-1.mp3",
+  },
+  {
+    id: 9,
+    name: "fight-for-your-dreams-motivation-never-give-up energy-style-2",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/fight-for-your-dreams-motivation-never-give-up%20energy-style-2.mp3",
+  },
+  {
+    id: 10,
+    name: "hope-bittersweet-guitar",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/hope-bittersweet-guitar.mp3",
+  },
+  {
+    id: 11,
+    name: "legendary warriors-great leaders-overcoming impossible-style-1",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/legendary%20warriors-great%20leaders-overcoming%20impossible-style-1.mp3",
+  },
+  {
+    id: 12,
+    name: "legendary warriors-great leaders-overcoming impossible-style-2",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/legendary%20warriors-great%20leaders-overcoming%20impossible-style-2.mp3",
+  },
+  {
+    id: 13,
+    name: "motivation-orchestra-drums",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/motivation-orchestra-drums.mp3",
+  },
+  {
+    id: 14,
+    name: "motivation-success-dare-to-do-style-1",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/motivation-success-dare-to-do-style-1.mp3",
+  },
+  {
+    id: 15,
+    name: "motivation-success-dare-to-do-style-2",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/motivation-success-dare-to-do-style-2.mp3",
+  },
+  {
+    id: 16,
+    name: "motivational-bgm",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/motivational-bgm.mp3",
+  },
+  {
+    id: 17,
+    name: "nostalgic-orchestra",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/nostalgic-orchestra.mp3",
+  },
+  {
+    id: 18,
+    name: "quirky-playful-jazz",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/quirky-playful-jazz.mp3",
+  },
+  {
+    id: 19,
+    name: "sad-melodrama-orchestra",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/sad-melodrama-orchestra.mp3",
+  },
+  {
+    id: 20,
+    name: "sentimental-piano",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/sentimental-piano.mp3",
+  },
+  {
+    id: 21,
+    name: "soft-ambient-piano",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/soft-ambient-piano.mp3",
+  },
+  {
+    id: 22,
+    name: "soft-eerie-synths",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/soft-eerie-synths.mp3",
+  },
+  {
+    id: 23,
+    name: "soft-piano-melancholic-undertone",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/soft-piano-melancholic-undertone.mp3",
+  },
+  {
+    id: 24,
+    name: "zen-wisdom-monk-ancient-style-1",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/zen-wisdom-monk-ancient-style-1.mp3",
+  },
+  {
+    id: 25,
+    name: "zen-wisdom-monk-ancient-style-2",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/zen-wisdom-monk-ancient-style-2.mp3",
   },
 ];

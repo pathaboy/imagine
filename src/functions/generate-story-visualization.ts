@@ -23,6 +23,7 @@ interface Character {
 }
 
 export interface StoryMetadata {
+  bgm: string
   topic: string
   storyTheme: string
   setting: string
@@ -122,7 +123,8 @@ export async function generateStoryVisualization({storyMetadata, story, imageSty
     return (
       {
         ...storyVisualization,
-        script: scriptWithEnhancedImagePrompts
+        script: scriptWithEnhancedImagePrompts,
+        storyMetadata
       }
     )
   } catch (err) {
