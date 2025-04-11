@@ -11,16 +11,16 @@ export async function generateStoryFromUserPrompt(prompt: string): Promise<Story
       messages: [
         {
           role: "system",
-          content: "Craft a compelling and immersive short story of about 180 secs, based on the user prompt. Ensure it captivates the reader with vivid storytelling, engaging characters, and a satisfying narrative arc. Return response in json format: {title: string, content: string}."
+          content: "Craft a compelling and immersive short story of based on the user prompt. Ensure it captivates the reader with vivid storytelling, engaging characters, and a satisfying narrative arc with varios storytelling techniques. Return response in json format: {title: string, content: string}."
         },
         {
           role: "user",
           content: prompt
         }
       ],
-      model: "openai",
       seed: 10000000,
-      jsonMode: true
+      jsonMode: true,
+      model: "openai"
     })
     console.log(response.data.content)
     return (
@@ -30,6 +30,7 @@ export async function generateStoryFromUserPrompt(prompt: string): Promise<Story
       }
     )
   } catch (err) {
-    throw new Error(`Failed to generate a story from user prompt: ${err}` )
+    console.error(err)
+    throw new Error(`Failed to generate a story from user prompt` )
   }
 }

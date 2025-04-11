@@ -6,14 +6,14 @@ import "../app/globals.css";
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      <Composition
+      {/* <Composition
         id="Empty"
         component={MyComposition}
         durationInFrames={60 * 60}
         fps={60}
         width={1280}
         height={720}
-      />
+      /> */}
     </>
   );
 };

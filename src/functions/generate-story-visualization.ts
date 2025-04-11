@@ -57,7 +57,7 @@ export async function generateStoryVisualization({storyMetadata, story, imageSty
       ${storyMetadata}
       Section 2: Story Structuring Guidelines
         0: Story: ${story.content}
-        1: Segment the story into 5 seconds segments (~10-12 words per scene).
+        1: Segment the story into 7 seconds segments (~10-12 words per scene).
         2: Each scene must contain:
           - Narration text (storytelling segment)(with punctuations marks for better narrative effect.
           - Image prompt (visual description).
@@ -101,6 +101,7 @@ export async function generateStoryVisualization({storyMetadata, story, imageSty
       let image = item.imagePrompt.toLowerCase()
 
       // Add character details to image prompt
+      console.log(storyMetadata)
       storyMetadata.characters.forEach((character, _index) => {
         image = image.replace(character.name.toLowerCase(), `${character.name}, ${character.age} years old, ${character.gender}, ${character.hairColor} ${character.hairstyle} hair, ${character.outfitUpperBody} ${character.upperClothingColor}, ${character.outfitLowerBody} ${character.lowerClothingColor}`)
       })
@@ -124,7 +125,7 @@ export async function generateStoryVisualization({storyMetadata, story, imageSty
       {
         ...storyVisualization,
         script: scriptWithEnhancedImagePrompts,
-        storyMetadata
+
       }
     )
   } catch (err) {

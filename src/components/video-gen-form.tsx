@@ -25,6 +25,7 @@ const VideoGenForm = () => {
   const [userPrompt, setUserPrompt] = useState("");
   const [style, setStyle] = useState("anime");
   const [voiceName, setVoiceName] = useState("alloy");
+  const [captionStyle, setCaptionStyle] = useState("caption-style-one");
 
   const handleVideoGeneration = async () => {
     const response = await axios.post("/api/generate-video", {
@@ -32,6 +33,7 @@ const VideoGenForm = () => {
         userPrompt,
         style,
         voiceName,
+        captionStyle,
       },
     });
   };
@@ -167,7 +169,7 @@ const VideoGenForm = () => {
                         key={index}
                         className="cursor-pointer"
                         onClick={() => {
-                          setStyle(item.name);
+                          setCaptionStyle(item.name);
                         }}
                       >
                         <Image
@@ -185,11 +187,12 @@ const VideoGenForm = () => {
           </div>
 
           <Button
+            disabled={userPrompt.length <= 10}
             onClick={(e) => {
               e.preventDefault();
               handleVideoGeneration();
             }}
-            className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg shadow-md active:scale-95 transition-all"
+            className="flex disabled:bg-gray-600 items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg shadow-md active:scale-95 transition-all"
           >
             <Sparkles size={18} />
             Generate

@@ -1,28 +1,10 @@
 "use client";
-import { captionStyles } from "../lib/data";
 import React from "react";
-import {
-  AbsoluteFill,
-  Img,
-  interpolate,
-  staticFile,
-  useCurrentFrame,
-} from "remotion";
+import { AbsoluteFill, Img, interpolate, useCurrentFrame } from "remotion";
 
-const SceneOne = ({
-  imageurl,
-  captions,
-  captionComponentId,
-}: {
-  imageurl: string;
-  captions: string;
-  captionComponentId: string;
-}) => {
-  const Caption = captionStyles.find((item, _index) => {
-    return captionComponentId === item.id;
-  });
+const SceneOne = ({ imageurl }: { imageurl: string }) => {
   const frame = useCurrentFrame();
-  const black = interpolate(frame, [0, 30, 60, 240, 300], [0.8, 0, 0, 0, 1]);
+  const black = interpolate(frame, [0, 30, 360, 420], [0.8, 0, 0, 1]);
   return (
     <AbsoluteFill>
       <div
@@ -48,7 +30,6 @@ const SceneOne = ({
             height: "100%",
           }}
         />
-        {Caption && <Caption.component captions={captions} />}
       </div>
     </AbsoluteFill>
   );

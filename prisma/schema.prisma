@@ -23,41 +23,35 @@ model User {
 }
 
 model Video {
-  id          String         @id @default(cuid())
-  fps         Int
-  totalFrames Int
-  imageStyle  String
-  title       String
-  prompt      String
-  scenes      Scene[]
-  script      String
-  bgmId       String
-  bgm         Bgm            @relation(fields: [bgmId], references: [id])
-  captions    Caption[]
-  vocals      VoiceContent[]
-  userId      String
-  user        User           @relation(fields: [userId], references: [id])
+  id            String  @id @default(cuid())
+  fps           Int     @default(60)
+  totalDuration Int // in secs
+  imageStyle    String
+  captionStyle  String
+  title         String?
+  thumbnailUrl  String?
+  prompt        String
+  scenes        Scene[]
+  bgmId         Int?
+  bgm           Bgm?    @relation(fields: [bgmId], references: [id])
+  captions      String // String of array of {start,end, narration}
+  userId        String
+  user          User    @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Scene {
-  id              String  @id @default(cuid())
+  id              String         @id @default(cuid())
   number          Int
-  fromFrameNumber Int
-  totalFrames     Int
+  start           Int // in seconds
+  end             Int // in seconds
   sceneTemplateId String
   images          Image[]
-  videoId         String
-  video           Video   @relation(fields: [videoId], references: [id])
-}
-
-model Caption {
-  id           String @id @default(cuid())
-  start        Int // starting frame number
-  end          Int // ending frame number
-  content      String
-  captionStyle String
-  video        Video  @relation(fields: [videoId], references: [id])
-  videoId      String
+  vocals          VoiceContent[]
+  videoId         String?
+  video           Video?         @relation(fields: [videoId], references: [id])
 }
 
 model Image {
@@ -70,17 +64,21 @@ model Image {
 }
 
 model VoiceContent {
-  id            String @id @default(cuid())
-  content       String
+  id            String  @id @default(cuid())
   narrationTone String
   audioUrl      String
-  voiceOverId   String
-  video         Video  @relation(fields: [videoId], references: [id])
-  videoId       String
+  scene         Scene?  @relation(fields: [sceneId], references: [id])
+  sceneId       String?
+}
+
+model VoiceOver {
+  id         Int    @id @default(autoincrement())
+  voice      String @unique
+  previewUrl String
 }
 
 model Bgm {
-  id     String  @id @default(cuid())
+  id     Int     @id @default(autoincrement())
   name   String  @unique
   bgmUrl String
   videos Video[]

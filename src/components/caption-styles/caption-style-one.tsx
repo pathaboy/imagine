@@ -1,6 +1,22 @@
-import { AbsoluteFill } from "remotion";
+"use client";
+import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 
-export const CaptionStyleOne = ({ captions }: { captions: string }) => {
+export interface Caption {
+  start: number;
+  end: number;
+  narration: string;
+}
+
+interface CaptionStyleProps {
+  captions: Caption[];
+}
+
+export const CaptionStyleOne = ({ captions }: CaptionStyleProps) => {
+  const frame = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const caption = captions.find((item) => {
+    return frame < item.end * fps;
+  });
   return (
     <AbsoluteFill>
       <div
@@ -29,7 +45,7 @@ export const CaptionStyleOne = ({ captions }: { captions: string }) => {
             boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
           }}
         >
-          {captions}
+          {caption && caption.narration}
         </h2>
       </div>
     </AbsoluteFill>

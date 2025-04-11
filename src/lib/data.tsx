@@ -520,4 +520,51 @@ export const bgms = [
     bgmUrl:
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/zen-wisdom-monk-ancient-style-2.mp3",
   },
+  {
+    id: 26,
+    name: "ethereal-ambient-with-slow-melodic-progressions-and-emotional-depth-1",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/ethereal-ambient-with-slow-melodic-progressions-and-emotional-depth-1.mp3",
+  },
+  {
+    id: 27,
+    name: "gentle-tibetan-flute-soft-ambient-pads-with-distant-temple-bells-evoking-peaceful-himalayas-1",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/gentle-tibetan-flute-soft-ambient-pads-with-distant-temple-bells-evoking-peaceful-himalayas-1.mp3",
+  },
+  {
+    id: 28,
+    name: "gentle-tibetan-flute-soft-ambient-pads-with-distant-temple-bells-evoking-peaceful-himalayas-2",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/gentle-tibetan-flute-soft-ambient-pads-with-distant-temple-bells-evoking-peaceful-himalayas-2.mp3",
+  },
+  {
+    id: 29,
+    name: "meditative-bgm-shakuhachi-flute-low-chants-flowing-water-sounds-1",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/meditative-bgm-shakuhachi-flute-low-chants-flowing-water-sounds-1.mp3",
+  },
+  {
+    id: 30,
+    name: "meditative-bgm-shakuhachi-flute-low-chants-flowing-water-sounds-2",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/meditative-bgm-shakuhachi-flute-low-chants-flowing-water-sounds-2.mp3",
+  },
+  {
+    id: 31,
+    name: "ambient-guitar-soft-cinematic-drums-evolving-synth-textures-1",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/ambient-guitar-soft-cinematic-drums-evolving-synth-textures-1.mp3",
+  },
+  {
+    id: 32,
+    name: "ambient-guitar-soft-cinematic-drums-evolving-synth-textures-2",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/ambient-guitar-soft-cinematic-drums-evolving-synth-textures-2.mp3",
+  },
 ];
+
+export const getVoicePrompt = (narrationScript: any, tone: string) => {
+  const audioPrompt = `Repeat after me in ${tone} tone and (~10-12 words per scene) pacing: "${narrationScript}"`;
+  return audioPrompt;
+};
