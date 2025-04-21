@@ -45,7 +45,7 @@ export const VideoOne = ({
   const parsedCaptions: Caption[] = JSON.parse(captions);
   return (
     <AbsoluteFill className="bg-blue-500 text-white font-bold">
-      <Audio src={bgmUrl} volume={0.3} loop />
+      <Audio src={bgmUrl} startFrom={120} volume={0.3} loop />
       <TransitionSeries>
         {scenes.map((scene, index) => {
           console.log(scene.end);

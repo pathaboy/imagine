@@ -11,6 +11,7 @@
   "dependencies": {
     "@auth/prisma-adapter": "^2.8.0",
     "@aws-sdk/client-s3": "^3.782.0",
+    "@google/genai": "^0.8.0",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-separator": "^1.1.2",
     "@radix-ui/react-slot": "^1.1.2",
@@ -20,6 +21,7 @@
     "@remotion/player": "4.0.270",
     "@remotion/tailwind": "4.0.270",
     "@remotion/transitions": "4.0.270",
+    "assemblyai": "^4.9.0",
     "axios": "^1.8.4",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

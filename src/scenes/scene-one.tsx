@@ -4,7 +4,7 @@ import { AbsoluteFill, Img, interpolate, useCurrentFrame } from "remotion";
 
 const SceneOne = ({ imageurl }: { imageurl: string }) => {
   const frame = useCurrentFrame();
-  const black = interpolate(frame, [0, 30, 360, 420], [0.8, 0, 0, 1]);
+  const black = interpolate(frame, [0, 30, 240, 300], [0.8, 0, 0, 1]);
   return (
     <AbsoluteFill>
       <div

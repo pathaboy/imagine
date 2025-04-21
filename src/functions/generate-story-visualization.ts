@@ -57,9 +57,9 @@ export async function generateStoryVisualization({storyMetadata, story, imageSty
       ${storyMetadata}
       Section 2: Story Structuring Guidelines
         0: Story: ${story.content}
-        1: Segment the story into 7 seconds segments (~10-12 words per scene).
+        1: Segment the story into 5 seconds segments/narration (~6-7 words per 5 seconds) with strong narrative arc with a clear beginning/setup/intro, conflict/story, climax, and resolution/conclusion/moral.
         2: Each scene must contain:
-          - Narration text (storytelling segment)(with punctuations marks for better narrative effect.
+          - Narration text (~6-7 words) (storytelling segment)(with punctuations marks for better narrative effect.
           - Image prompt (visual description).
         3. Ensure character consistency across all scenes.
         4. Use concise & structured image prompts for generating visuals.
