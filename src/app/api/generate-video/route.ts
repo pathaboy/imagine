@@ -1,5 +1,5 @@
 import { auth } from "@/auth";
-import { generateStoryFromUserPrompt } from "@/functions/generate-story-from-user-prompt";
+import { generateScriptFromUserPrompt } from "@/functions/generate-script-from-user-prompt";
 import { generateStoryVisualization } from "@/functions/generate-story-visualization";
 import { generateVideoMetadata } from "@/functions/generate-video-metadata";
 import { inngest } from "@/inngest/client";
@@ -21,23 +21,7 @@ export async function POST(req: NextRequest) {
     console.log(videoDetails.voiceName)
     console.log(videoDetails.captionStyle)
     
-    const story = await generateStoryFromUserPrompt(videoDetails.userPrompt)
-    const videoMetadata = await generateVideoMetadata(story.content)
-    const videoVisualization = await generateStoryVisualization({
-      story: story,
-      storyMetadata: videoMetadata,
-      imageStyle: videoDetails.style || "ghibli"
-    })
-
-    const narrationScript = videoVisualization.script.map((item,_index)=> {
-      return (
-        {
-          start: item.start,
-          end: item.end,
-          narration: item.narration
-        }
-      )
-    })
+    const script = await generateScriptFromUserPrompt(videoDetails.userPrompt)
 
     console.log("hIT HERE")
 
@@ -46,14 +30,7 @@ export async function POST(req: NextRequest) {
         prompt: videoDetails.userPrompt,
         imageStyle: videoDetails.style,
         captionStyle: videoDetails.captionStyle,
-        captions: JSON.stringify(narrationScript),
-        totalDuration: narrationScript[narrationScript.length-1].end,
         thumbnailUrl: "",
-        bgm: {
-          connect: {
-            name: videoMetadata.bgm
-          }
-        },
         user: {
           connect: {
             id: session?.user?.id

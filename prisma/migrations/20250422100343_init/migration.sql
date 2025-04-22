@@ -15,15 +15,18 @@ CREATE TABLE "User" (
 -- CreateTable
 CREATE TABLE "Video" (
     "id" TEXT NOT NULL,
-    "fps" INTEGER NOT NULL DEFAULT 60,
+    "prompt" TEXT NOT NULL,
+    "title" TEXT,
+    "script" TEXT,
+    "transcriptionId" TEXT,
+    "transcribedWords" TEXT,
+    "transcribedSubtitles" TEXT,
+    "fps" INTEGER NOT NULL DEFAULT 30,
     "totalDuration" INTEGER NOT NULL,
     "imageStyle" TEXT NOT NULL,
     "captionStyle" TEXT NOT NULL,
-    "title" TEXT,
     "thumbnailUrl" TEXT,
-    "prompt" TEXT NOT NULL,
     "bgmId" INTEGER,
-    "captions" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -37,31 +40,23 @@ CREATE TABLE "Scene" (
     "number" INTEGER NOT NULL,
     "start" INTEGER NOT NULL,
     "end" INTEGER NOT NULL,
-    "sceneTemplateId" TEXT NOT NULL,
-    "videoId" TEXT,
+    "motionTemplateId" TEXT NOT NULL,
+    "imagePromt" TEXT NOT NULL,
+    "imageUrl" TEXT NOT NULL,
+    "videoId" TEXT NOT NULL,
 
     CONSTRAINT "Scene_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
-CREATE TABLE "Image" (
-    "id" TEXT NOT NULL,
-    "number" INTEGER NOT NULL,
-    "prompt" TEXT NOT NULL,
-    "url" TEXT NOT NULL,
-    "sceneId" TEXT NOT NULL,
-
-    CONSTRAINT "Image_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "VoiceContent" (
+CREATE TABLE "VoiceOverContent" (
     "id" TEXT NOT NULL,
     "narrationTone" TEXT NOT NULL,
     "audioUrl" TEXT NOT NULL,
-    "sceneId" TEXT,
+    "voiceId" TEXT NOT NULL,
+    "videoId" TEXT NOT NULL,
 
-    CONSTRAINT "VoiceContent_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "VoiceOverContent_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -138,13 +133,10 @@ ALTER TABLE "Video" ADD CONSTRAINT "Video_bgmId_fkey" FOREIGN KEY ("bgmId") REFE
 ALTER TABLE "Video" ADD CONSTRAINT "Video_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Scene" ADD CONSTRAINT "Scene_videoId_fkey" FOREIGN KEY ("videoId") REFERENCES "Video"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Scene" ADD CONSTRAINT "Scene_videoId_fkey" FOREIGN KEY ("videoId") REFERENCES "Video"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Image" ADD CONSTRAINT "Image_sceneId_fkey" FOREIGN KEY ("sceneId") REFERENCES "Scene"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "VoiceContent" ADD CONSTRAINT "VoiceContent_sceneId_fkey" FOREIGN KEY ("sceneId") REFERENCES "Scene"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "VoiceOverContent" ADD CONSTRAINT "VoiceOverContent_videoId_fkey" FOREIGN KEY ("videoId") REFERENCES "Video"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

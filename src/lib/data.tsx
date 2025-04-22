@@ -1,4 +1,10 @@
+import {
+  ScaleDownFade,
+  ScaleDownUp,
+  SlideTopDownThenLeft,
+} from "../remotion/Composition";
 import { CaptionStyleOne } from "../components/caption-styles/caption-style-one";
+import React from "react";
 
 export const subs = [
   { text: "You", start: 80, end: 192, confidence: 0.99776, speaker: null },
@@ -719,7 +725,7 @@ export const subs = [
   },
   { text: "The", start: 69728, end: 69960, confidence: 0.97049, speaker: null },
   {
-    text: "Assad",
+    text: "Asset",
     start: 70000,
     end: 70472,
     confidence: 0.5505,
@@ -1972,7 +1978,7 @@ export const images = [
     start: 80,
     end: 3992,
     imagePrompt:
-      "A sleek modern house with a shiny car parked in front and a glowing brand logo above, symbolizing desire for status and material possessions.",
+      "A glamorous suburban scene showing a shiny luxury car parked in front of a large elegant house under a clear sky, symbolizing wealth and aspiration.",
     imageSrc: "/assets/images/demo-short/img-1.jpeg",
   },
   {
@@ -1980,7 +1986,7 @@ export const images = [
     start: 4176,
     end: 7144,
     imagePrompt:
-      "Dark, heavy chains forming a trap around a person silhouetted against a dim background, representing the concept of ownership being a trap.",
+      "A dimly lit abstract visualization of a golden cage representing the concept of ownership as a trap, evoking a contemplative and cautionary mood.",
     imageSrc: "/assets/images/demo-short/img-2.jpeg",
   },
   {
@@ -1988,7 +1994,7 @@ export const images = [
     start: 7272,
     end: 11576,
     imagePrompt:
-      "A dreamy figure reaching out towards a bright, enticing light labeled 'Freedom' but shackled by debt papers and bills blending into shadows.",
+      "A surreal scene depicting a dream-like figure burdened by chains made of bills and debts, contrasting a shining prize trophy just out of reach.",
     imageSrc: "/assets/images/demo-short/img-3.jpeg",
   },
   {
@@ -1996,7 +2002,7 @@ export const images = [
     start: 11608,
     end: 14888,
     imagePrompt:
-      "Whispering shadows in a dark room with a mysterious secret glowing faintly, symbolizing the truth no one speaks about.",
+      "A whispering shadow figure in a quiet, empty room under soft lighting, creating a secretive and mysterious atmosphere conveying hidden truths.",
     imageSrc: "/assets/images/demo-short/img-4.jpeg",
   },
   {
@@ -2004,7 +2010,7 @@ export const images = [
     start: 14984,
     end: 18216,
     imagePrompt:
-      "A close-up of a sturdy chain wrapped tightly around an individual’s hands, juxtaposed with a faint silhouette of possessions in the background.",
+      "Close-up of heavy chains tightening around a person's wrist with a faint background of blurred possessions, emphasizing entrapment and loss of control.",
     imageSrc: "/assets/images/demo-short/img-5.jpeg",
   },
   {
@@ -2012,7 +2018,7 @@ export const images = [
     start: 18248,
     end: 21896,
     imagePrompt:
-      "A person overwhelmed and sinking beneath a mountain of bills, loans, and keepsakes, illustrating confusion between ownership and security.",
+      "A cluttered office desk buried under stacks of bills, loan papers, and keepsakes with a stressed person in the background looking overwhelmed.",
     imageSrc: "/assets/images/demo-short/img-6.jpeg",
   },
   {
@@ -2020,7 +2026,7 @@ export const images = [
     start: 21928,
     end: 25440,
     imagePrompt:
-      "Hands frantically burying themselves under a pile of documents, bills, and personal items, illustrating the burden of false security.",
+      "A dark, pressure-filled atmosphere of a figure drowning under a pile of papers and objects representing bills and loans, symbolizing suffocation by possessions.",
     imageSrc: "/assets/images/demo-short/img-7.jpeg",
   },
   {
@@ -2028,7 +2034,7 @@ export const images = [
     start: 25560,
     end: 28864,
     imagePrompt:
-      "Fragmented possessions floating in mid-air around a person, who looks lost and confused, mistaking keeping things for empowerment.",
+      "A symbolic montage of precious keepsakes and worn-out objects scattered on a table, illuminated by soft, melancholic lighting implying misplaced value.",
     imageSrc: "/assets/images/demo-short/img-8.jpeg",
   },
   {
@@ -2036,7 +2042,7 @@ export const images = [
     start: 28912,
     end: 32300,
     imagePrompt:
-      "A glowing, ethereal light radiating from a person who has let go of material possessions, signifying the power of light over possession.",
+      "A shadowy figure standing with a faint glowing light above their head, surrounded by cages made of possessions, highlighting the contrast of real power and ownership.",
     imageSrc: "/assets/images/demo-short/img-9.jpeg",
   },
   {
@@ -2044,7 +2050,7 @@ export const images = [
     start: 32840,
     end: 35392,
     imagePrompt:
-      "A heavy, dark weight pressing down on a person’s chest, representing the internal fear carrying the burden of possessions.",
+      "An intense close-up on a person's face showing deep inner struggle and heavy emotional burden with dark tones enveloping the scene.",
     imageSrc: "/assets/images/demo-short/img-10.jpeg",
   },
   {
@@ -2052,7 +2058,7 @@ export const images = [
     start: 35536,
     end: 38860,
     imagePrompt:
-      "A vulnerable figure standing naked in a barren landscape facing the wind, symbolizing fear of letting go and exposure.",
+      "A vulnerable person standing alone in a vast empty space illuminated by a cold light, expressing fear and exposure in the vast world.",
     imageSrc: "/assets/images/demo-short/img-11.jpeg",
   },
   {
@@ -2060,7 +2066,7 @@ export const images = [
     start: 39240,
     end: 42304,
     imagePrompt:
-      "Chains breaking apart around a person with the text 'Atomic Law 1' glowing faintly in the background, symbolizing the first law introduction.",
+      "A stark spotlight shining on a heavy chain held firmly in hands, transitioning to a symbolic text introducing a new concept of ownership.",
     imageSrc: "/assets/images/demo-short/img-12.jpeg",
   },
   {
@@ -2068,7 +2074,7 @@ export const images = [
     start: 42392,
     end: 46128,
     imagePrompt:
-      "A flashy sports car gleaming under bright lights with a man named Amir admiring it, hinting at pride and status bought on credit.",
+      "A young man named Amir confidently admiring a flashy, brand new car with bright headlights under a spotlight in a night urban setting.",
     imageSrc: "/assets/images/demo-short/img-13.jpeg",
   },
   {
@@ -2076,7 +2082,7 @@ export const images = [
     start: 46144,
     end: 49008,
     imagePrompt:
-      "Amir sitting at a desk with blank, worried expression as bills and credit statements stack up beside him; the car looms ghostlike behind.",
+      "Amir sitting at a kitchen table late at night, counting bills with a worried expression, the shiny car faintly visible through the window outside.",
     imageSrc: "/assets/images/demo-short/img-14.jpeg",
   },
   {
@@ -2084,7 +2090,7 @@ export const images = [
     start: 49064,
     end: 51752,
     imagePrompt:
-      "Paycheck slips dissolving into thin air with car payment notices, insurance documents, and repair bills hovering menacingly.",
+      "A close-up montage of car payment notices, insurance cards, and repair bills scattered in Amir’s hand, showing financial strain.",
     imageSrc: "/assets/images/demo-short/img-15.jpeg",
   },
   {
@@ -2092,7 +2098,7 @@ export const images = [
     start: 51856,
     end: 54712,
     imagePrompt:
-      "A shadowy figure locked in chains shaped like a car, symbolizing that the car is imprisoning him, contrasting with faint sunlight implying freedom.",
+      "A bleak scene of Amir’s empty wallet on a cracked table with shadows casting a gloomy atmosphere representing lost freedom.",
     imageSrc: "/assets/images/demo-short/img-16.jpeg",
   },
   {
@@ -2100,7 +2106,7 @@ export const images = [
     start: 54856,
     end: 58632,
     imagePrompt:
-      "Amir triumphantly handing over car keys to a buyer, bright sunlight casting long shadows, symbolizing breaking free from debt.",
+      "Amir chained to the flashy car parked in a dark urban alley, his face showing frustration and entrapment within a status symbol.",
     imageSrc: "/assets/images/demo-short/img-17.jpeg",
   },
   {
@@ -2108,7 +2114,7 @@ export const images = [
     start: 58776,
     end: 62616,
     imagePrompt:
-      "A man walking away from a sold car with a wad of cash, leaving behind broken chains and piles of bills signaling true ownership beyond debt.",
+      "Amir exchanging car keys to a buyer in daylight, walking away with relaxed shoulders and a visible sense of relief and release.",
     imageSrc: "/assets/images/demo-short/img-18.jpeg",
   },
   {
@@ -2116,7 +2122,7 @@ export const images = [
     start: 62768,
     end: 66392,
     imagePrompt:
-      "A glowing phrase 'True ownership starts where debt ends' with a bright horizon and a person standing tall and free.",
+      "Amir holding a thick bundle of cash walking confidently down a city street, free from burdens, bathed in soft golden sunlight.",
     imageSrc: "/assets/images/demo-short/img-19.jpeg",
   },
   {
@@ -2124,207 +2130,207 @@ export const images = [
     start: 66456,
     end: 70472,
     imagePrompt:
-      "A large old family home labeled 'Gold Mine' glowing deceptively while shadows of mounting expenses creep around its base.",
+      "A calm, minimal bedroom with only a bed, a book, and a plant, radiating peace and clarity, emphasizing joy in simplicity.",
     imageSrc: "/assets/images/demo-short/img-20.jpeg",
   },
   {
     id: 21,
-    start: 70520,
-    end: 74312,
+    start: 70536,
+    end: 74464,
     imagePrompt:
-      "A faded photo of a family smiling outside a home, with hidden cracks in the foundation revealing financial strain.",
+      "A cheerful Amir biking along a scenic path with a smile, wind in his hair, passing families and nature, symbolizing newfound freedom.",
     imageSrc: "/assets/images/demo-short/img-21.jpeg",
   },
   {
     id: 22,
-    start: 74376,
-    end: 78128,
+    start: 74520,
+    end: 77528,
     imagePrompt:
-      "Bank statements and bills slowly replacing family photos on the wall, suggesting the cost of keeping appearances.",
+      "A symbolic balance scale with a small pile of cherished memories on one side and a flashy car on the other, tipping toward the memories.",
     imageSrc: "/assets/images/demo-short/img-22.jpeg",
   },
   {
     id: 23,
-    start: 78184,
-    end: 81696,
+    start: 77608,
+    end: 81304,
     imagePrompt:
-      "A home lit warmly from the outside, but shadows inside show a family arguing and stress lines on their faces.",
+      "A dreamy visual sequence showing Amir walking through different life phases, each one lighter and more colorful than the last.",
     imageSrc: "/assets/images/demo-short/img-23.jpeg",
   },
   {
     id: 24,
-    start: 81760,
-    end: 85456,
+    start: 81400,
+    end: 85000,
     imagePrompt:
-      "A 'For Sale' sign in front of a house dissolving into air, revealing a family walking hand in hand into a sunlit open field.",
+      "A visual collage of simple joys: a picnic, a hug, laughter with friends, all under golden light conveying warmth and contentment.",
     imageSrc: "/assets/images/demo-short/img-24.jpeg",
   },
   {
     id: 25,
-    start: 85536,
-    end: 89040,
+    start: 85112,
+    end: 88960,
     imagePrompt:
-      "A small cozy home with joyful people laughing around a table, showing real wealth in simplicity.",
+      "Amir standing at a community board posting a handwritten message about shared values, with smiles from people nearby.",
     imageSrc: "/assets/images/demo-short/img-25.jpeg",
   },
   {
     id: 26,
-    start: 89080,
-    end: 92712,
+    start: 89048,
+    end: 92864,
     imagePrompt:
-      "Giant golden chains with price tags attached, wrapped around a house, symbolizing financial imprisonment.",
+      "A visual metaphor showing Amir’s once-heavy chains dissolving into a flock of birds flying freely into a clear blue sky.",
     imageSrc: "/assets/images/demo-short/img-26.jpeg",
   },
   {
     id: 27,
-    start: 92760,
-    end: 96264,
+    start: 92960,
+    end: 96560,
     imagePrompt:
-      "Stacks of receipts and mortgage documents forming the walls of a home, showing how paper defines possessions.",
+      "A closing wide shot of Amir walking into the sunset through a vibrant town square filled with real human connection.",
     imageSrc: "/assets/images/demo-short/img-27.jpeg",
   },
   {
     id: 28,
-    start: 96336,
-    end: 99792,
+    start: 96640,
+    end: 100248,
     imagePrompt:
-      "A bright light breaking through a wall of debt, revealing a peaceful landscape and a minimalist shelter.",
+      "A metaphorical visual showing a shiny object crumbling to dust as a heart-shaped flower blooms beside it.",
     imageSrc: "/assets/images/demo-short/img-28.jpeg",
   },
   {
     id: 29,
-    start: 99872,
-    end: 103400,
+    start: 100336,
+    end: 103840,
     imagePrompt:
-      "A family celebrating in a small, debt-free home with fireworks lighting up the sky behind them.",
+      "A symbolic handshake between two people with transparent hearts glowing in their chests, set against a bright horizon.",
     imageSrc: "/assets/images/demo-short/img-29.jpeg",
   },
   {
     id: 30,
-    start: 103456,
-    end: 107192,
+    start: 103936,
+    end: 107456,
     imagePrompt:
-      "A luxurious home decaying at its foundation, while a humble cottage on a hill glows with inner light.",
+      "An animated line breaking apart a consumerist billboard and revealing a natural green landscape behind it.",
     imageSrc: "/assets/images/demo-short/img-30.jpeg",
   },
   {
     id: 31,
-    start: 107264,
-    end: 110664,
+    start: 107544,
+    end: 111008,
     imagePrompt:
-      "A luxurious car in a showroom with dollar signs fading into fog, while a person outside walks freely with no burdens.",
+      "A child looking into a mirror and seeing themselves free of burdens, smiling back with light around their head.",
     imageSrc: "/assets/images/demo-short/img-31.jpeg",
   },
   {
     id: 32,
-    start: 110720,
-    end: 113808,
+    start: 111112,
+    end: 114544,
     imagePrompt:
-      "A person joyfully burning debt papers in a firepit, dancing under the moonlight with friends.",
+      "A poetic visualization of a diary with pages flipping fast in the wind, showing memories and moments of letting go.",
     imageSrc: "/assets/images/demo-short/img-32.jpeg",
   },
   {
     id: 33,
-    start: 113872,
-    end: 117112,
+    start: 114624,
+    end: 118128,
     imagePrompt:
-      "A key unlocking a door labeled 'Atomic Law 2', with light pouring through and past debts crumbling like dust.",
+      "A close-up of hands releasing small objects like keys and cards into a flowing river, symbolizing release and renewal.",
     imageSrc: "/assets/images/demo-short/img-33.jpeg",
   },
   {
     id: 34,
-    start: 117192,
-    end: 120680,
+    start: 118240,
+    end: 121856,
     imagePrompt:
-      "A person meditating in a room of simple essentials, glowing softly, with clutter dissolving around them.",
+      "A rich overhead shot of people dancing around a bonfire in a circle, celebrating freedom and shared joy.",
     imageSrc: "/assets/images/demo-short/img-34.jpeg",
   },
   {
     id: 35,
-    start: 120744,
-    end: 123992,
+    start: 121960,
+    end: 125480,
     imagePrompt:
-      "A flowchart of 'wants' being crossed out until only 'needs' remain, with a path leading to peace and clarity.",
+      "Amir hugging his younger self in a symbolic visual showing self-acceptance and peace with past decisions.",
     imageSrc: "/assets/images/demo-short/img-35.jpeg",
   },
   {
     id: 36,
-    start: 124040,
-    end: 127512,
+    start: 125576,
+    end: 129008,
     imagePrompt:
-      "A young child laughing inside a cardboard box, symbolizing joy in minimalism and letting go of materialism.",
+      "A slow sunrise over a quiet village where people walk to work, with no cars, symbolizing harmony and balance.",
     imageSrc: "/assets/images/demo-short/img-36.jpeg",
   },
   {
     id: 37,
-    start: 127576,
-    end: 131208,
+    start: 129088,
+    end: 132616,
     imagePrompt:
-      "Possessions morphing into smoke as a person walks through them toward the mountains.",
+      "A powerful image of a tree growing through cracks in concrete, strong and green, symbolizing resilience and truth.",
     imageSrc: "/assets/images/demo-short/img-37.jpeg",
   },
   {
     id: 38,
-    start: 131272,
-    end: 134696,
+    start: 132688,
+    end: 136232,
     imagePrompt:
-      "A peaceful forest with a small cabin, while city skyscrapers behind fade into mist.",
+      "A gentle montage of strangers helping each other: lifting a heavy box, offering directions, fixing a bike tire.",
     imageSrc: "/assets/images/demo-short/img-38.jpeg",
   },
   {
     id: 39,
-    start: 134768,
-    end: 137872,
+    start: 136320,
+    end: 139744,
     imagePrompt:
-      "A calendar with 'debt-free' days circled in gold and bold, bright rays of sunlight hitting the future.",
+      "A single flower blooming through snow, with soft light hitting its petals — a metaphor for hope and quiet strength.",
     imageSrc: "/assets/images/demo-short/img-39.jpeg",
   },
   {
     id: 40,
-    start: 137936,
-    end: 141352,
+    start: 139832,
+    end: 143368,
     imagePrompt:
-      "A scroll unrolling with the title 'Atomic Law 3', symbols of simplicity, joy, and freedom glowing from it.",
+      "A giant billboard reading 'You Are Enough' being painted by a diverse group of people in a bustling street.",
     imageSrc: "/assets/images/demo-short/img-40.jpeg",
   },
   {
     id: 41,
-    start: 141392,
-    end: 144624,
+    start: 143440,
+    end: 147008,
     imagePrompt:
-      "An elder smiling beside a young child, pointing to stars while toys and gadgets lay forgotten around them.",
+      "A montage of daily kindness: a smile exchanged on the subway, someone helping an elder cross the road, sharing food.",
     imageSrc: "/assets/images/demo-short/img-41.jpeg",
   },
   {
     id: 42,
-    start: 144688,
-    end: 148112,
+    start: 147088,
+    end: 150696,
     imagePrompt:
-      "A scale with 'freedom' outweighing 'possessions', symbolizing internal clarity gained by letting go.",
+      "A symbolic staircase made of memories and values rising above a collapsing tower of material objects.",
     imageSrc: "/assets/images/demo-short/img-42.jpeg",
   },
   {
     id: 43,
-    start: 148168,
-    end: 151480,
+    start: 150800,
+    end: 154232,
     imagePrompt:
-      "A classroom where children learn values of simplicity while a billboard outside screams ‘BUY MORE’.",
+      "A group of children drawing on a sidewalk with chalk: hearts, stars, and dreams, with joyful energy all around.",
     imageSrc: "/assets/images/demo-short/img-43.jpeg",
   },
   {
     id: 44,
-    start: 151536,
-    end: 154672,
+    start: 154320,
+    end: 157760,
     imagePrompt:
-      "A circle of people sitting around a fire sharing stories, all their wealth in memories and connection.",
+      "A visual metaphor of a person carrying a glowing heart walking confidently through a world of shadows and noise.",
     imageSrc: "/assets/images/demo-short/img-44.jpeg",
   },
   {
     id: 45,
-    start: 154736,
-    end: 157968,
+    start: 157864,
+    end: 161424,
     imagePrompt:
-      "A person finally resting peacefully under the stars, with no possessions in sight — only the infinite above.",
+      "Final wide cinematic shot of Amir smiling at a clear sky, sun rising behind him, with the world stretching wide and open.",
     imageSrc: "/assets/images/demo-short/img-45.jpeg",
   },
 ];
@@ -2341,7 +2347,7 @@ interface NewObj {
   start: number;
   end: number;
   textPosition?: string;
-  subs: Subs[];
+  subs: string;
 }
 
 export const getFormattedSubs = (inputSubs: Subs[]) => {
@@ -2349,21 +2355,21 @@ export const getFormattedSubs = (inputSubs: Subs[]) => {
   const formattedSubs = [];
 
   while (subsCopy.length !== 0) {
-    const batchSize = Math.min(
-      Math.ceil(Math.random() * 2) + 1,
-      subsCopy.length
-    );
+    const batchSize = Math.min(3, subsCopy.length);
     const newObj: NewObj = {
       start: subsCopy[0].start,
       end: subsCopy[batchSize - 1].end,
-      subs: subsCopy.splice(0, batchSize),
+      subs: subsCopy
+        .splice(0, batchSize)
+        .map((item) => item.text)
+        .join(" "),
     };
     formattedSubs.push(newObj);
   }
 
   const subsFinal = formattedSubs.map((item, index) => {
-    const textPositions = ["end", "center"];
-    const randomPosition = Math.floor(Math.random() * textPositions.length);
+    const textPositions = ["end", "center", "center", "end", "center", "end"];
+    const randomPosition = index % textPositions.length;
     return {
       ...item,
       textPosition:
@@ -2760,6 +2766,50 @@ export const bgms = [
 ];
 
 export const getVoicePrompt = (narrationScript: any, tone: string) => {
-  const audioPrompt = `Repeat after me in ${tone} tone:"${narrationScript}"`;
+  const audioPrompt = `Repeat after me in ${tone}: "${narrationScript}"`;
   return audioPrompt;
+};
+
+interface Motion {
+  id: number;
+  name: string;
+  component: React.FC<any>; // or React.ComponentType<any>
+}
+
+interface MotionImage {
+  id: number;
+  start: number;
+  end: number;
+  imagePrompt: string;
+  imageSrc: string;
+  motion?: Motion;
+}
+
+export const addMotionToImages = (images: MotionImage[]) => {
+  const motionArray: Motion[] = [
+    {
+      id: 1,
+      name: "slideTopDownThenLeft",
+      component: SlideTopDownThenLeft,
+    },
+    {
+      id: 2,
+      name: "scaleDownFade",
+      component: ScaleDownFade,
+    },
+    {
+      id: 3,
+      name: "scaleDownUp",
+      component: ScaleDownUp,
+    },
+  ];
+
+  const motionImages = images.map((item, index) => {
+    return {
+      ...item,
+      motion: motionArray[index % motionArray.length],
+    };
+  });
+
+  return motionImages;
 };
