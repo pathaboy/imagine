@@ -85,7 +85,7 @@ export async function generateScriptFromUserPrompt(prompt: string): Promise<Stor
       ],
       seed: 10000000,
       jsonMode: true,
-      model: "openai"
+      model: "openai-large"
     })
     console.log(response.data)
     return (

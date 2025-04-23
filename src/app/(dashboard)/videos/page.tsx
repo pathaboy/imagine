@@ -48,13 +48,17 @@ const VideoPage = () => {
     transcriptionId: video?.transcriptionId,
   };
 
+  console.log(inputsProps);
+
   return (
     <div className="w-full h-full">
       <Player
         controls
         component={FourByThreeVideo}
         inputProps={inputsProps}
-        durationInFrames={Math.floor(video.totalDuration / 1000) * video.fps}
+        durationInFrames={
+          Math.floor(video.totalDuration / 1000) * video.fps || 3 * 60 * 30
+        }
         compositionWidth={1280}
         compositionHeight={720}
         fps={video?.fps || 30}

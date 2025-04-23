@@ -12,16 +12,22 @@ export const CaptionStyleTwo = ({
   transcriptionId: string;
 }) => {
   const [transcribedWords, setTranscribedWords] = useState([]);
+  console.log("Inside caption compoentn");
+  console.log(transcribedWords);
 
   useEffect(() => {
     const fetchSubtitles = async () => {
       const res = await axios.get(
         `/api/subtitles?transcriptionId=${transcriptionId}`
       );
+      console.log(res.data);
       const subs = res.data.transcribedWords;
+      console.log("Hit inside transribed word");
+      console.log(res.data);
       setTranscribedWords(subs);
     };
-  });
+    fetchSubtitles();
+  }, [transcriptionId]);
   const formattedSubs = useMemo(
     () => getFormattedSubs(transcribedWords),
     [transcribedWords]
@@ -53,7 +59,7 @@ export const CaptionStyleTwo = ({
           marginBottom: "1rem",
         }}
       >
-        {textSegment?.subs || ""}
+        {textSegment?.subs || "Hello my name is rajendra"}
       </h2>
     </AbsoluteFill>
   );

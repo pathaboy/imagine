@@ -47,7 +47,7 @@ export const EnterSlideTopDownExitLeft = ({
       }}
     >
       <Img
-        src={staticFile(imgSrc)}
+        src={imgSrc}
         style={{
           width: "100%",
           height: "100%",
@@ -57,7 +57,7 @@ export const EnterSlideTopDownExitLeft = ({
         }}
       />
       <Img
-        src={staticFile(imgSrc)}
+        src={imgSrc}
         style={{
           width: "100%",
           height: "100%",
@@ -67,7 +67,7 @@ export const EnterSlideTopDownExitLeft = ({
         }}
       />
       <Img
-        src={staticFile(imgSrc)}
+        src={imgSrc}
         style={{
           width: "100%",
           height: "100%",

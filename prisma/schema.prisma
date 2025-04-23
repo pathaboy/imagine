@@ -54,7 +54,7 @@ model Scene {
   imagePromt       String
   imageUrl         String
   videoId          String
-  video            Video  @relation(fields: [videoId], references: [id])
+  video            Video  @relation(fields: [videoId], references: [id], onDelete: Cascade)
 }
 
 model VoiceOverContent {
@@ -62,7 +62,7 @@ model VoiceOverContent {
   narrationTone String
   audioUrl      String
   voiceId       String
-  video         Video  @relation(fields: [videoId], references: [id])
+  video         Video  @relation(fields: [videoId], references: [id], onDelete: Cascade)
   videoId       String
 }
 

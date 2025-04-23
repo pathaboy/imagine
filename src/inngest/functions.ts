@@ -15,15 +15,12 @@ export const GenerateVideoData = inngest.createFunction(
   async ({ event, step }) => {
     const {userId, voiceName, videoId,  style, script} = event?.data
 
-    const audioUrl = await step.run("generate-audio", async () => {
-      const audio = await generateAudioFromScript(script, "fast paced, commanding tone with sharp pauses", voiceName, userId, videoId)
-      return audio
+    const transcriptionId = await step.run("generate-audio-and-trancription", async () => {
+      const audioUrl = await generateAudioFromScript(script, "ultra fast pace, commanding tone with sharp pauses", voiceName, userId, videoId)
+      const transcriptId = await transcribeAudio(audioUrl, videoId)
+      return transcriptId
     })
 
-    const transcriptionId = await step.run("transcribe-audio", async () => {
-      const result = await transcribeAudio(audioUrl, videoId)
-      return result
-    })
 
     const imagePrompts = await step.run("generate-image-prompts", async () => {
       const prompts = await generateImagePrompts(transcriptionId, style)

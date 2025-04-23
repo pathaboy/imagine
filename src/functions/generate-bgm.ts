@@ -17,7 +17,7 @@ export const generateBgm = async (script: string, videoId: string) => {
   ${bgms.map((item) => item.name).join("|")}
   `
   const response = await axios.post("https://text.pollinations.ai", {
-    model: "openai",
+    model: "openai-large",
     seed: 10000000,
     jsonMode: true,
     messages: [

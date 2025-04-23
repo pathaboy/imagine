@@ -23,7 +23,7 @@ export const MyComposition = () => {
   const { width, height, fps } = useVideoConfig();
   const frame = useCurrentFrame();
   const currentTimeInMs = Math.floor((frame / fps) * 1000);
-  const motionImages = useMemo(() => addMotionToImages(images), [images]);
+  // const motionImages = useMemo(() => addMotionToImages(images), [images]);
 
   return (
     <AbsoluteFill
@@ -38,7 +38,7 @@ export const MyComposition = () => {
         volume={0.3}
         loop
       />
-      <TransitionSeries>
+      {/* <TransitionSeries>
         {motionImages.map((item, index) => {
           const durationOfSegment = item.end - item.start;
           return (
@@ -49,13 +49,13 @@ export const MyComposition = () => {
               <FourByThreeView>
                 <item.motion.component
                   duration={durationOfSegment}
-                  imgSrc={item.imageSrc}
+                  imgSrc={item.imageUrl}
                 />
               </FourByThreeView>
             </TransitionSeries.Sequence>
           );
         })}
-      </TransitionSeries>
+      </TransitionSeries> */}
       {/* <CaptionStyleTwo
         transcriptionId=""
         currentTimeInMs={currentTimeInMs}

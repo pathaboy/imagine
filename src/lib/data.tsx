@@ -1,6 +1,9 @@
 import { CaptionStyleOne } from "../remotion/caption-styles/caption-style-one";
 import React from "react";
-import { EnterSlideTopDownExitLeft, MotionProps } from "../remotion/motion-templates/enter-slide-top-down-exit-left";
+import {
+  EnterSlideTopDownExitLeft,
+  MotionProps,
+} from "../remotion/motion-templates/enter-slide-top-down-exit-left";
 import { ScaleDownFade } from "../remotion/motion-templates/scale-down-fade";
 import { ScaleDownUp } from "../remotion/motion-templates/scale-down-up";
 import { CaptionStyleTwo } from "../remotion/caption-styles/caption-style.two";
@@ -2778,8 +2781,9 @@ export const bgms = [
   {
     id: 33,
     name: "attitude-beats",
-    bgmUrl: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/shorts-bgm/attitude-beats.mp3"
-  }
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/shorts-bgm/attitude-beats.mp3",
+  },
 ];
 
 export const getVoicePrompt = (narrationScript: any, tone: string) => {
@@ -2801,6 +2805,7 @@ export const motionTemplatesNames = [
     name: "scale-down-up",
   },
 ];
+
 export const motionTemplates: Motion[] = [
   {
     id: "enter-slide-top-down-exit-left",
@@ -2825,38 +2830,24 @@ interface Motion {
   component: React.FC<MotionProps>;
 }
 
-interface MotionImage {
+export interface MotionImage {
   id: number;
   start: number;
   end: number;
+  motionTemplateId: string;
   imagePrompt: string;
-  imageSrc: string;
+  imageUrl: string;
   motion?: Motion;
 }
 
 export const addMotionToImages = (images: MotionImage[]) => {
-  const motionArray: Motion[] = [
-    {
-      id: "enter-slide-top-down-exit-left",
-      name: "enter-slide-top-down-exit-left",
-      component: EnterSlideTopDownExitLeft,
-    },
-    {
-      id: "scale-down-fade",
-      name: "scale-down-fade",
-      component: ScaleDownFade,
-    },
-    {
-      id: "scale-down-up",
-      name: "scale-down-up",
-      component: ScaleDownUp,
-    },
-  ];
-
   const motionImages = images.map((item, index) => {
+    const motionTemplate = motionTemplates.find(
+      (temp) => temp.name === item.motionTemplateId
+    );
     return {
       ...item,
-      motion: motionArray[index % motionArray.length],
+      motion: motionTemplate || motionTemplates[index % motionTemplates.length],
     };
   });
 

@@ -2,25 +2,21 @@
 import { AbsoluteFill, Audio, useCurrentFrame, useVideoConfig } from "remotion";
 import { useEffect, useMemo, useState } from "react";
 import { TransitionSeries } from "@remotion/transitions";
-import { motionTemplates } from "../../lib/data";
+import {
+  addMotionToImages,
+  MotionImage,
+  motionTemplates,
+} from "../../lib/data";
 import { CaptionStyleTwo } from "../caption-styles/caption-style.two";
 import { assemblyAIClient } from "@/lib/assemblyai";
 import axios from "axios";
 
 interface FourByThreeVideoProps {
-  scenes: Scene[];
+  scenes: MotionImage[];
   transcriptionId: string;
   captionStyle: string;
   bgmUrl: string;
   audioUrl: string;
-}
-
-interface Scene {
-  number: number;
-  start: number;
-  end: number;
-  motionTemplateId: string;
-  imageUrl: string;
 }
 
 export const FourByThreeVideo = ({
@@ -33,6 +29,7 @@ export const FourByThreeVideo = ({
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
   const currentTimeInMs = Math.floor((frame / fps) * 1000);
+  const motionImages = addMotionToImages(scenes);
 
   return (
     <AbsoluteFill
@@ -43,10 +40,7 @@ export const FourByThreeVideo = ({
       <Audio src={audioUrl} volume={2} />
       <Audio src={bgmUrl} startFrom={300} volume={0.3} loop />
       <TransitionSeries>
-        {scenes.map((item, index) => {
-          const MotionComponent = motionTemplates.find(
-            (temp) => temp.name === item.motionTemplateId
-          );
+        {motionImages.map((item, index) => {
           const durationOfSegment =
             Math.floor((item.end - item.start) / 1000) * fps;
           console.log(durationOfSegment);
@@ -56,12 +50,10 @@ export const FourByThreeVideo = ({
               durationInFrames={durationOfSegment}
             >
               <FourByThreeView>
-                {MotionComponent && (
-                  <MotionComponent.component
-                    duration={item.start - item.start}
-                    imgSrc={item.imageUrl}
-                  />
-                )}
+                <item.motion.component
+                  duration={item.end - item.start}
+                  imgSrc={item.imageUrl}
+                />
               </FourByThreeView>
             </TransitionSeries.Sequence>
           );
