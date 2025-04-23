@@ -19,7 +19,7 @@ export async function generateVideoMetadata(story: string): Promise<StoryMetadat
       `
 
     const response = await axios.post("https://text.pollinations.ai", {
-      model: "openai-large",
+      model: "gemini",
       seed: 10000000,
       jsonMode: true,
       messages: [

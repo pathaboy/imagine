@@ -36,19 +36,20 @@ export const GenerateVideoData = inngest.createFunction(
             async () => {
               // Image generation
               const seed = Math.floor(Math.random() * 10000000)
-              const res = await axios.get(`https://image.pollinations.ai/prompt/${encodeURIComponent(item.imagePrompt)}?width=${720}&height=${540}&seed=${seed}&nologo=${true}&private=${true}`, {
-                responseType: "arraybuffer"
-              })
-              const buffer = Buffer.from(res.data)
-              const imageKeyId = `videos/${userId}/${videoId}/${crypto.randomUUID()}.jpeg`
-              const uploadImageCommand = new PutObjectCommand({
-                Bucket: process.env.R2_BUCKET_NAME!,
-                Key: imageKeyId,
-                Body: buffer,
-                ContentType: "image/jpeg"
-              })
-              await S3.send(uploadImageCommand)
-              const imageSourceurl = `${process.env.R2_DOMAIN}/${imageKeyId}`
+              const imageSourceurl = `https://image.pollinations.ai/prompt/${encodeURIComponent(item.imagePrompt)}?width=${720}&height=${540}&seed=${seed}&nologo=${true}&private=${true}`
+              // const res = await axios.get(url, {
+              //   responseType: "arraybuffer"
+              // })
+              // const buffer = Buffer.from(res.data)
+              // const imageKeyId = `videos/${userId}/${videoId}/${crypto.randomUUID()}.jpeg`
+              // const uploadImageCommand = new PutObjectCommand({
+              //   Bucket: process.env.R2_BUCKET_NAME!,
+              //   Key: imageKeyId,
+              //   Body: buffer,
+              //   ContentType: "image/jpeg"
+              // })
+              // await S3.send(uploadImageCommand)
+              // const imageSourceurl = `${process.env.R2_DOMAIN}/${imageKeyId}`
 
               const motionTemplatesName = motionTemplatesNames[index % motionTemplatesNames.length]
 
