@@ -49,7 +49,7 @@ const VideoGenForm = () => {
           onChange={(e) => {
             setUserPrompt(e.target.value);
           }}
-          minLength={10}
+          minLength={3}
           className="bg-inherit w-full h-24 focus:outline-none rounded-xl p-2 resize-none"
           placeholder="Create a video on 3 life lessons by Bhagat Singh."
           onKeyDown={(e) => {
@@ -187,7 +187,7 @@ const VideoGenForm = () => {
           </div>
 
           <Button
-            disabled={userPrompt.length <= 10}
+            disabled={userPrompt.length <= 3}
             onClick={(e) => {
               e.preventDefault();
               handleVideoGeneration();

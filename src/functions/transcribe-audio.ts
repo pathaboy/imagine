@@ -12,12 +12,14 @@ export const transcribeAudio = async (audioUrl: string, videoId: string) => {
     if (transcript.status === "error") {
       throw new Error(`Failed to transcribe audio: ${transcript.error}`)
     }
+    const duration = (transcript.words && transcript?.words[transcript?.words?.length-1]?.end)  || 1 * 60 * 1000
     await prisma.video.update({
       where: {
         id: videoId
       },
       data: {
-        transcriptionId: transcript.id
+        transcriptionId: transcript.id,
+        totalDuration: duration
       }
     })
 

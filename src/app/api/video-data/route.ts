@@ -18,11 +18,8 @@ export async function GET(req: NextRequest) {
       },
       include: {
         bgm: true,
+        voiceOver: true,
         scenes: {
-          include: {
-            images: true,
-            vocals: true
-          },
           orderBy: {
             number: "asc"
           }

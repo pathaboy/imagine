@@ -28,6 +28,8 @@ export async function POST(req: NextRequest) {
     const video = await prisma.video.create({
       data: {
         prompt: videoDetails.userPrompt,
+        script: script.content,
+        title: script.title,
         imageStyle: videoDetails.style,
         captionStyle: videoDetails.captionStyle,
         thumbnailUrl: "",
@@ -47,7 +49,8 @@ export async function POST(req: NextRequest) {
         userId: session.user.id,
         videoId: video.id,
         voiceName: videoDetails.voiceName,
-        videoVisualization
+        style: videoDetails.style,
+        script: script.content
       }
     })
     return Response.json({

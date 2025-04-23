@@ -1,10 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Player } from "@remotion/player";
-import { VideoOne } from "@/remotion/videos/VideoOne";
+import { VideoOne } from "@/remotion/video-templates/VideoOne";
 import { redirect, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import axios from "axios";
+import { FourByThreeVideo } from "@/remotion/video-templates/four-by-three";
 
 const VideoPage = () => {
   const searchParams = useSearchParams();
@@ -28,42 +29,35 @@ const VideoPage = () => {
       }
     };
     fetchVideoData();
+    console.log(video);
   }, [videoId]);
 
   if (!video) return <div>Loading video...</div>;
 
-  const lastScene = video.scenes?.[video.scenes.length - 1];
-
   const inputsProps = {
     bgmUrl: video?.bgm?.bgmUrl || "",
-    fps: video?.fps || 60,
-    captions: video?.captions || "[]",
-    captionStyle: video?.captionStyle || "default",
+    audioUrl: video.voiceOver[0]?.audioUrl || "",
+    captionStyle: video?.captionStyle || "caption-style-two",
     scenes: video?.scenes?.map((scene) => ({
       number: scene.number,
       start: scene.start,
       end: scene.end,
-      sceneTemplateId: scene.sceneTemplateId,
-      images: scene.images.map((img) => ({
-        number: img.number,
-        url: img.url,
-      })),
-      vocals: scene.vocals.map((audio) => ({
-        audioUrl: audio.audioUrl,
-      })),
+      motionTemplateId: scene.motionTemplateId,
+      imageUrl: scene.imageUrl,
     })),
+    transcriptionId: video?.transcriptionId,
   };
 
   return (
     <div className="w-full h-full">
       <Player
         controls
-        component={VideoOne}
+        component={FourByThreeVideo}
         inputProps={inputsProps}
-        durationInFrames={video.totalDuration * video.fps}
+        durationInFrames={Math.floor(video.totalDuration / 1000) * video.fps}
         compositionWidth={1280}
         compositionHeight={720}
-        fps={video?.fps || 60}
+        fps={video?.fps || 30}
       />
     </div>
   );

@@ -1,10 +1,9 @@
-import {
-  ScaleDownFade,
-  ScaleDownUp,
-  SlideTopDownThenLeft,
-} from "../remotion/Composition";
-import { CaptionStyleOne } from "../components/caption-styles/caption-style-one";
+import { CaptionStyleOne } from "../remotion/caption-styles/caption-style-one";
 import React from "react";
+import { EnterSlideTopDownExitLeft, MotionProps } from "../remotion/motion-templates/enter-slide-top-down-exit-left";
+import { ScaleDownFade } from "../remotion/motion-templates/scale-down-fade";
+import { ScaleDownUp } from "../remotion/motion-templates/scale-down-up";
+import { CaptionStyleTwo } from "../remotion/caption-styles/caption-style.two";
 
 export const subs = [
   { text: "You", start: 80, end: 192, confidence: 0.99776, speaker: null },
@@ -2561,11 +2560,24 @@ export const vocals = [
   },
 ];
 
-export const captionStyles = [
+interface CaptionStyle {
+  id: string;
+  name: string;
+  component: React.FC<any>;
+  previewUrl: string;
+}
+
+export const captionStyles: CaptionStyle[] = [
   {
     id: "caption-style-one",
     name: "caption-style-one",
     component: CaptionStyleOne,
+    previewUrl: "/assets/images/captions/caption-style-one.png",
+  },
+  {
+    id: "caption-style-two",
+    name: "caption-style-two",
+    component: CaptionStyleTwo,
     previewUrl: "/assets/images/captions/caption-style-one.png",
   },
 ];
@@ -2763,6 +2775,11 @@ export const bgms = [
     bgmUrl:
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/ambient-guitar-soft-cinematic-drums-evolving-synth-textures-2.mp3",
   },
+  {
+    id: 33,
+    name: "attitude-beats",
+    bgmUrl: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/shorts-bgm/attitude-beats.mp3"
+  }
 ];
 
 export const getVoicePrompt = (narrationScript: any, tone: string) => {
@@ -2770,10 +2787,42 @@ export const getVoicePrompt = (narrationScript: any, tone: string) => {
   return audioPrompt;
 };
 
+export const motionTemplatesNames = [
+  {
+    id: 1,
+    name: "enter-slide-top-down-exit-left",
+  },
+  {
+    id: 2,
+    name: "scale-down-fade",
+  },
+  {
+    id: 3,
+    name: "scale-down-up",
+  },
+];
+export const motionTemplates: Motion[] = [
+  {
+    id: "enter-slide-top-down-exit-left",
+    name: "enter-slide-top-down-exit-left",
+    component: EnterSlideTopDownExitLeft,
+  },
+  {
+    id: "scale-down-fade",
+    name: "scale-down-fade",
+    component: ScaleDownFade,
+  },
+  {
+    id: "scale-down-up",
+    name: "scale-down-up",
+    component: ScaleDownFade,
+  },
+];
+
 interface Motion {
-  id: number;
+  id: string;
   name: string;
-  component: React.FC<any>; // or React.ComponentType<any>
+  component: React.FC<MotionProps>;
 }
 
 interface MotionImage {
@@ -2788,18 +2837,18 @@ interface MotionImage {
 export const addMotionToImages = (images: MotionImage[]) => {
   const motionArray: Motion[] = [
     {
-      id: 1,
-      name: "slideTopDownThenLeft",
-      component: SlideTopDownThenLeft,
+      id: "enter-slide-top-down-exit-left",
+      name: "enter-slide-top-down-exit-left",
+      component: EnterSlideTopDownExitLeft,
     },
     {
-      id: 2,
-      name: "scaleDownFade",
+      id: "scale-down-fade",
+      name: "scale-down-fade",
       component: ScaleDownFade,
     },
     {
-      id: 3,
-      name: "scaleDownUp",
+      id: "scale-down-up",
+      name: "scale-down-up",
       component: ScaleDownUp,
     },
   ];

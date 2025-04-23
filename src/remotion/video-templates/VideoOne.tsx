@@ -1,5 +1,5 @@
 "use client";
-import { Caption } from "@/components/caption-styles/caption-style-one";
+import { Caption } from "@/remotion/caption-styles/caption-style-one";
 import { captionStyles } from "@/lib/data";
 import SceneOne from "@/scenes/scene-one";
 import { TransitionSeries } from "@remotion/transitions";

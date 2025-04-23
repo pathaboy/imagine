@@ -338,6 +338,11 @@ export const bgms = [
     bgmUrl:
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/ambient-guitar-soft-cinematic-drums-evolving-synth-textures-2.mp3",
   },
+  {
+    id: 33,
+    name: "attitude-beats",
+    bgmUrl: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/shorts-bgm/attitude-beats.mp3"
+  }
 ];
 
 

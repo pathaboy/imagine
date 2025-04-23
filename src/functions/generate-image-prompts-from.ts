@@ -19,8 +19,8 @@ Output format:
   "imagePrompts": [
     {
       "id": 1,
-      "start": 1000,
-      "end": 3000,
+      "start": 1000(in ms),
+      "end": 3000(in ms),
       "imagePrompt": "A dimly lit alleyway with a man hiding behind a dumpster, tension in the air"
     },
     ...
@@ -43,6 +43,14 @@ ${srtfile}
     `
   )
 }
+
+interface ImagePrompt {
+  id: number
+  start: number
+  end: number
+  imagePrompt: string
+}
+
 export const generateImagePrompts = async (transcriptionId: string, imageStyle: string) => {
   try {
     const transcript = await assemblyAIClient.transcripts.get(transcriptionId)
@@ -66,7 +74,8 @@ export const generateImagePrompts = async (transcriptionId: string, imageStyle: 
     const styleTags = imageStyles.find((item, _index) => {
             return item.name.toLowerCase() === imageStyle.toLowerCase()
           })
-    const enhancedImagePrompts = response.data.imagePrompts.map((item: any, index: number) => {
+    const imagePrompts: ImagePrompt[] = response.data.imagePrompts
+    const enhancedImagePrompts = imagePrompts.map((item) => {
       return (
         {
           ...item,
