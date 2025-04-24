@@ -69,7 +69,7 @@ export const generateImagePrompts = async (transcriptionId: string, imageStyle: 
       ],
       seed: 10000000,
       jsonMode: true,
-      model: "gemini"
+      model: "openai-large"
     })
     const styleTags = imageStyles.find((item, _index) => {
             return item.name.toLowerCase() === imageStyle.toLowerCase()

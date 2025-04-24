@@ -2594,7 +2594,7 @@ export const bgms = [
   },
 ];
 
-export const getVoicePrompt = (narrationScript: any, tone: string) => {
+export const getVoicePrompt = (narrationScript: string, tone: string) => {
   const audioPrompt = `Repeat after me in ${tone}: "${narrationScript}"`;
   return audioPrompt;
 };
@@ -2660,4 +2660,14 @@ export const addMotionToImages = (images: MotionImage[]) => {
   });
 
   return motionImages;
+};
+
+export const cleanTextForUrl = (text: string) => {
+  return encodeURIComponent(
+    text
+      .replace(/\n+/g, " ")
+      .replace(/\s+/g, " ")
+      .replace(/[*_`~>#+=\[\](){}]/g, "")
+      .trim()
+  );
 };
