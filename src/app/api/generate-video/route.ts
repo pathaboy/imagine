@@ -20,42 +20,76 @@ export async function POST(req: NextRequest) {
     console.log(videoDetails.style)
     console.log(videoDetails.voiceName)
     console.log(videoDetails.captionStyle)
+    console.log(videoDetails.voiceoverUrl)
     
-    const script = await generateScriptFromUserPrompt(videoDetails.userPrompt)
-
-    console.log("hIT HERE")
-
-    const video = await prisma.video.create({
-      data: {
-        prompt: videoDetails.userPrompt,
-        script: script.content,
-        title: script.title,
-        imageStyle: videoDetails.style,
-        captionStyle: videoDetails.captionStyle,
-        thumbnailUrl: "",
-        user: {
-          connect: {
-            id: session?.user?.id
-          }
+    if (!videoDetails.voiceoverUrl) {
+      const script = await generateScriptFromUserPrompt(videoDetails.userPrompt)
+      const video = await prisma.video.create({
+        data: {
+          prompt: videoDetails.userPrompt,
+          script: script.content,
+          title: script.title,
+          imageStyle: videoDetails.style,
+          captionStyle: videoDetails.captionStyle,
+          thumbnailUrl: "",
+          user: {
+            connect: {
+              id: session?.user?.id
+            }
+          },
         },
-      },
-    })
-
-    console.log("Hit here 2")
-
-    const result = await inngest.send({
-      name: "generate-video-data",
-      data: {
-        userId: session.user.id,
-        videoId: video.id,
-        voiceName: videoDetails.voiceName,
-        style: videoDetails.style,
-        script: script.content
-      }
-    })
-    return Response.json({
-      result
-    }, {status: 200})
+      })
+      const result = await inngest.send({
+        name: "generate-text-to-video-data",
+        data: {
+          userId: session.user.id,
+          videoId: video.id,
+          voiceName: videoDetails.voiceName,
+          style: videoDetails.style,
+          script: script.content
+        }
+      })
+      return Response.json({
+        result
+      }, {status: 200})
+    } else {
+      console.log("Hit with audio upload")
+      const video = await prisma.video.create({
+        data: {
+          prompt: videoDetails.userPrompt,
+          title: videoDetails.userPrompt,
+          imageStyle: videoDetails.style,
+          captionStyle: videoDetails.captionStyle,
+          thumbnailUrl: "",
+          voiceOver: {
+            create: {
+              audioUrl: videoDetails.voiceoverUrl,
+              narrationTone: "",
+              voiceId: ""
+            }
+          },
+          user: {
+            connect: {
+              id: session?.user?.id
+            }
+          },
+        },
+      })
+      const result = await inngest.send({
+        name: "generate-audio-to-video-data",
+        data: {
+          userId: session.user.id,
+          voiceName: videoDetails.voiceName,
+          style: videoDetails.style,
+          voiceoverUrl: videoDetails.voiceoverUrl,
+          videoId: video.id,
+        }
+      })
+      return Response.json({
+        result
+      }, {status: 200})
+    }
+    
   } catch (err) {
     console.error(err)
     return Response.json({

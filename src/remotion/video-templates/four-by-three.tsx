@@ -1,5 +1,11 @@
 "use client";
-import { AbsoluteFill, Audio, useCurrentFrame, useVideoConfig } from "remotion";
+import {
+  AbsoluteFill,
+  Audio,
+  staticFile,
+  useCurrentFrame,
+  useVideoConfig,
+} from "remotion";
 import { useEffect, useMemo, useState } from "react";
 import { TransitionSeries } from "@remotion/transitions";
 import {
@@ -38,7 +44,14 @@ export const FourByThreeVideo = ({
       }}
     >
       <Audio src={audioUrl} volume={2} />
-      <Audio src={bgmUrl} startFrom={300} volume={0.3} loop />
+      <Audio
+        src={
+          bgmUrl || staticFile("/audio/vengeance-revenge-pain-piano-drums.mp3")
+        }
+        startFrom={300}
+        volume={0.3}
+        loop
+      />
       <TransitionSeries>
         {motionImages.map((item, index) => {
           const durationOfSegment =

@@ -2,17 +2,15 @@ import { bgms } from "@/lib/data"
 import { prisma } from "@/lib/prisma"
 import axios from "axios"
 
-export const generateBgm = async (script: string, videoId: string) => {
-  if (!script) {
-    throw new Error("No script passed for bgm generation")
-  }
+export const generateBgm = async (videoId: string) => {
+  const video = await prisma.video.findFirst({where: {id: videoId}})
   try {
     const bgmPrompt = `
   You are a creative sound designer. I will give you a video script and a list of background music (BGM) options. Your task is to choose the BGM that best fits the tone, emotion, and pacing of the script.
   Respond only in JSON format as:
   { "bgm": "<best_bgm_from_list>" }
   Here is the script:
-  ${script}
+  ${video?.script}
   Here are the BGM options:
   ${bgms.map((item) => item.name).join("|")}
   `

@@ -13,7 +13,7 @@ export const generateAudioFromScript = async (script: string, tone: string, voic
                 responseType: "arraybuffer"
               })
     const audio = Buffer.from(audioResponse.data)
-    const audioKeyId = `videos/${userId}/${videoId}/${crypto.randomUUID()}.mp3`
+    const audioKeyId = `videos/${userId}/voiceovers/${crypto.randomUUID()}.mp3`
     const uploadAudioCommand = new PutObjectCommand({
       Bucket: process.env.R2_BUCKET_NAME!,
       Key: audioKeyId,

@@ -18,11 +18,17 @@ import {
 } from "remotion";
 import { addMotionToImages, getFormattedSubs, images, subs } from "../lib/data";
 import { CaptionStyleTwo } from "./caption-styles/caption-style.two";
+import { Volume } from "lucide-react";
 
 export const MyComposition = () => {
-  const { width, height, fps } = useVideoConfig();
+  const { width, height, fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
   const currentTimeInMs = Math.floor((frame / fps) * 1000);
+  const vol = interpolate(
+    frame,
+    [0, durationInFrames / 2, durationInFrames],
+    [0.5, 0.1, 0.5]
+  );
   // const motionImages = useMemo(() => addMotionToImages(images), [images]);
 
   return (
@@ -31,11 +37,15 @@ export const MyComposition = () => {
         backgroundColor: "black",
       }}
     >
-      <Audio src={staticFile("/audio/test-2.mp3")} volume={2} />
       <Audio
-        src={staticFile("/audio/attitude-beats.mp3")}
+        src={staticFile("/audio/vengeance-new.mp3")}
+        playbackRate={1}
+        volume={2}
+      />
+      <Audio
+        src={staticFile("/audio/vengeance-revenge-pain-piano-drums.mp3")}
         startFrom={300}
-        volume={0.3}
+        volume={vol}
         loop
       />
       {/* <TransitionSeries>

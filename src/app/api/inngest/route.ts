@@ -1,12 +1,13 @@
 import { serve } from "inngest/next";
 import { inngest } from "../../../inngest/client";
-import { GenerateVideoData } from "@/inngest/functions";
+import { GenerateAudioToVideoData, GenerateTextToVideoData } from "@/inngest/functions";
 
 // Create an API that serves zero functions
 export const { GET, POST, PUT } = serve({
   client: inngest,
   functions: [
     /* your functions will be passed here later! */
-    GenerateVideoData
+    GenerateTextToVideoData,
+    GenerateAudioToVideoData
   ],
 });

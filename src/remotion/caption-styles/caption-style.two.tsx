@@ -59,7 +59,7 @@ export const CaptionStyleTwo = ({
           marginBottom: "1rem",
         }}
       >
-        {textSegment?.subs || "Hello my name is rajendra"}
+        {textSegment?.subs || ""}
       </h2>
     </AbsoluteFill>
   );

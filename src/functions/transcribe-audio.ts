@@ -19,7 +19,7 @@ export const transcribeAudio = async (audioUrl: string, videoId: string) => {
       },
       data: {
         transcriptionId: transcript.id,
-        totalDuration: duration
+        totalDuration: duration + 10 * 1000 
       }
     })
 

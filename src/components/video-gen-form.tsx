@@ -4,11 +4,14 @@ import { Button } from "@/components/ui/button";
 import {
   Captions,
   Clapperboard,
+  Link,
+  Loader,
   MicVocal,
+  Music,
   Palette,
   Sparkles,
 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -26,16 +29,51 @@ const VideoGenForm = () => {
   const [style, setStyle] = useState("anime");
   const [voiceName, setVoiceName] = useState("alloy");
   const [captionStyle, setCaptionStyle] = useState("caption-style-one");
+  const voiceOver = useRef<HTMLInputElement>(null);
+  const [voiceoverUrl, setVoiceoverUrl] = useState("");
+  const [uploadingAudio, setUploadingAudio] = useState(false);
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingAudio(true);
+    const res = await axios.post("/api/get-presigned-url", {
+      fileName: file.name,
+      fileType: file.type,
+    });
+    const url = res.data.url as string;
+    const publicUrl = res.data.publicUrl;
+    const uploadRes = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": file.type,
+      },
+      body: file,
+    });
+    setUploadingAudio(false);
+
+    if (uploadRes.ok) {
+      setVoiceoverUrl(publicUrl);
+      console.log("Upload successful!");
+    } else {
+      console.error("Upload failed");
+    }
+  };
 
   const handleVideoGeneration = async () => {
-    const response = await axios.post("/api/generate-video", {
-      videoDetails: {
-        userPrompt,
-        style,
-        voiceName,
-        captionStyle,
-      },
-    });
+    try {
+      const response = await axios.post("/api/generate-video", {
+        videoDetails: {
+          userPrompt,
+          style,
+          voiceName,
+          captionStyle,
+          voiceoverUrl,
+        },
+      });
+    } catch (err: any) {
+      console.error(err.message || err);
+    }
   };
 
   return (
@@ -99,20 +137,32 @@ const VideoGenForm = () => {
               </DialogContent>
             </Dialog>
 
-            {/* Video Template Modal */}
-            {/* <Dialog>
-                <DialogTrigger asChild>
-                  <button className="hover:text-primary transition-colors p-2">
-                    <Clapperboard />
-                  </button>
-                </DialogTrigger>
-                <DialogContent className="w-full max-w-4xl text-center h-full overflow-y-visible">
-                  <DialogHeader>
-                    <DialogTitle>Select Video Template</DialogTitle>
-                  </DialogHeader>
-                  <p>Pick a template that fits your content.</p>
-                </DialogContent>
-              </Dialog> */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <button className="hover:text-primary transition-colors p-2">
+                  {uploadingAudio ? (
+                    <Loader className="animate-spin" />
+                  ) : (
+                    <Link />
+                  )}
+                </button>
+              </DialogTrigger>
+              <DialogContent className="w-full max-w-2xl text-center h-auto overflow-y-visible">
+                <DialogHeader>
+                  <DialogTitle>Upload Audio File</DialogTitle>
+                </DialogHeader>
+                <p className="mb-4 text-muted-foreground">
+                  Choose voiceover audio file (MP3) to use in your project.
+                </p>
+                <input
+                  type="file"
+                  ref={voiceOver}
+                  accept="audio/*"
+                  className="block w-full text-sm text-muted-foreground file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-primary file:text-white hover:file:bg-primary/90"
+                  onChange={handleFileChange}
+                />
+              </DialogContent>
+            </Dialog>
 
             {/* Voice Over Modal */}
             <Dialog>
