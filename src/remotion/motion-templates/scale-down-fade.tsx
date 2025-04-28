@@ -14,7 +14,7 @@ export const ScaleDownFade = ({ imgSrc, duration }: MotionProps) => {
   const totalFrames = Math.floor((duration / 1000) * fps);
   const panLeft = interpolate(frame, [0, totalFrames / 3], [90, 50], {
     extrapolateRight: "clamp",
-    easing: Easing.elastic(1.2),
+    easing: Easing.
   });
 
   const scale = interpolate(

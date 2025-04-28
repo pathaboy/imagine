@@ -54,7 +54,6 @@ const VideoGenForm = () => {
 
     if (uploadRes.ok) {
       setVoiceoverUrl(publicUrl);
-      console.log("Upload successful!");
     } else {
       console.error("Upload failed");
     }

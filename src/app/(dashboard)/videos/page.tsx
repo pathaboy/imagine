@@ -23,15 +23,14 @@ const VideoPage = () => {
       try {
         const res = await axios.get(`/api/video-data?videoid=${videoId}`);
         setVideo(res.data.video);
-        console.log(res.data.video);
       } catch (err) {
         console.error("Failed to fetch video:", err);
       }
     };
     fetchVideoData();
-    console.log(video);
   }, [videoId]);
 
+  console.log(video);
   if (!video) return <div>Loading video...</div>;
 
   const inputsProps = {
@@ -47,8 +46,6 @@ const VideoPage = () => {
     })),
     transcriptionId: video?.transcriptionId,
   };
-
-  console.log(inputsProps);
 
   return (
     <div className="w-full h-full">

@@ -65,11 +65,6 @@ Here is an example for you:
 
 export async function generateScriptFromUserPrompt(prompt: string): Promise<Story> {
   try {
-    // const res = await gemini.models.generateContent({
-    //   model: "gemini-2.0-flash",
-    //   contents: `Craft a compelling and immersive narrative script of a story of based on the user prompt. Ensure it captivates the reader with vivid storytelling, engaging characters. Return response in json format: {title: string, content: string}. User prompt: ${prompt}`,
-    // })
-    // console.log(res.text)
     const scriptPrompt = getScriptPrompts("short-high-impact-motivation")
 
     const response = await axios.post("https://text.pollinations.ai", {
@@ -87,7 +82,6 @@ export async function generateScriptFromUserPrompt(prompt: string): Promise<Stor
       jsonMode: true,
       model: "gemini"
     })
-    console.log(response.data)
     return (
       {
         title: response.data.title,

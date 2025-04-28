@@ -38,14 +38,14 @@ export const MyComposition = () => {
       }}
     >
       <Audio
-        src={staticFile("/audio/vengeance-new.mp3")}
+        src={staticFile("/audio/spirituality-is-entertainment.mp3")}
         playbackRate={1}
         volume={2}
       />
       <Audio
-        src={staticFile("/audio/vengeance-revenge-pain-piano-drums.mp3")}
+        src={staticFile("/audio/spiritual-minimalistic-hopeful-piano.mp3")}
         startFrom={300}
-        volume={vol}
+        volume={0.2}
         loop
       />
       {/* <TransitionSeries>

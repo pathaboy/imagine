@@ -38,7 +38,6 @@ export const VideoOne = ({
   scenes,
   fps,
 }: VideoOneProps) => {
-  console.log(bgmUrl, captionStyle, scenes);
   const Caption = captionStyles.find((item, _index) => {
     return captionStyle === item.id;
   });
@@ -48,8 +47,6 @@ export const VideoOne = ({
       <Audio src={bgmUrl} startFrom={120} volume={0.3} loop />
       <TransitionSeries>
         {scenes.map((scene, index) => {
-          console.log(scene.end);
-          console.log(scene.start);
           return (
             <TransitionSeries.Sequence
               key={index}

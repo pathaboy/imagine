@@ -33,7 +33,6 @@ export async function generateVideoMetadata(story: string): Promise<StoryMetadat
         }
       ]
     })
-    console.log(response.data)
     // const cleanedData = response.data.replace("Alimentado por las API de texto gratuitas de Pollinations.AI. [Apoya nuestra misión](https://pollinations.ai/redirect/kofi) para mantener la inteligencia artificial accesible para todos.", "")
     return response.data
   } catch (err) {

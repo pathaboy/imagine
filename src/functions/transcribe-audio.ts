@@ -19,6 +19,7 @@ export const transcribeAudio = async (audioUrl: string, videoId: string) => {
       },
       data: {
         transcriptionId: transcript.id,
+        transcribedWords: transcript.words ? JSON.stringify(transcript.words): "",
         totalDuration: duration + 10 * 1000 
       }
     })

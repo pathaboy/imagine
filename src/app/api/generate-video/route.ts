@@ -16,11 +16,6 @@ export async function POST(req: NextRequest) {
   }
   try {
     const {videoDetails} = await req.json()
-    console.log( videoDetails.userPrompt)
-    console.log(videoDetails.style)
-    console.log(videoDetails.voiceName)
-    console.log(videoDetails.captionStyle)
-    console.log(videoDetails.voiceoverUrl)
     
     if (!videoDetails.voiceoverUrl) {
       const script = await generateScriptFromUserPrompt(videoDetails.userPrompt)
@@ -53,7 +48,6 @@ export async function POST(req: NextRequest) {
         result
       }, {status: 200})
     } else {
-      console.log("Hit with audio upload")
       const video = await prisma.video.create({
         data: {
           prompt: videoDetails.userPrompt,

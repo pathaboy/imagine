@@ -7,7 +7,6 @@ import axios from "axios"
 export const generateAudioFromScript = async (script: string, tone: string, voiceName: string, userId: string, videoId: string) => {
   try {
     const cleanedScript = cleanTextForUrl(script)
-    console.log(cleanedScript)
     const audioPrompt = getVoicePrompt(script, tone)
     const audioResponse = await axios.get(`https://text.pollinations.ai/${encodeURIComponent(cleanedScript)}?model=openai-audio&voice=${voiceName}`, {
                 responseType: "arraybuffer"

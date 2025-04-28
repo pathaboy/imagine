@@ -4,14 +4,12 @@ import { NextRequest } from "next/server";
 export async function GET(req: NextRequest) {
   const searchParams = req.nextUrl.searchParams
   const videoId = searchParams.get("videoid")
-  console.log(videoId)
   if (!videoId) {
     return Response.json({
       message: "No videoid passed"
     }, {status: 401})
   }
   try {
-    console.log("Hit here")
     const video = await prisma.video.findFirst({
       where: {
         id: videoId,

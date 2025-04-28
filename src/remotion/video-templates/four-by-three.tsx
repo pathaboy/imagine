@@ -6,7 +6,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { TransitionSeries } from "@remotion/transitions";
 import {
   addMotionToImages,
@@ -17,21 +17,22 @@ import { CaptionStyleTwo } from "../caption-styles/caption-style.two";
 import { assemblyAIClient } from "@/lib/assemblyai";
 import axios from "axios";
 
-interface FourByThreeVideoProps {
+type FourByThreeVideoProps = {
   scenes: MotionImage[];
-  transcriptionId: string;
+  captions: string;
   captionStyle: string;
   bgmUrl: string;
   audioUrl: string;
-}
+};
 
-export const FourByThreeVideo = ({
+export const FourByThreeVideo: React.FC<FourByThreeVideoProps> = ({
   audioUrl,
   bgmUrl,
   captionStyle,
   scenes,
-  transcriptionId,
-}: FourByThreeVideoProps) => {
+  captions,
+}) => {
+  console.log(audioUrl);
   const { fps } = useVideoConfig();
   const frame = useCurrentFrame();
   const currentTimeInMs = Math.floor((frame / fps) * 1000);
@@ -43,20 +44,17 @@ export const FourByThreeVideo = ({
         backgroundColor: "black",
       }}
     >
-      <Audio src={audioUrl} volume={2} />
+      <Audio src={audioUrl} volume={1} />
       <Audio
-        src={
-          bgmUrl || staticFile("/audio/vengeance-revenge-pain-piano-drums.mp3")
-        }
+        src={bgmUrl || staticFile("/audio/attitude-beats.mp3")}
         startFrom={300}
         volume={0.3}
         loop
       />
       <TransitionSeries>
-        {motionImages.map((item, index) => {
+        {motionImages?.map((item, index) => {
           const durationOfSegment =
             Math.floor((item.end - item.start) / 1000) * fps;
-          console.log(durationOfSegment);
           return (
             <TransitionSeries.Sequence
               key={index}
@@ -72,10 +70,7 @@ export const FourByThreeVideo = ({
           );
         })}
       </TransitionSeries>
-      <CaptionStyleTwo
-        transcriptionId={transcriptionId}
-        currentTimeInMs={currentTimeInMs}
-      />
+      <CaptionStyleTwo captions={captions} currentTimeInMs={currentTimeInMs} />
     </AbsoluteFill>
   );
 };

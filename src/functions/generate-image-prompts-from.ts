@@ -83,7 +83,6 @@ export const generateImagePrompts = async (transcriptionId: string, imageStyle: 
         }
       )
     })
-    console.log(response.data)
     return ({
       imagePrompts: enhancedImagePrompts
     })
