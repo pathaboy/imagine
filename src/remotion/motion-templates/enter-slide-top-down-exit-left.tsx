@@ -22,7 +22,7 @@ export const EnterSlideTopDownExitLeft = ({
   const totalFrames = Math.floor((duration / 1000) * fps);
   const slideDown = interpolate(frame, [0, totalFrames / 5], [-100, 0], {
     extrapolateRight: "clamp",
-    easing: Easing.elastic(1),
+    easing: Easing.bezier(0.68, -0.6, 0.32, 1.6),
   });
   const slideRight = interpolate(
     frame,
@@ -30,13 +30,13 @@ export const EnterSlideTopDownExitLeft = ({
     [0, 0, -300],
     {
       extrapolateRight: "clamp",
-      easing: Easing.elastic(1),
+      easing: Easing.ease,
     }
   );
   const opacity = interpolate(
     frame,
     [0, totalFrames / 2, totalFrames],
-    [1, 0.5, 0]
+    [1, 1, 0]
   );
   return (
     <div

@@ -15,17 +15,13 @@ export const ScaleDownUp = ({ imgSrc, duration }: MotionProps) => {
   const scale = interpolate(
     frame,
     [0, totalFrames / 2, totalFrames],
-    [1.4, 1, 4],
+    [2, 1.2, 1.8],
     {
       extrapolateRight: "clamp",
-      easing: Easing.elastic(1.4),
+      easing: Easing.bezier(0.68, -0.6, 0.32, 1.6),
     }
   );
-  const opacity = interpolate(
-    frame,
-    [0, totalFrames / 3, totalFrames],
-    [1, 1, 0]
-  );
+
   return (
     <div>
       <Img
@@ -35,7 +31,6 @@ export const ScaleDownUp = ({ imgSrc, duration }: MotionProps) => {
           height: "100%",
           transform: `scale(${scale})`,
           flexShrink: 0,
-          opacity: opacity,
         }}
       />
     </div>

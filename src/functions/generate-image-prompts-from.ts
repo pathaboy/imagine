@@ -1,5 +1,5 @@
 import { assemblyAIClient } from "@/lib/assemblyai"
-import { imageStyles } from "@/lib/data"
+import { cameraAngles, cameraFramingTechniques, imageStyles, shots } from "@/lib/data"
 import axios from "axios"
 
 const getImagePrompt = (script: string, srtfile: string) => {
@@ -11,7 +11,7 @@ const getImagePrompt = (script: string, srtfile: string) => {
 Your task is to map each subtitle entry (based on its time range and text) to one unique image prompt that visually represents the scene during that time in the video.
 🔧 Instructions:
 Parse each subtitle block from the SRT.
-For each subtitle, generate exactly one descriptive image prompt that reflects the subtitle’s content, inferred tone, and relevant surrounding context from the full script.
+For each subtitle, generate exactly one descriptive image prompt with shot type, framing technique and camera angle that reflects the subtitle’s content, inferred tone, and relevant surrounding context from the full script.
 Output should contain the same number of image prompts as subtitle entries. No merging or skipping.
 Convert start and end times to milliseconds.
 Output format:
@@ -21,7 +21,9 @@ Output format:
       "id": 1,
       "start": 1000(in ms),
       "end": 3000(in ms),
-      "imagePrompt": "A dimly lit alleyway with a man hiding behind a dumpster, tension in the air"
+      "imagePrompt": "A dimly lit alleyway with a man hiding behind a dumpster, tension in the air",
+      "shot-size": "extreme-wide-shot",
+      "camera-angle": "high-angle"
     },
     ...
   ]
@@ -30,6 +32,9 @@ Output format:
 Do not include any written text, quotes, phrases, or words in the image prompt.
 The visual should be purely scene-based: use settings, people, objects, mood, lighting, emotions, etc.
 Avoid describing text, signs, titles, or captions in the prompt.
+Available shot types: ${shots.join(" | ")}
+Available framing techniques: ${cameraFramingTechniques.join(" | ")}
+Available camera angles: ${cameraAngles.join(" | ")}
 🎯 Ensure:
 One-to-one mapping between SRT entries and image prompts.
 No imagePrompt contains literal quotes or any textual content.

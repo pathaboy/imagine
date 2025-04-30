@@ -2,6 +2,7 @@
 import {
   AbsoluteFill,
   Audio,
+  interpolate,
   staticFile,
   useCurrentFrame,
   useVideoConfig,
@@ -16,6 +17,10 @@ import {
 import { CaptionStyleTwo } from "../caption-styles/caption-style.two";
 import { assemblyAIClient } from "@/lib/assemblyai";
 import axios from "axios";
+import { PullOut } from "../motion-templates/pull-out";
+import { EnterSlideTopDownExitLeft } from "../motion-templates/enter-slide-top-down-exit-left";
+import { ScaleDownUp } from "../motion-templates/scale-down-up";
+import { ScaleDownFade } from "../motion-templates/scale-down-fade";
 
 type FourByThreeVideoProps = {
   scenes: MotionImage[];
@@ -33,10 +38,15 @@ export const FourByThreeVideo: React.FC<FourByThreeVideoProps> = ({
   captions,
 }) => {
   console.log(audioUrl);
-  const { fps } = useVideoConfig();
+  const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
   const currentTimeInMs = Math.floor((frame / fps) * 1000);
   const motionImages = addMotionToImages(scenes);
+  const vol = interpolate(
+    frame,
+    [0, durationInFrames / 2, durationInFrames],
+    [0.3, 0.2, 0.4]
+  );
 
   return (
     <AbsoluteFill
@@ -45,12 +55,7 @@ export const FourByThreeVideo: React.FC<FourByThreeVideoProps> = ({
       }}
     >
       <Audio src={audioUrl} volume={1} />
-      <Audio
-        src={bgmUrl || staticFile("/audio/attitude-beats.mp3")}
-        startFrom={300}
-        volume={0.3}
-        loop
-      />
+      <Audio src={bgmUrl} startFrom={300} volume={vol} loop />
       <TransitionSeries>
         {motionImages?.map((item, index) => {
           const durationOfSegment =

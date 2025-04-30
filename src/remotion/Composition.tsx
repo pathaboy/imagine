@@ -16,9 +16,18 @@ import {
   interpolate,
   Easing,
 } from "remotion";
-import { addMotionToImages, getFormattedSubs, images, subs } from "../lib/data";
+import {
+  addMotionToImages,
+  demoVideo,
+  getFormattedSubs,
+  images,
+  subs,
+} from "../lib/data";
 import { CaptionStyleTwo } from "./caption-styles/caption-style.two";
 import { Volume } from "lucide-react";
+import { EnterSlideTopDownExitLeft } from "./motion-templates/enter-slide-top-down-exit-left";
+import { ScaleDownFade } from "./motion-templates/scale-down-fade";
+import { ScaleDownUp } from "./motion-templates/scale-down-up";
 
 export const MyComposition = () => {
   const { width, height, fps, durationInFrames } = useVideoConfig();
@@ -29,7 +38,18 @@ export const MyComposition = () => {
     [0, durationInFrames / 2, durationInFrames],
     [0.5, 0.1, 0.5]
   );
-  // const motionImages = useMemo(() => addMotionToImages(images), [images]);
+
+  const scenes = demoVideo.scenes.map((item) => {
+    return {
+      id: item.number,
+      start: item.start,
+      end: item.end,
+      imagePrompt: item.imagePromt,
+      imageUrl: item.imageUrl,
+      motionTemplateId: item.motionTemplateId,
+    };
+  });
+  const motionImages = useMemo(() => addMotionToImages(scenes), [images]);
 
   return (
     <AbsoluteFill
@@ -48,16 +68,16 @@ export const MyComposition = () => {
         volume={0.2}
         loop
       />
-      {/* <TransitionSeries>
+      <TransitionSeries>
         {motionImages.map((item, index) => {
           const durationOfSegment = item.end - item.start;
           return (
             <TransitionSeries.Sequence
               key={index}
-              durationInFrames={durationOfSegment}
+              durationInFrames={Math.floor((durationOfSegment / 1000) * 30)}
             >
               <FourByThreeView>
-                <item.motion.component
+                <ScaleDownUp
                   duration={durationOfSegment}
                   imgSrc={item.imageUrl}
                 />
@@ -65,11 +85,7 @@ export const MyComposition = () => {
             </TransitionSeries.Sequence>
           );
         })}
-      </TransitionSeries> */}
-      {/* <CaptionStyleTwo
-        transcriptionId=""
-        currentTimeInMs={currentTimeInMs}
-      /> */}
+      </TransitionSeries>{" "}
     </AbsoluteFill>
   );
 };

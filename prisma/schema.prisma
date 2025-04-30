@@ -39,10 +39,20 @@ model Video {
   thumbnailUrl         String?
   bgmId                Int?
   bgm                  Bgm?               @relation(fields: [bgmId], references: [id])
+  aspectRatio          AspectRatio        @relation(fields: [aspectRatioId], references: [id])
+  aspectRatioId        Int
   userId               String
   user                 User               @relation(fields: [userId], references: [id])
   createdAt            DateTime           @default(now())
   updatedAt            DateTime           @updatedAt
+}
+
+model AspectRatio {
+  id     Int     @id @default(autoincrement())
+  name   String  @unique
+  width  Int
+  height Int
+  videos Video[]
 }
 
 model Scene {
@@ -50,9 +60,11 @@ model Scene {
   number           Int
   start            Int // in ms
   end              Int // in ms
-  motionTemplateId String
-  imagePromt       String
+  motionTemplateId String @default("pull-out")
+  imagePrompt      String
   imageUrl         String
+  shotSize         String @default("full-shot")
+  cameraAngle      String @default("shoulder-level")
   videoId          String
   video            Video  @relation(fields: [videoId], references: [id], onDelete: Cascade)
 }
