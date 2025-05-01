@@ -1,8 +1,5 @@
-import axios from "axios";
 import { inngest } from "./client";
-import {PutObjectCommand} from "@aws-sdk/client-s3"
 import { prisma } from "@/lib/prisma";
-import { S3 } from "@/lib/s3";
 import { generateAudioFromScript } from "@/functions/generate-audio-from-script";
 import { transcribeAudio } from "@/functions/transcribe-audio";
 import { generateImagePrompts } from "@/functions/generate-image-prompts-from";
@@ -14,10 +11,14 @@ export const GenerateTextToVideoData = inngest.createFunction(
   { id: "generate-text-to-video-data" },
   { event: "generate-text-to-video-data" },
   async ({ event, step }) => {
-    const {userId, voiceName, videoId,  style, script} = event?.data
+    const {userId, voiceId, videoId,  style, script} = event?.data
+
+    const audioUrl = await step.run("generate-audio-and-trancription", async () => {
+      const audioUrl = await generateAudioFromScript(script, voiceId, userId, videoId)
+      return audioUrl
+    })
 
     const transcriptionId = await step.run("generate-audio-and-trancription", async () => {
-      const audioUrl = await generateAudioFromScript(script, "ultra fast pace, commanding tone with sharp pauses", voiceName, userId, videoId)
       const transcriptId = await transcribeAudio(audioUrl, videoId)
       return transcriptId
     })
@@ -61,8 +62,10 @@ export const GenerateTextToVideoData = inngest.createFunction(
                   end: item.end,
                   number: index + 1,
                   motionTemplateId: `${motionTemplatesName.name}`,
-                  imagePromt: item.imagePrompt,
-                  imageUrl: imageSourceurl
+                  imagePrompt: item.imagePrompt,
+                  imageUrl: imageSourceurl,
+                  shotSize: item.shotSize,
+                  cameraAngle: item.cameraAngle
                 }
               }}})
               return imageSourceurl
@@ -139,8 +142,10 @@ export const GenerateAudioToVideoData = inngest.createFunction(
                   end: item.end,
                   number: index + 1,
                   motionTemplateId: `${motionTemplatesName.name}`,
-                  imagePromt: item.imagePrompt,
-                  imageUrl: imageSourceurl
+                  imagePrompt: item.imagePrompt,
+                  imageUrl: imageSourceurl,
+                  shotSize : item.shotSize,
+                  cameraAngle: item.cameraAngle        
                 }
               }}})
               return imageSourceurl

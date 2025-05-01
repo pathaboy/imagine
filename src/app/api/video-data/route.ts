@@ -17,6 +17,7 @@ export async function GET(req: NextRequest) {
       include: {
         bgm: true,
         voiceOver: true,
+        aspectRatio: true,
         scenes: {
           orderBy: {
             number: "asc"

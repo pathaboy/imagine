@@ -1,11 +1,11 @@
 import { assemblyAIClient } from "@/lib/assemblyai"
 import { cameraAngles, cameraFramingTechniques, imageStyles, shots } from "@/lib/data"
+import { gemini } from "@/lib/gemini"
 import axios from "axios"
 
-const getImagePrompt = (script: string, srtfile: string) => {
-  return (
-    `
-    You are given two inputs:
+
+const systemImagePrompt = `
+ You will be given two inputs:
 1. A full video script.
 2. SRT subtitle content
 Your task is to map each subtitle entry (based on its time range and text) to one unique image prompt that visually represents the scene during that time in the video.
@@ -14,7 +14,7 @@ Parse each subtitle block from the SRT.
 For each subtitle, generate exactly one descriptive image prompt with shot type, framing technique and camera angle that reflects the subtitle’s content, inferred tone, and relevant surrounding context from the full script.
 Output should contain the same number of image prompts as subtitle entries. No merging or skipping.
 Convert start and end times to milliseconds.
-Output format:
+Respond with valid parsable JSON:
 {
   "imagePrompts": [
     {
@@ -22,8 +22,8 @@ Output format:
       "start": 1000(in ms),
       "end": 3000(in ms),
       "imagePrompt": "A dimly lit alleyway with a man hiding behind a dumpster, tension in the air",
-      "shot-size": "extreme-wide-shot",
-      "camera-angle": "high-angle"
+      "shotSize": "extreme-wide-shot",
+      "cameraAngle": "high-angle"
     },
     ...
   ]
@@ -40,20 +40,15 @@ One-to-one mapping between SRT entries and image prompts.
 No imagePrompt contains literal quotes or any textual content.
 Descriptive, vivid, cinematic image prompts based on the scene.
 All entries must be present in the output, no loss of data.
-Now process the following:
-Script:
-${script}
-SRT:
-${srtfile}
-    `
-  )
-}
+`
 
 interface ImagePrompt {
   id: number
   start: number
   end: number
   imagePrompt: string
+  shotSize: string
+  cameraAngle: string
 }
 
 export const generateImagePrompts = async (transcriptionId: string, imageStyle: string) => {
@@ -64,22 +59,24 @@ export const generateImagePrompts = async (transcriptionId: string, imageStyle: 
       throw new Error("Found empty script")
     }
     const srtfile = await assemblyAIClient.transcripts.subtitles(transcriptionId)
-    const imagesPrompt = getImagePrompt(script, srtfile)
-    const response = await axios.post("https://text.pollinations.ai", {
-      messages: [
-        {
-          role: "system",
-          content: imagesPrompt
-        }
-      ],
-      seed: 10000000,
-      jsonMode: true,
-      model: "openai-large"
+
+    const res = await gemini.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: `
+        Script: ${script}
+        SRT: ${srtfile}
+      `,
+      config: {
+        systemInstruction: systemImagePrompt
+      }
     })
+    const text = res.text?.replace("```json", "").replace("```", "")
+    const response = JSON.parse(text || "")
+
     const styleTags = imageStyles.find((item, _index) => {
             return item.name.toLowerCase() === imageStyle.toLowerCase()
           })
-    const imagePrompts: ImagePrompt[] = response.data.imagePrompts
+    const imagePrompts: ImagePrompt[] = response.imagePrompts
     const enhancedImagePrompts = imagePrompts.map((item) => {
       return (
         {

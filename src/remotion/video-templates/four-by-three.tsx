@@ -37,7 +37,6 @@ export const FourByThreeVideo: React.FC<FourByThreeVideoProps> = ({
   scenes,
   captions,
 }) => {
-  console.log(audioUrl);
   const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
   const currentTimeInMs = Math.floor((frame / fps) * 1000);
@@ -58,8 +57,7 @@ export const FourByThreeVideo: React.FC<FourByThreeVideoProps> = ({
       <Audio src={bgmUrl} startFrom={300} volume={vol} loop />
       <TransitionSeries>
         {motionImages?.map((item, index) => {
-          const durationOfSegment =
-            Math.floor((item.end - item.start) / 1000) * fps;
+          const durationOfSegment = ((item.end - item.start) / 1000) * fps;
           return (
             <TransitionSeries.Sequence
               key={index}
@@ -95,7 +93,7 @@ const FourByThreeView = ({ children }: { children: React.ReactNode }) => {
       >
         <div
           style={{
-            width: "62vw",
+            width: "70vw",
             aspectRatio: "4/3",
             backgroundColor: "black",
             borderRadius: "40px",

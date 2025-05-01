@@ -44,7 +44,7 @@ const VideoPage = () => {
       motionTemplateId: scene.motionTemplateId,
       imageUrl: scene.imageUrl,
     })),
-    transcriptionId: video?.transcriptionId,
+    captions: video?.transcribedWords,
   };
 
   return (

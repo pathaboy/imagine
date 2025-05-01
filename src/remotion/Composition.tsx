@@ -44,9 +44,11 @@ export const MyComposition = () => {
       id: item.number,
       start: item.start,
       end: item.end,
-      imagePrompt: item.imagePromt,
+      imagePrompt: item.imagePrompt,
       imageUrl: item.imageUrl,
       motionTemplateId: item.motionTemplateId,
+      shotSize: "wide-shot",
+      cameraAngle: "high-angle",
     };
   });
   const motionImages = useMemo(() => addMotionToImages(scenes), [images]);

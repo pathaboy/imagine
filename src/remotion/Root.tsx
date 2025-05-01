@@ -1,22 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { AbsoluteFill, Composition } from "remotion";
+import {
+  AbsoluteFill,
+  cancelRender,
+  Composition,
+  continueRender,
+  delayRender,
+} from "remotion";
 import "../app/globals.css";
 import { FourByThreeVideo } from "./video-templates/four-by-three";
-import axios from "axios";
-import { addMotionToImages, demoVideo, MotionImage } from "../lib/data";
-import { MyComposition } from "./Composition";
+import { demoVideo } from "../lib/data";
 
 export const RemotionRoot: React.FC = () => {
   const videoId = demoVideo.id;
-
-  const scenes = demoVideo.scenes.map((item) => {
+  const scenes = demoVideo?.scenes.map((item) => {
     return {
       id: item.number,
       start: item.start,
       end: item.end,
-      imagePrompt: item.imagePromt,
+      imagePrompt: item.imagePrompt,
       imageUrl: item.imageUrl,
       motionTemplateId: item.motionTemplateId,
+      shotSize: "wide-shot",
+      cameraAngle: "high-angle",
     };
   });
 
@@ -26,7 +30,7 @@ export const RemotionRoot: React.FC = () => {
       component={FourByThreeVideo}
       defaultProps={{
         audioUrl: demoVideo.voiceOver[0].audioUrl,
-        bgmUrl: demoVideo.bgm,
+        bgmUrl: demoVideo.bgm.bgmUrl,
         captionStyle: demoVideo.captionStyle,
         captions: demoVideo.transcribedWords,
         scenes: scenes,
@@ -34,8 +38,40 @@ export const RemotionRoot: React.FC = () => {
       durationInFrames={Math.floor(
         (demoVideo.totalDuration / 1000) * demoVideo.fps + 10 * demoVideo.fps
       )}
-      width={1080}
-      height={1920}
+      // calculateMetadata={async () => {
+      //   const data = await fetchVideoData(videoId);
+      //   const fetchedScenes = data.video?.scenes.map((item: any) => {
+      //     return {
+      //       id: item.number,
+      //       start: item.start,
+      //       end: item.end,
+      //       imagePrompt: item.imagePromt,
+      //       imageUrl: item.imageUrl,
+      //       motionTemplateId: item.motionTemplateId,
+      //       shotSize: "wide-shot",
+      //       cameraAngle: "high-angle",
+      //     };
+      //   });
+      //   return {
+      //     fps: data.video.fps,
+      //     durationInFrames: Math.floor(
+      //       (data.video.totalDuration / 1000) * data.video.fps +
+      //         10 * data.video.fps
+      //     ),
+      //     width: data.video.aspectRatio.width,
+      //     height: data.video.aspectRatio.height,
+      //     defaultOutName: data.video.id || "comp",
+      //     props: {
+      //       audioUrl: data.video.voiceOver[0].audioUrl,
+      //       bgmUrl: data.video.bgm,
+      //       captionStyle: data.video.captionStyle,
+      //       captions: data.video.transcribedWords,
+      //       scenes: fetchedScenes,
+      //     },
+      //   };
+      // }}
+      width={demoVideo.aspectRatio.width}
+      height={demoVideo.aspectRatio.height}
       fps={demoVideo.fps || 30}
     />
   );

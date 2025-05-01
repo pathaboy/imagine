@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
         data: {
           userId: session.user.id,
           videoId: video.id,
-          voiceName: videoDetails.voiceName,
+          voiceId: videoDetails.voiceId,
           style: videoDetails.style,
           script: script.content
         }
@@ -58,8 +58,7 @@ export async function POST(req: NextRequest) {
           voiceOver: {
             create: {
               audioUrl: videoDetails.voiceoverUrl,
-              narrationTone: "",
-              voiceId: ""
+              voiceId: "custom"
             }
           },
           user: {
@@ -73,7 +72,6 @@ export async function POST(req: NextRequest) {
         name: "generate-audio-to-video-data",
         data: {
           userId: session.user.id,
-          voiceName: videoDetails.voiceName,
           style: videoDetails.style,
           voiceoverUrl: videoDetails.voiceoverUrl,
           videoId: video.id,

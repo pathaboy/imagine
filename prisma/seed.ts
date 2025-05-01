@@ -77,75 +77,282 @@ const imageStyles = [
   },
 ];
 
+
 const vocals = [
   {
     id: 1,
-    voice: "alloy",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/alloy.mp3`,
+    voiceId: "en-NG-AbeoNeural",
+    name: "abeo",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/abeo.mp3",
   },
   {
     id: 2,
-    voice: "echo",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/echo.mp3`,
+    voiceId: "en-US-AnaNeural",
+    name: "ana",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/ana.mp3",
   },
   {
     id: 3,
-    voice: "fable",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/fable.mp3`,
+    voiceId: "en-US-AndrewNeural",
+    name: "andrew",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/andrew.mp3",
   },
   {
     id: 4,
-    voice: "onyx",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/onyx.mp3`,
+    voiceId: "en-US-AriaNeural",
+    name: "aria",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/aria.mp3",
   },
   {
     id: 5,
-    voice: "nova",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/nova.mp3`,
+    voiceId: "en-KE-AsiliaNeural",
+    name: "asilia",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/asilia.mp3",
   },
   {
     id: 6,
-    voice: "shimmer",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/shimmer.mp3`,
+    voiceId: "en-US-AvaNeural",
+    name: "ava",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/ava.mp3",
   },
   {
     id: 7,
-    voice: "coral",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/coral.mp3`,
+    voiceId: "en-US-BrianNeural",
+    name: "brian",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/brian.mp3",
   },
   {
     id: 8,
-    voice: "verse",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/verse.mp3`,
+    voiceId: "en-KE-ChilembaNeural",
+    name: "chilemba",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/chilemba.mp3",
   },
   {
     id: 9,
-    voice: "ballad",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/ballad.mp3`,
+    voiceId: "en-US-ChristopherNeural",
+    name: "christopher",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/christopher.mp3",
   },
   {
     id: 10,
-    voice: "ash",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/ash.mp3`,
+    voiceId: "en-CA-ClaraNeural",
+    name: "clara",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/clara.mp3",
   },
   {
     id: 11,
-    voice: "sage",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/sage.mp3`,
+    voiceId: "en-IE-ConnorNeural",
+    name: "connor",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/connor.mp3",
   },
   {
     id: 12,
-    voice: "amuch",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/amuch.mp3`,
+    voiceId: "en-TZ-ElimuNeural",
+    name: "elimu",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/elimu.mp3",
   },
   {
     id: 13,
-    voice: "dan",
-    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/dan.mp3`,
+    voiceId: "en-IE-EmilyNeural",
+    name: "emily",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/emily.mp3",
+  },
+  {
+    id: 14,
+    voiceId: "en-US-EmmaNeural",
+    name: "emma",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/emma.mp3",
+  },
+  {
+    id: 15,
+    voiceId: "en-US-EricNeural",
+    name: "eric",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/eric.mp3",
+  },
+  {
+    id: 16,
+    voiceId: "en-NG-EzinneNeural",
+    name: "ezinne",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/ezinne.mp3",
+  },
+  {
+    id: 17,
+    voiceId: "en-US-GuyNeural",
+    name: "guy",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/guy.mp3",
+  },
+  {
+    id: 18,
+    voiceId: "en-TZ-ImaniNeural",
+    name: "imani",
+    previewUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/imani.mp3",
+  },
+  {
+    id: 19,
+    voiceId: "en-PH-JamesNeural",
+    name: "james",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/james.mp3`,
+  },
+  {
+    id: 20,
+    voiceId: "en-US-JennyNeural",
+    name: "jenny",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/jenny.mp3`,
+  },
+  {
+    id: 21,
+    voiceId: "en-ZA-LeahNeural",
+    name: "leah",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/leah.mp3`,
+  },
+  {
+    id: 22,
+    voiceId: "en-CA-LiamNeural",
+    name: "liam",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/liam.mp3`,
+  },
+  {
+    id: 23,
+    voiceId: "en-GB-LibbyNeural",
+    name: "libby",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/libby.mp3`,
+  },
+  {
+    id: 24,
+    voiceId: "en-ZA-LukeNeural",
+    name: "luke",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/luke.mp3`,
+  },
+  {
+    id: 25,
+    voiceId: "en-SG-LunaNeural",
+    name: "luna",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/luna.mp3`,
+  },
+  {
+    id: 26,
+    voiceId: "en-GB-MaisieNeural",
+    name: "maisie",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/maisie.mp3`,
+  },
+  {
+    id: 27,
+    voiceId: "en-US-MichelleNeural",
+    name: "michelle",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/michelle.mp3`,
+  },
+  {
+    id: 28,
+    voiceId: "en-NZ-MitchellNeural",
+    name: "mitchell",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/mitchell.mp3`,
+  },
+  {
+    id: 29,
+    voiceId: "en-NZ-MollyNeural",
+    name: "molly",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/molly.mp3`,
+  },
+  {
+    id: 30,
+    voiceId: "en-AU-NatashaNeural",
+    name: "natasha",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/natasha.mp3`,
+  },
+  {
+    id: 31,
+    voiceId: "en-IN-NeerjaNeural",
+    name: "neerja",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/neerja.mp3`,
+  },
+  {
+    id: 32,
+    voiceId: "en-IN-PrabhatNeural",
+    name: "prabhat",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/prabhat.mp3`,
+  },
+  {
+    id: 33,
+    voiceId: "en-US-RogerNeural",
+    name: "roger",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/roger.mp3`,
+  },
+  {
+    id: 34,
+    voiceId: "en-PH-RosaNeural",
+    name: "rosa",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/rosa.mp3`,
+  },
+  {
+    id: 35,
+    voiceId: "en-GB-RyanNeural",
+    name: "ryan",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/ryan.mp3`,
+  },
+  {
+    id: 36,
+    voiceId: "en-HK-SamNeural",
+    name: "sam",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/sam.mp3`,
+  },
+  {
+    id: 37,
+    voiceId: "en-GB-SoniaNeural",
+    name: "sonia",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/sonia.mp3`,
+  },
+  {
+    id: 38,
+    voiceId: "en-US-SteffanNeural",
+    name: "steffan",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/steffan.mp3`,
+  },
+  {
+    id: 39,
+    voiceId: "en-GB-ThomasNeural",
+    name: "thomas",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/thomas.mp3`,
+  },
+  {
+    id: 40,
+    voiceId: "en-SG-WayneNeural",
+    name: "wayne",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/wayne.mp3`,
+  },
+  {
+    id: 41,
+    voiceId: "en-AU-WilliamNeural",
+    name: "william",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/william.mp3`,
+  },
+  {
+    id: 42,
+    voiceId: "en-HK-YanNeural",
+    name: "yan",
+    previewUrl: `https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/voices/yan.mp3`,
   },
 ];
 
-export const bgms = [
+
+const bgms = [
   {
     id: 1,
     name: "arabic-inspirational-loud-soft-strings",
@@ -475,19 +682,20 @@ export const bgms = [
   }
 ];
 
-export const aspectRatios = [
+const aspectRatios = [
   {
     id: 1,
+    name: "video",
+    width: 1920,
+    height: 1080
+  },
+  {
+    id: 2,
     name: "short",
     width: 1080,
     height: 1920
   },
-  {
-    id: 2,
-    name: "video",
-    width: 1920,
-    height: 1080
-  }
+  
 ]
 
 
@@ -495,12 +703,16 @@ async function main() {
   console.log('Seeding vocals...')
   for (const vocal of vocals) {
     await prisma.voiceOver.upsert({where: {id: vocal.id}, create: {previewUrl: vocal.previewUrl,
-      voice: vocal.voice}, update: {}})
+      voiceId: vocal.voiceId, name: vocal.name}, update: {}})
   }
   console.log("seeding bgms...")
   for (const bgm of bgms) {
     await prisma.bgm.upsert({where: {id: bgm.id}, create: {name: bgm.name,
       bgmUrl: bgm.bgmUrl}, update: {}})
+  }
+  console.log("Seeding aspect ratios")
+  for (const ar of aspectRatios) {
+    await prisma.aspectRatio.upsert({where: {id: ar.id}, create: {name: ar.name, width: ar.width, height: ar.height}, update:{}})
   }
 }
 

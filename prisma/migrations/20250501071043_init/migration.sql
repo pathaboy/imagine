@@ -22,11 +22,12 @@ CREATE TABLE "Video" (
     "transcribedWords" TEXT,
     "transcribedSubtitles" TEXT,
     "fps" INTEGER NOT NULL DEFAULT 30,
-    "totalDuration" INTEGER NOT NULL,
+    "totalDuration" INTEGER,
     "imageStyle" TEXT NOT NULL,
     "captionStyle" TEXT NOT NULL,
     "thumbnailUrl" TEXT,
     "bgmId" INTEGER,
+    "aspectRatioId" INTEGER NOT NULL DEFAULT 1,
     "userId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -35,14 +36,26 @@ CREATE TABLE "Video" (
 );
 
 -- CreateTable
+CREATE TABLE "AspectRatio" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "width" INTEGER NOT NULL,
+    "height" INTEGER NOT NULL,
+
+    CONSTRAINT "AspectRatio_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "Scene" (
     "id" TEXT NOT NULL,
     "number" INTEGER NOT NULL,
     "start" INTEGER NOT NULL,
     "end" INTEGER NOT NULL,
-    "motionTemplateId" TEXT NOT NULL,
-    "imagePromt" TEXT NOT NULL,
+    "motionTemplateId" TEXT NOT NULL DEFAULT 'pull-out',
+    "imagePrompt" TEXT NOT NULL,
     "imageUrl" TEXT NOT NULL,
+    "shotSize" TEXT NOT NULL DEFAULT 'full-shot',
+    "cameraAngle" TEXT NOT NULL DEFAULT 'shoulder-level',
     "videoId" TEXT NOT NULL,
 
     CONSTRAINT "Scene_pkey" PRIMARY KEY ("id")
@@ -51,7 +64,6 @@ CREATE TABLE "Scene" (
 -- CreateTable
 CREATE TABLE "VoiceOverContent" (
     "id" TEXT NOT NULL,
-    "narrationTone" TEXT NOT NULL,
     "audioUrl" TEXT NOT NULL,
     "voiceId" TEXT NOT NULL,
     "videoId" TEXT NOT NULL,
@@ -62,7 +74,8 @@ CREATE TABLE "VoiceOverContent" (
 -- CreateTable
 CREATE TABLE "VoiceOver" (
     "id" SERIAL NOT NULL,
-    "voice" TEXT NOT NULL,
+    "voiceId" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
     "previewUrl" TEXT NOT NULL,
 
     CONSTRAINT "VoiceOver_pkey" PRIMARY KEY ("id")
@@ -73,6 +86,7 @@ CREATE TABLE "Bgm" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "bgmUrl" TEXT NOT NULL,
+    "volume" INTEGER NOT NULL DEFAULT 100,
 
     CONSTRAINT "Bgm_pkey" PRIMARY KEY ("id")
 );
@@ -118,7 +132,13 @@ CREATE TABLE "VerificationToken" (
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "VoiceOver_voice_key" ON "VoiceOver"("voice");
+CREATE UNIQUE INDEX "AspectRatio_name_key" ON "AspectRatio"("name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "VoiceOver_voiceId_key" ON "VoiceOver"("voiceId");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "VoiceOver_name_key" ON "VoiceOver"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Bgm_name_key" ON "Bgm"("name");
@@ -130,13 +150,16 @@ CREATE UNIQUE INDEX "Session_sessionToken_key" ON "Session"("sessionToken");
 ALTER TABLE "Video" ADD CONSTRAINT "Video_bgmId_fkey" FOREIGN KEY ("bgmId") REFERENCES "Bgm"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "Video" ADD CONSTRAINT "Video_aspectRatioId_fkey" FOREIGN KEY ("aspectRatioId") REFERENCES "AspectRatio"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "Video" ADD CONSTRAINT "Video_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Scene" ADD CONSTRAINT "Scene_videoId_fkey" FOREIGN KEY ("videoId") REFERENCES "Video"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Scene" ADD CONSTRAINT "Scene_videoId_fkey" FOREIGN KEY ("videoId") REFERENCES "Video"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "VoiceOverContent" ADD CONSTRAINT "VoiceOverContent_videoId_fkey" FOREIGN KEY ("videoId") REFERENCES "Video"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "VoiceOverContent" ADD CONSTRAINT "VoiceOverContent_videoId_fkey" FOREIGN KEY ("videoId") REFERENCES "Video"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Account" ADD CONSTRAINT "Account_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE CASCADE ON UPDATE CASCADE;

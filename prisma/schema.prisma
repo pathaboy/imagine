@@ -40,7 +40,7 @@ model Video {
   bgmId                Int?
   bgm                  Bgm?               @relation(fields: [bgmId], references: [id])
   aspectRatio          AspectRatio        @relation(fields: [aspectRatioId], references: [id])
-  aspectRatioId        Int
+  aspectRatioId        Int                @default(1)
   userId               String
   user                 User               @relation(fields: [userId], references: [id])
   createdAt            DateTime           @default(now())
@@ -70,17 +70,17 @@ model Scene {
 }
 
 model VoiceOverContent {
-  id            String @id @default(cuid())
-  narrationTone String
-  audioUrl      String
-  voiceId       String
-  video         Video  @relation(fields: [videoId], references: [id], onDelete: Cascade)
-  videoId       String
+  id       String @id @default(cuid())
+  audioUrl String
+  voiceId  String
+  video    Video  @relation(fields: [videoId], references: [id], onDelete: Cascade)
+  videoId  String
 }
 
 model VoiceOver {
   id         Int    @id @default(autoincrement())
-  voice      String @unique
+  voiceId    String
+  name       String
   previewUrl String
 }
 
@@ -89,6 +89,7 @@ model Bgm {
   name   String  @unique
   bgmUrl String
   videos Video[]
+  volume Int     @default(100)
 }
 
 model Account {

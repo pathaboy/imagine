@@ -12,7 +12,7 @@ const getScriptPrompts = (type: string) => {
       id: 1,
       type: "short-high-impact-motivation",
       prompt: `
-    Write a 1-3 min high-impact script on user prompt given below following this structure and tone and return in the format - {title: "", content: ""}:
+    Write a 1-2 min high-impact script on user prompt given below following this structure and tone and Respond with valid parsable JSON - {title: "", content: ""}:
 
 [1] Hook (Emotional punch):
 Start with a visceral moment – a breakdown, a betrayal, a fatal mistake.
@@ -51,11 +51,12 @@ Style & tone:
 Short, punchy lines (like poetry with edge).
 
 Cinematic. No fluff. Pure signal.
-Add psychological weight and story grit with characters like Carlos, Sarah, Amir, etc.
+Add psychological weight and story grit with characters, complementing the narrative etc.
 Every line should move the beat forward or hit emotion.
+Dont explicitly mention narrative layers like: story, and others
 
 Here is an example for you: 
-{title: "Consistency", content: "Consistency isn't about discipline—it's about war. A war against your own brain.  Today, I'll show you three Atomic Laws to win that war. Laws that rebuilt me after I lost everything—my marriage, my business. Laws that will rebuild you.  The Big Lie We’re told consistency is showing up every day. That’s why you fail. Your brain is wired to sabotage consistency.  Let me show you why: Every time you say, “I’ll start Monday,” you're fighting a battle you've already lost. Science proves it takes 17 times more energy to restart a habit than to keep it alive. You're not lazy. You're just using the wrong weapons.  Atomic Law 1: The 1% Rebellion Meet Carlos—a prisoner in 23-hour lockdown. He did one pushup every 90 seconds. Not 100 a day. Just one.  After 632 days, he’d done over a million reps.  His secret: the 6-second rule When you want to skip a habit, do the smallest possible version:  Write one sentence  Do one pushup  Meditate for five breaths  This isn’t about progress. It’s about proving to your brain: I don’t quit.  Atomic Law 2: Strategic Surrender Sarah missed 44 workouts—but still lost 30 lbs.  Her secret? Planned collapse. Every Sunday, she scheduled cheat days. Mandatory failures.  By surrendering, she tricked her brain into craving discipline.  Your rule: Be consistent 85% of the time. Science says 85% beats 100%—because perfection is the enemy of progress.  Atomic Law 3: The Failure Funeral Most people fail because they mourn their mistakes like deaths. Neuroscience shows guilt and shame keep you stuck.  The fix? Bury your failures. Literally.  Write down every time you miss a habit.  Burn it. Shred it. Delete it.  Say: This failure feeds my next success.  This ritual rewires your brain to see failure as fuel, not fear.  The Blackout Protocol You’ll never be consistent in a world designed to break you.  Here’s how to fight back:  Delete one app for every new habit. Reduces distractions by 34%.  Create Red Zones. Places for one habit only—a chair just for writing, a corner just for meditating.  Use Pain Locking. Set a rule: If you skip twice, donate $50 to a cause you hate. It’s not cruel—it’s conditioning. Train your brain to fear quitting more than starting.  Consistency isn’t something you find. It’s someone you become. The world wants you to quit. But you—you’re different.  You've got:  The 1% Rebellion  The Strategic Surrender  The Failure Funeral  Now go carve your mountain."} 
+{title: "Consistency", content: "Consistency isn't about discipline—it's about war. A war against your own brain.  Today, I'll show you three Atomic Laws to win that war. Laws that rebuilt me after I lost everything—my marriage, my business. Laws that will rebuild you.  The Big Lie We’re told consistency is showing up every day. That’s why you fail. Your brain is wired to sabotage consistency.  Let me show you why: Every time you say, “I’ll start Monday,” you're fighting a battle you've already lost. Science proves it takes 17 times more energy to restart a habit than to keep it alive. You're not lazy. You're just using the wrong weapons.  Atomic Law 1: The 1% Rebellion Meet Carlos—a prisoner in 23-hour lockdown. He did one pushup every 90 seconds. Not 100 a day. Just one.  After 632 days, he’d done over a million reps.  His secret: the 6-second rule When you want to skip a habit, do the smallest possible version:  Write one sentence  Do one pushup  Meditate for five breaths  This isn’t about progress. It’s about proving to your brain: I don’t quit.  Atomic Law 2: Strategic Surrender Sarah missed 44 workouts—but still lost 30 lbs.  Her secret? Planned collapse. Every Sunday, she scheduled cheat days. Mandatory failures.  By surrendering, she tricked her brain into craving discipline.  Your rule: Be consistent 85% of the time. Science says 85% beats 100%—because perfection is the enemy of progress.  Atomic Law 3: The Failure Funeral Most people fail because they mourn their mistakes like deaths. Neuroscience shows guilt and shame keep you stuck.  The fix? Bury your failures. Literally.  Write down every time you miss a habit.  Burn it. Shred it. Delete it.  Say: This failure feeds my next success.  This ritual rewires your brain to see failure as fuel, not fear. Train your brain to fear quitting more than starting.  Consistency isn’t something you find. It’s someone you become. The world wants you to quit. But you—you’re different.  You've got:  The 1% Rebellion  The Strategic Surrender  The Failure Funeral  Now go carve your mountain."} 
     `
     }
   ]
@@ -67,25 +68,20 @@ export async function generateScriptFromUserPrompt(prompt: string): Promise<Stor
   try {
     const scriptPrompt = getScriptPrompts("short-high-impact-motivation")
 
-    const response = await axios.post("https://text.pollinations.ai", {
-      messages: [
-        {
-          role: "system",
-          content: scriptPrompt
-        },
-        {
-          role: "user",
-          content: `user prompt: ${prompt}`
-        }
-      ],
-      seed: 10000000,
-      jsonMode: true,
-      model: "gemini"
+    const res = await gemini.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: `User prompt: ${prompt}`,
+      config: {
+        systemInstruction: scriptPrompt
+      }
     })
+    const text = res.text?.replace("```json", "").replace("```", "")
+    const script = JSON.parse(text || "")
+
     return (
       {
-        title: response.data.title,
-        content: response.data.content
+        title: script.title,
+        content: script.content
       }
     )
   } catch (err) {

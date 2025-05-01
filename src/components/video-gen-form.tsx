@@ -27,7 +27,7 @@ import Image from "next/image";
 const VideoGenForm = () => {
   const [userPrompt, setUserPrompt] = useState("");
   const [style, setStyle] = useState("anime");
-  const [voiceName, setVoiceName] = useState("alloy");
+  const [voiceId, setVoiceId] = useState("en-TZ-ImaniNeural");
   const [captionStyle, setCaptionStyle] = useState("caption-style-one");
   const voiceOver = useRef<HTMLInputElement>(null);
   const [voiceoverUrl, setVoiceoverUrl] = useState("");
@@ -65,7 +65,7 @@ const VideoGenForm = () => {
         videoDetails: {
           userPrompt,
           style,
-          voiceName,
+          voiceId,
           captionStyle,
           voiceoverUrl,
         },
@@ -179,15 +179,15 @@ const VideoGenForm = () => {
                   {vocals.map((item, index) => (
                     <div
                       key={index}
-                      onClick={() => setVoiceName(item.voice)}
+                      onClick={() => setVoiceId(item.voiceId)}
                       className={`flex flex-col items-center gap-2 p-4 bg-gray-100 rounded-lg shadow-lg cursor-pointer hover:bg-gray-200 transition-all duration-300 ${
-                        item.voice === voiceName
+                        item.voiceId === voiceId
                           ? "border-4 border-primary"
                           : ""
                       }`}
                     >
                       <span className="text-lg font-semibold text-gray-700">
-                        {item.voice}
+                        {item.name}
                       </span>
                       <audio controls className="w-48">
                         <source src={item.previewUrl} type="audio/mp3" />

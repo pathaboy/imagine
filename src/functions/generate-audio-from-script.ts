@@ -1,17 +1,22 @@
-import { cleanTextForUrl, getVoicePrompt } from "@/lib/data"
+import { cleanText } from "@/lib/data"
 import { prisma } from "@/lib/prisma"
 import { S3 } from "@/lib/s3"
 import { PutObjectCommand } from "@aws-sdk/client-s3"
 import axios from "axios"
+import { EdgeTTS } from "@andresaya/edge-tts";
 
-export const generateAudioFromScript = async (script: string, tone: string, voiceName: string, userId: string, videoId: string) => {
+
+export const generateAudioFromScript = async (script: string, voiceId: string, userId: string, videoId: string) => {
   try {
-    const cleanedScript = cleanTextForUrl(script)
-    const audioPrompt = getVoicePrompt(script, tone)
-    const audioResponse = await axios.get(`https://text.pollinations.ai/${encodeURIComponent(cleanedScript)}?model=openai-audio&voice=${voiceName}`, {
-                responseType: "arraybuffer"
-              })
-    const audio = Buffer.from(audioResponse.data)
+    const cleanedScript = cleanText(script)
+    const edge = new EdgeTTS()
+    await edge.synthesize(cleanedScript, voiceId || "en-TZ-ImaniNeural", {
+      rate: '0%',      
+      volume: '0%',    
+      pitch: '-3Hz'
+    })
+    const base64Audio = edge.toBase64()
+    const audio = Buffer.from(base64Audio, "base64url")
     const audioKeyId = `videos/${userId}/voiceovers/${crypto.randomUUID()}.mp3`
     const uploadAudioCommand = new PutObjectCommand({
       Bucket: process.env.R2_BUCKET_NAME!,
@@ -27,8 +32,7 @@ export const generateAudioFromScript = async (script: string, tone: string, voic
         voiceOver: {
           create: {
             audioUrl: audioSourceurl,
-            narrationTone: tone,
-            voiceId: voiceName
+            voiceId: voiceId,
           }
         }
       }
