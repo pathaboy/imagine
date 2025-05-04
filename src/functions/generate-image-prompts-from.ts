@@ -1,5 +1,5 @@
 import { assemblyAIClient } from "@/lib/assemblyai"
-import { cameraAngles, cameraFramingTechniques, imageStyles, shots } from "@/lib/data"
+import { cameraAngles, cameraFramingTechniques, imageStyles, motionTemplatesNames, shots } from "@/lib/data"
 import { gemini } from "@/lib/gemini"
 import axios from "axios"
 
@@ -21,24 +21,27 @@ Respond with valid parsable JSON:
       "id": 1,
       "start": 1000(in ms),
       "end": 3000(in ms),
-      "imagePrompt": "A dimly lit alleyway with a man hiding behind a dumpster, tension in the air",
+      "imagePrompt": "A dimly lit alleyway with a man hiding behind a dumpster, tension in the air, extreme-wide-shot high-angle",
       "shotSize": "extreme-wide-shot",
-      "cameraAngle": "high-angle"
+      "cameraAngle": "high-angle",
+      "cameraMotion": "pull-out"
     },
     ...
   ]
 }
 ⚠️ Important Constraints:
 Do not include any written text, quotes, phrases, or words in the image prompt.
-The visual should be purely scene-based: use settings, people, objects, mood, lighting, emotions, etc.
+The visual should be purely scene-based: use settings, people, objects, mood, lighting, emotions, camera angle, shot type, framing technique.
 Avoid describing text, signs, titles, or captions in the prompt.
 Available shot types: ${shots.join(" | ")}
 Available framing techniques: ${cameraFramingTechniques.join(" | ")}
 Available camera angles: ${cameraAngles.join(" | ")}
+Available camera motions: ${motionTemplatesNames.map(item => item.name).join(" | ")}
+Select camera motions like a professional editor, avoiding the repetition of the same motion back-to-back.
 🎯 Ensure:
 One-to-one mapping between SRT entries and image prompts.
 No imagePrompt contains literal quotes or any textual content.
-Descriptive, vivid, cinematic image prompts based on the scene.
+Descriptive, vivid, cinematic, shot size, camera angle image prompts based on the scene.
 All entries must be present in the output, no loss of data.
 `
 
@@ -49,6 +52,7 @@ interface ImagePrompt {
   imagePrompt: string
   shotSize: string
   cameraAngle: string
+  cameraMotion: string
 }
 
 export const generateImagePrompts = async (transcriptionId: string, imageStyle: string) => {

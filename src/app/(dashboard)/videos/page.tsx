@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Player } from "@remotion/player";
-import { VideoOne } from "@/remotion/video-templates/VideoOne";
+// import { VideoOne } from "@/remotion/video-templates/full-screen";
 import { redirect, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import axios from "axios";
-import { FourByThreeVideo } from "@/remotion/video-templates/four-by-three";
+import { SixteenByNineVideo } from "@/remotion/video-templates/sixteen-by-nine";
 
 const VideoPage = () => {
   const searchParams = useSearchParams();
@@ -51,7 +51,7 @@ const VideoPage = () => {
     <div className="w-full h-full">
       <Player
         controls
-        component={FourByThreeVideo}
+        component={SixteenByNineVideo}
         inputProps={inputsProps}
         durationInFrames={
           Math.floor(video.totalDuration / 1000) * video.fps || 3 * 60 * 30

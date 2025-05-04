@@ -15,14 +15,9 @@ import {
   motionTemplates,
 } from "../../lib/data";
 import { CaptionStyleTwo } from "../caption-styles/caption-style.two";
-import { assemblyAIClient } from "@/lib/assemblyai";
-import axios from "axios";
-import { PullOut } from "../motion-templates/pull-out";
-import { EnterSlideTopDownExitLeft } from "../motion-templates/enter-slide-top-down-exit-left";
-import { ScaleDownUp } from "../motion-templates/scale-down-up";
-import { ScaleDownFade } from "../motion-templates/scale-down-fade";
+import { CaptionStyleOne } from "../caption-styles/caption-style-one";
 
-type FourByThreeVideoProps = {
+type FullScreenVideoProps = {
   scenes: MotionImage[];
   captions: string;
   captionStyle: string;
@@ -30,7 +25,7 @@ type FourByThreeVideoProps = {
   audioUrl: string;
 };
 
-export const FourByThreeVideo: React.FC<FourByThreeVideoProps> = ({
+export const FullScreenVideo: React.FC<FullScreenVideoProps> = ({
   audioUrl,
   bgmUrl,
   captionStyle,
@@ -44,7 +39,7 @@ export const FourByThreeVideo: React.FC<FourByThreeVideoProps> = ({
   const vol = interpolate(
     frame,
     [0, durationInFrames / 2, durationInFrames],
-    [0.3, 0.2, 0.4]
+    [0.2, 0, 0.3]
   );
 
   return (
@@ -63,22 +58,22 @@ export const FourByThreeVideo: React.FC<FourByThreeVideoProps> = ({
               key={index}
               durationInFrames={durationOfSegment}
             >
-              <FourByThreeView>
+              <FullScreenView>
                 <item.motion.component
                   duration={item.end - item.start}
                   imgSrc={item.imageUrl}
                 />
-              </FourByThreeView>
+              </FullScreenView>
             </TransitionSeries.Sequence>
           );
         })}
       </TransitionSeries>
-      <CaptionStyleTwo captions={captions} currentTimeInMs={currentTimeInMs} />
+      <CaptionStyleOne captions={captions} currentTimeInMs={currentTimeInMs} />
     </AbsoluteFill>
   );
 };
 
-const FourByThreeView = ({ children }: { children: React.ReactNode }) => {
+const FullScreenView = ({ children }: { children: React.ReactNode }) => {
   return (
     <AbsoluteFill>
       <div
@@ -91,17 +86,7 @@ const FourByThreeView = ({ children }: { children: React.ReactNode }) => {
           alignItems: "center",
         }}
       >
-        <div
-          style={{
-            width: "70vw",
-            aspectRatio: "4/3",
-            backgroundColor: "black",
-            borderRadius: "40px",
-            overflow: "clip",
-          }}
-        >
-          {children}
-        </div>
+        {children}
       </div>
     </AbsoluteFill>
   );

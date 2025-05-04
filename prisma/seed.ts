@@ -679,21 +679,80 @@ const bgms = [
     id: 70,
     name: "whistles-romantic-humming-beats",
     bgmUrl: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/whistles-romantic-humming-beats.mp3"
-  }
+  },
+  {
+    id: 71,
+    name: "shenai-dholak",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/shenai-dholak.mp3",
+  },
+  {
+    id: 72,
+    name: "chasing-bgm-shenai",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/chasing-bgm-shenai.mp3",
+  },
+  {
+    id: 73,
+    name: "hybrid-cinematic-bgm-blending-orchestral-and-modern-electronic-elements",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/hybrid-cinematic-bgm-blending-orchestral-and-modern-electronic-elements.mp3",
+  },
+  {
+    id: 74,
+    name: "zen-instrumental-with-soft-flute-koto-and-ambient-background",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/zen-instrumental-with-soft-flute-koto-and-ambient-background.mp3",
+  },
+  {
+    id: 75,
+    name: "motivation-never-give-up-energy",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/motivation-never-give-up-energy.mp3",
+  },
+  {
+    id: 76,
+    name: "overcoming-impossible",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/overcoming-impossible.mp3",
+  },
+  {
+    id: 77,
+    name: "overcoming-impossible-2",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/overcoming-impossible-2.mp3",
+  },
+  {
+    id: 78,
+    name: "emotional-comeback-transformation",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/emotional-comeback-transformation.mp3",
+  },
+  {
+    id: 79,
+    name: "dare-to-do-motivation",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/dare-to-do-motivation.mp3",
+  },
+  {
+    id: 80,
+    name: "dare-to-do-motivation-2",
+    bgmUrl: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/dare-to-do-motivation-2.mp3",
+  },
 ];
 
 const aspectRatios = [
   {
     id: 1,
     name: "video",
-    width: 1920,
-    height: 1080
+    width: 1280,
+    height: 720
   },
   {
     id: 2,
     name: "short",
-    width: 1080,
-    height: 1920
+    width: 720,
+    height: 1280
   },
   
 ]

@@ -9,6 +9,15 @@ import { ScaleDownUp } from "../remotion/motion-templates/scale-down-up";
 import { CaptionStyleTwo } from "../remotion/caption-styles/caption-style.two";
 import { PullOut } from "../remotion/motion-templates/pull-out";
 import axios from "axios";
+import { ZoomOutAndPullOut } from "../remotion/motion-templates/zoom-out-and-pull-out";
+import { PanBottomToUpAndZoomOut } from "../remotion/motion-templates/pan-bottom-up-zoom-out";
+import { PanTopToDownAndZoomOut } from "../remotion/motion-templates/pan-top-down-zoom-out";
+import { PanRightToLeftAndZoomOut } from "../remotion/motion-templates/pan-right-left-zoom-out";
+import { PanLeftToRightAndZoomOut } from "../remotion/motion-templates/pan-left-right-zoom-out";
+import { PanBottomToUpAndZoomIn } from "../remotion/motion-templates/pan-bottom-up-zoom-in";
+import { PanLeftToRightAndZoomIn } from "../remotion/motion-templates/pan-left-right-zoom-in";
+import { PanRightToLeftAndZoomIn } from "../remotion/motion-templates/pan-right-left-zoom-in";
+import { PanTopToDownAndZoomIn } from "../remotion/motion-templates/pan-top-down-zoom-in";
 
 export const subs = [
   { text: "You", start: 80, end: 192, confidence: 0.99776, speaker: null },
@@ -3213,6 +3222,65 @@ export const bgms = [
     bgmUrl:
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/whistles-romantic-humming-beats.mp3",
   },
+  {
+    id: 71,
+    name: "shenai-dholak",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/shenai-dholak.mp3",
+  },
+  {
+    id: 72,
+    name: "chasing-bgm-shenai",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/chasing-bgm-shenai.mp3",
+  },
+  {
+    id: 73,
+    name: "hybrid-cinematic-bgm-blending-orchestral-and-modern-electronic-elements",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/hybrid-cinematic-bgm-blending-orchestral-and-modern-electronic-elements.mp3",
+  },
+  {
+    id: 74,
+    name: "zen-instrumental-with-soft-flute-koto-and-ambient-background",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/zen-instrumental-with-soft-flute-koto-and-ambient-background.mp3",
+  },
+  {
+    id: 75,
+    name: "motivation-never-give-up-energy",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/motivation-never-give-up-energy.mp3",
+  },
+  {
+    id: 76,
+    name: "overcoming-impossible",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/overcoming-impossible.mp3",
+  },
+  {
+    id: 77,
+    name: "overcoming-impossible-2",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/overcoming-impossible-2.mp3",
+  },
+  {
+    id: 78,
+    name: "emotional-comeback-transformation",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/emotional-comeback-transformation.mp3",
+  },
+  {
+    id: 79,
+    name: "dare-to-do-motivation",
+    bgmUrl:
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/dare-to-do-motivation.mp3",
+  },
+  {
+    id: 80,
+    name: "dare-to-do-motivation-2",
+    bgmUrl: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/dare-to-do-motivation-2.mp3",
+  },
 ];
 
 export const shots = [
@@ -3267,23 +3335,43 @@ export const motionTemplatesNames = [
   },
   {
     id: 4,
-    name: "enter-slide-top-down-exit-left",
-  },
-  {
-    id: 5,
     name: "pull-out",
   },
   {
+    id: 5,
+    name: "zoom-out-pull-out",
+  },
+  {
     id: 6,
-    name: "scale-down-up",
+    name: "pan-bottom-up-zoom-out",
   },
   {
     id: 7,
-    name: "enter-slide-top-down-exit-left",
+    name: "pan-top-down-zoom-out",
   },
   {
     id: 8,
-    name: "scale-down-fade",
+    name: "pan-right-left-zoom-out",
+  },
+  {
+    id: 9,
+    name: "pan-left-right-zoom-out",
+  },
+  {
+    id: 10,
+    name: "pan-bottom-up-zoom-in",
+  },
+  {
+    id: 11,
+    name: "pan-left-right-zoom-in",
+  },
+  {
+    id: 12,
+    name: "pan-right-left-zoom-in",
+  },
+  {
+    id: 13,
+    name: "pan-top-down-zoom-in",
   },
 ];
 
@@ -3307,6 +3395,51 @@ export const motionTemplates: Motion[] = [
     id: "pull-out",
     name: "pull-out",
     component: PullOut,
+  },
+  {
+    id: "zoom-out-pull-out",
+    name: "zoom-out-pull-out",
+    component: ZoomOutAndPullOut,
+  },
+  {
+    id: "pan-bottom-up-zoom-out",
+    name: "pan-bottom-up-zoom-out",
+    component: PanBottomToUpAndZoomOut,
+  },
+  {
+    id: "pan-top-down-zoom-out",
+    name: "pan-top-down-zoom-out",
+    component: PanTopToDownAndZoomOut,
+  },
+  {
+    id: "pan-right-left-zoom-out",
+    name: "pan-right-left-zoom-out",
+    component: PanRightToLeftAndZoomOut,
+  },
+  {
+    id: "pan-left-right-zoom-out",
+    name: "pan-left-right-zoom-out",
+    component: PanLeftToRightAndZoomOut,
+  },
+  {
+    id: "pan-bottom-up-zoom-in",
+    name: "pan-bottom-up-zoom-in",
+    component: PanBottomToUpAndZoomIn,
+  },
+  {
+    id: "pan-left-right-zoom-in",
+    name: "pan-left-right-zoom-in",
+    component: PanLeftToRightAndZoomIn,
+  },
+  {
+    id: "pan-right-left-zoom-in",
+    name: "pan-right-left-zoom-in",
+    component: PanRightToLeftAndZoomIn,
+  },
+  {
+    id: "pan-top-down-zoom-in",
+    name: "pan-top-down-zoom-in",
+    component: PanTopToDownAndZoomIn,
   },
 ];
 
@@ -3351,600 +3484,481 @@ export const cleanText = (text: string) => {
 };
 
 export const demoVideo = {
-  id: "cma5k10cv0000nn0qs9oisu5i",
-  prompt: "Just do it",
-  title: "Unleash",
+  id: "cma9gujpu0000nn33ock9hari",
+  prompt: "Experience, enjoy, live, understand and then renounce",
+  title: "The Mystic's Paradox",
   script:
-    "Doubt. It's a silent killer. A thief of dreams. It whispers, 'You're not ready,' while opportunity bleeds out. But what if doubt is a lie? Today, I hand you three brutal truths to shatter that lie and unleash the beast within. These are the rules forged in the fires of failure, the code I live by when the world screams, 'Give up.' They’re what separate those who merely exist, from those who truly live. The Grand Deception We're told to 'be realistic,' to 'wait for the right moment.' That's a trap. Your brain is a master of procrastination, a sculptor of excuses. It will always find a reason to delay. But reality doesn't wait. Let me show you why: Every time you postpone action, you feed the monster of inertia. Science proves that momentum is the ultimate cheat code. Action breeds action. You’re not cautious. You're just crippled by fear. Brutal Truth #1: The 3-Second Override Meet Anya—a coder paralyzed by imposter syndrome. She forced herself to type ONE line of code within three seconds of doubt hitting. Not a perfect program. Just one line. After a year, she launched a six-figure app. Her secret: the 3-second rule When hesitation strikes, attack it head-on: Write one word. Do one rep. Make one call. This isn't about perfection. It's about proving to yourself: I control my fear. Brutal Truth #2: Embrace the Carnage Mark failed seven times before launching his game. Seven times he faced ridicule, bankruptcy, despair. His secret? Celebrate the failures. Every rejection letter went on his wall. Every setback became a war story. By owning the carnage, he disarmed his fear of it. Your rule: Fail fast. Fail forward. Each scar is a badge of honor, a testament to your resilience. Brutal Truth #3: The Victory Cry Most people shrink in the face of challenges. They internalize doubt, letting it fester. The fix? Scream your intentions. Literally. Before every big meeting, before every lift, before every risk, roar your commitment. Visualize success. Feel the power surge. Say: I am unstoppable. This ritual rewires your brain to associate action with victory, not fear. Train your mind to crave the battlefield. You're not seeking comfort. You're hunting greatness. Unleashing isn't something you achieve. It's someone you become. The world wants you to cower. But you—you’re a force of nature. You've got: The 3-Second Override Embrace the Carnage The Victory Cry Now go seize your destiny.",
-  transcriptionId: "9183985c-c940-4209-942d-cf29fd1fb236",
+    "Empty hands. Shattered smile. A soul laid bare. You thought enlightenment was bliss? Prepare for the razor's edge. I'll show you how to truly awaken, not just dream of it. Most seek knowledge; few dare to live it. The mind fears the abyss. It clings to what it knows, even if it's poison. The ego whispers, \"Stay safe.\" I say, \"Leap.\" Rule #1: The Alchemist's Burn. Meet Maya, a Wall Street shark, drowning in gold. She chased pleasure, devoured experience, yet felt hollow. Her salvation? She burned it all. Her penthouse, her portfolio, her pride. From the ashes, clarity. You must incinerate your attachments. Not for poverty, but for purity. Feel the pain. Then, let it go. Rule #2: The Wanderer's Wound. Kai, a Zen monk, meditated for decades, seeking nothingness. He found only emptiness. One day, he stumbled into a brothel. Embraced chaos, heartbreak, the raw animal of life. He emerged transformed. You must bleed. Taste the bitter truth of the world. Only then can you understand what truly matters. Rule #3: The Silent Vow. Imagine a king, stripped of his crown, kneeling in mud. He whispers a vow: \"I am nothing. I own nothing. I desire nothing.\" This isn't weakness. It's the ultimate power. Every morning, before you speak, bow to the universe. Acknowledge your insignificance. This act silences the ego, opens the door to grace. Don't just seek enlightenment. Become the enlightened. A warrior of the soul, forged in fire and silence. You are not a seeker. You are the answer.",
+  transcriptionId: "f866c195-8a98-4575-b010-2f7f6cbf4014",
   transcribedWords:
-    '[{"text":"Doubt.","start":320,"end":688,"confidence":0.76219,"speaker":null},{"text":"It\'s","start":744,"end":968,"confidence":0.99611,"speaker":null},{"text":"a","start":984,"end":1064,"confidence":0.99956,"speaker":null},{"text":"silent","start":1072,"end":1416,"confidence":0.99943,"speaker":null},{"text":"killer.","start":1448,"end":1976,"confidence":0.53068,"speaker":null},{"text":"A","start":2088,"end":2312,"confidence":0.99601,"speaker":null},{"text":"thief","start":2336,"end":2536,"confidence":0.99982,"speaker":null},{"text":"of","start":2568,"end":2712,"confidence":0.99976,"speaker":null},{"text":"dreams.","start":2736,"end":3336,"confidence":0.85877,"speaker":null},{"text":"It","start":3448,"end":3672,"confidence":0.98978,"speaker":null},{"text":"whispers","start":3696,"end":4104,"confidence":0.99636,"speaker":null},{"text":"you\'re","start":4152,"end":4328,"confidence":0.99017,"speaker":null},{"text":"not","start":4344,"end":4472,"confidence":0.99983,"speaker":null},{"text":"ready.","start":4496,"end":4744,"confidence":0.99971,"speaker":null},{"text":"While","start":4792,"end":5048,"confidence":0.99809,"speaker":null},{"text":"opportunity","start":5104,"end":5656,"confidence":0.9998,"speaker":null},{"text":"bleeds","start":5688,"end":5944,"confidence":0.86074,"speaker":null},{"text":"out.","start":5992,"end":6296,"confidence":0.99966,"speaker":null},{"text":"But","start":6368,"end":6552,"confidence":0.9982,"speaker":null},{"text":"what","start":6576,"end":6664,"confidence":0.99872,"speaker":null},{"text":"if","start":6672,"end":6792,"confidence":0.99085,"speaker":null},{"text":"doubt","start":6816,"end":7016,"confidence":0.99635,"speaker":null},{"text":"is","start":7048,"end":7192,"confidence":0.99882,"speaker":null},{"text":"a","start":7216,"end":7304,"confidence":0.99876,"speaker":null},{"text":"lie?","start":7312,"end":7736,"confidence":0.99869,"speaker":null},{"text":"Today,","start":7848,"end":8168,"confidence":0.99903,"speaker":null},{"text":"I","start":8224,"end":8392,"confidence":0.9993,"speaker":null},{"text":"hand","start":8416,"end":8600,"confidence":0.99984,"speaker":null},{"text":"you","start":8640,"end":8840,"confidence":0.99962,"speaker":null},{"text":"three","start":8880,"end":9032,"confidence":0.99961,"speaker":null},{"text":"brutal","start":9056,"end":9368,"confidence":0.99933,"speaker":null},{"text":"truths","start":9384,"end":9768,"confidence":0.73017,"speaker":null},{"text":"to","start":9784,"end":9912,"confidence":0.99969,"speaker":null},{"text":"shatter","start":9936,"end":10232,"confidence":0.99994,"speaker":null},{"text":"that","start":10296,"end":10472,"confidence":0.99976,"speaker":null},{"text":"lie","start":10496,"end":10696,"confidence":0.98263,"speaker":null},{"text":"and","start":10728,"end":10920,"confidence":0.88067,"speaker":null},{"text":"unleash","start":10960,"end":11304,"confidence":0.99998,"speaker":null},{"text":"the","start":11352,"end":11464,"confidence":0.9999,"speaker":null},{"text":"beast","start":11472,"end":11704,"confidence":0.99928,"speaker":null},{"text":"within.","start":11752,"end":12296,"confidence":0.998,"speaker":null},{"text":"These","start":12448,"end":12712,"confidence":0.99935,"speaker":null},{"text":"are","start":12736,"end":12872,"confidence":0.99989,"speaker":null},{"text":"the","start":12896,"end":12984,"confidence":0.99939,"speaker":null},{"text":"rules","start":12992,"end":13272,"confidence":0.99672,"speaker":null},{"text":"forged","start":13336,"end":13624,"confidence":0.69238,"speaker":null},{"text":"in","start":13672,"end":13784,"confidence":0.99969,"speaker":null},{"text":"the","start":13792,"end":13912,"confidence":0.99973,"speaker":null},{"text":"fires","start":13936,"end":14296,"confidence":0.98873,"speaker":null},{"text":"of","start":14328,"end":14472,"confidence":0.99962,"speaker":null},{"text":"failure.","start":14496,"end":14872,"confidence":0.98569,"speaker":null},{"text":"The","start":14936,"end":15112,"confidence":0.98348,"speaker":null},{"text":"code","start":15136,"end":15336,"confidence":0.83521,"speaker":null},{"text":"I","start":15368,"end":15512,"confidence":0.99973,"speaker":null},{"text":"live","start":15536,"end":15672,"confidence":0.99996,"speaker":null},{"text":"by","start":15696,"end":15880,"confidence":0.99987,"speaker":null},{"text":"when","start":15920,"end":16072,"confidence":0.99962,"speaker":null},{"text":"the","start":16096,"end":16232,"confidence":0.99953,"speaker":null},{"text":"world","start":16256,"end":16824,"confidence":0.99957,"speaker":null},{"text":"give","start":16992,"end":17272,"confidence":0.99043,"speaker":null},{"text":"up.","start":17296,"end":17624,"confidence":0.99884,"speaker":null},{"text":"They\'re","start":17712,"end":18008,"confidence":0.98925,"speaker":null},{"text":"what","start":18024,"end":18200,"confidence":0.99691,"speaker":null},{"text":"separate","start":18240,"end":18616,"confidence":0.99654,"speaker":null},{"text":"those","start":18648,"end":18792,"confidence":0.99981,"speaker":null},{"text":"who","start":18816,"end":19000,"confidence":0.99987,"speaker":null},{"text":"merely","start":19040,"end":19416,"confidence":0.99989,"speaker":null},{"text":"exist","start":19448,"end":19832,"confidence":0.99985,"speaker":null},{"text":"from","start":19896,"end":20072,"confidence":0.99975,"speaker":null},{"text":"those","start":20096,"end":20280,"confidence":0.99989,"speaker":null},{"text":"who","start":20320,"end":20472,"confidence":0.9999,"speaker":null},{"text":"truly","start":20496,"end":20856,"confidence":0.91471,"speaker":null},{"text":"live.","start":20888,"end":21368,"confidence":0.98885,"speaker":null},{"text":"The","start":21504,"end":21752,"confidence":0.99593,"speaker":null},{"text":"grand","start":21776,"end":21976,"confidence":0.99974,"speaker":null},{"text":"deception.","start":22008,"end":22504,"confidence":0.55678,"speaker":null},{"text":"We\'re","start":22552,"end":22776,"confidence":0.77283,"speaker":null},{"text":"told","start":22808,"end":23000,"confidence":0.99945,"speaker":null},{"text":"to","start":23040,"end":23192,"confidence":0.99814,"speaker":null},{"text":"be","start":23216,"end":23352,"confidence":0.99864,"speaker":null},{"text":"realistic,","start":23376,"end":23960,"confidence":0.71483,"speaker":null},{"text":"to","start":24040,"end":24232,"confidence":0.99751,"speaker":null},{"text":"wait","start":24256,"end":24408,"confidence":0.99952,"speaker":null},{"text":"for","start":24424,"end":24552,"confidence":0.9997,"speaker":null},{"text":"the","start":24576,"end":24712,"confidence":0.9998,"speaker":null},{"text":"right","start":24736,"end":24872,"confidence":0.99891,"speaker":null},{"text":"moment.","start":24896,"end":25470,"confidence":0.99729,"speaker":null},{"text":"That\'s","start":25600,"end":25906,"confidence":0.99122,"speaker":null},{"text":"a","start":25938,"end":26034,"confidence":0.99992,"speaker":null},{"text":"trap.","start":26042,"end":26514,"confidence":0.61984,"speaker":null},{"text":"Your","start":26642,"end":26882,"confidence":0.98181,"speaker":null},{"text":"brain","start":26906,"end":27154,"confidence":0.99881,"speaker":null},{"text":"is","start":27202,"end":27362,"confidence":0.99963,"speaker":null},{"text":"a","start":27386,"end":27474,"confidence":0.99959,"speaker":null},{"text":"master","start":27482,"end":27826,"confidence":0.99836,"speaker":null},{"text":"of","start":27858,"end":28050,"confidence":0.99976,"speaker":null},{"text":"procrastination.","start":28090,"end":28866,"confidence":0.9915,"speaker":null},{"text":"A","start":28978,"end":29154,"confidence":0.99792,"speaker":null},{"text":"sculptor","start":29162,"end":29586,"confidence":0.97928,"speaker":null},{"text":"of","start":29618,"end":29762,"confidence":0.99987,"speaker":null},{"text":"excuses.","start":29786,"end":30514,"confidence":0.56179,"speaker":null},{"text":"It","start":30642,"end":30882,"confidence":0.99943,"speaker":null},{"text":"will","start":30906,"end":31138,"confidence":0.99969,"speaker":null},{"text":"always","start":31194,"end":31458,"confidence":0.99994,"speaker":null},{"text":"find","start":31514,"end":31730,"confidence":0.99995,"speaker":null},{"text":"a","start":31770,"end":31922,"confidence":0.99955,"speaker":null},{"text":"reason","start":31946,"end":32130,"confidence":0.99995,"speaker":null},{"text":"to","start":32170,"end":32322,"confidence":0.99946,"speaker":null},{"text":"delay.","start":32346,"end":32866,"confidence":0.99962,"speaker":null},{"text":"But","start":32978,"end":33202,"confidence":0.99914,"speaker":null},{"text":"reality","start":33226,"end":33714,"confidence":0.99998,"speaker":null},{"text":"doesn\'t","start":33762,"end":33986,"confidence":0.97322,"speaker":null},{"text":"wait.","start":34018,"end":34514,"confidence":0.99851,"speaker":null},{"text":"Let","start":34642,"end":34882,"confidence":0.99917,"speaker":null},{"text":"me","start":34906,"end":35042,"confidence":0.9998,"speaker":null},{"text":"show","start":35066,"end":35202,"confidence":0.99979,"speaker":null},{"text":"you","start":35226,"end":35362,"confidence":0.99976,"speaker":null},{"text":"why.","start":35386,"end":35666,"confidence":0.98277,"speaker":null},{"text":"Every","start":35738,"end":35970,"confidence":0.9998,"speaker":null},{"text":"time","start":36010,"end":36162,"confidence":0.99825,"speaker":null},{"text":"you","start":36186,"end":36370,"confidence":0.99979,"speaker":null},{"text":"postpone","start":36410,"end":36914,"confidence":0.9998,"speaker":null},{"text":"action,","start":36962,"end":37266,"confidence":0.99999,"speaker":null},{"text":"you","start":37338,"end":37522,"confidence":0.99983,"speaker":null},{"text":"feed","start":37546,"end":37698,"confidence":0.99956,"speaker":null},{"text":"the","start":37714,"end":37842,"confidence":0.9996,"speaker":null},{"text":"monster","start":37866,"end":38178,"confidence":0.9973,"speaker":null},{"text":"of","start":38194,"end":38322,"confidence":0.99942,"speaker":null},{"text":"inertia.","start":38346,"end":39122,"confidence":0.99302,"speaker":null},{"text":"Science","start":39266,"end":39714,"confidence":0.99961,"speaker":null},{"text":"proves","start":39762,"end":39986,"confidence":0.97059,"speaker":null},{"text":"that","start":40018,"end":40210,"confidence":0.99976,"speaker":null},{"text":"momentum","start":40250,"end":40706,"confidence":0.99991,"speaker":null},{"text":"is","start":40738,"end":40834,"confidence":0.99989,"speaker":null},{"text":"the","start":40842,"end":40962,"confidence":0.99967,"speaker":null},{"text":"ultimate","start":40986,"end":41362,"confidence":0.99967,"speaker":null},{"text":"cheat","start":41426,"end":41746,"confidence":0.92138,"speaker":null},{"text":"code.","start":41778,"end":42306,"confidence":0.99809,"speaker":null},{"text":"Action","start":42418,"end":42738,"confidence":0.99988,"speaker":null},{"text":"breeds","start":42794,"end":43186,"confidence":0.78721,"speaker":null},{"text":"action.","start":43218,"end":43698,"confidence":0.99798,"speaker":null},{"text":"You\'re","start":43834,"end":44178,"confidence":0.99555,"speaker":null},{"text":"not","start":44194,"end":44370,"confidence":0.99988,"speaker":null},{"text":"cautious.","start":44410,"end":45042,"confidence":0.81681,"speaker":null},{"text":"You\'re","start":45186,"end":45506,"confidence":0.60711,"speaker":null},{"text":"just","start":45538,"end":45682,"confidence":0.99976,"speaker":null},{"text":"crippled","start":45706,"end":45986,"confidence":0.99955,"speaker":null},{"text":"by","start":46018,"end":46162,"confidence":0.99986,"speaker":null},{"text":"fear.","start":46186,"end":46706,"confidence":0.99933,"speaker":null},{"text":"Brutal","start":46818,"end":47186,"confidence":0.77449,"speaker":null},{"text":"truth","start":47218,"end":47506,"confidence":0.95581,"speaker":null},{"text":"1.","start":47538,"end":47778,"confidence":0.94672,"speaker":null},{"text":"The","start":47834,"end":48002,"confidence":0.99275,"speaker":null},{"text":"3","start":48026,"end":48258,"confidence":0.99879,"speaker":null},{"text":"second","start":48314,"end":48578,"confidence":0.99539,"speaker":null},{"text":"override.","start":48634,"end":49186,"confidence":0.98434,"speaker":null},{"text":"Meet","start":49218,"end":49458,"confidence":0.99107,"speaker":null},{"text":"Anya.","start":49514,"end":49986,"confidence":0.99826,"speaker":null},{"text":"A","start":50018,"end":50114,"confidence":0.98117,"speaker":null},{"text":"coder","start":50122,"end":50482,"confidence":0.83093,"speaker":null},{"text":"paralyzed","start":50546,"end":51106,"confidence":0.97182,"speaker":null},{"text":"by","start":51138,"end":51282,"confidence":0.99913,"speaker":null},{"text":"imposter","start":51306,"end":51842,"confidence":0.42561,"speaker":null},{"text":"syndrome.","start":51906,"end":52592,"confidence":0.85176,"speaker":null},{"text":"She","start":52746,"end":53060,"confidence":0.99889,"speaker":null},{"text":"forced","start":53100,"end":53316,"confidence":0.99964,"speaker":null},{"text":"herself","start":53348,"end":53684,"confidence":0.99964,"speaker":null},{"text":"to","start":53732,"end":53892,"confidence":0.99985,"speaker":null},{"text":"type","start":53916,"end":54164,"confidence":0.97062,"speaker":null},{"text":"one","start":54212,"end":54420,"confidence":0.99982,"speaker":null},{"text":"line","start":54460,"end":54612,"confidence":0.99998,"speaker":null},{"text":"of","start":54636,"end":54772,"confidence":0.99989,"speaker":null},{"text":"code","start":54796,"end":55124,"confidence":0.74201,"speaker":null},{"text":"within","start":55172,"end":55476,"confidence":0.99971,"speaker":null},{"text":"three","start":55548,"end":55828,"confidence":0.99989,"speaker":null},{"text":"seconds","start":55884,"end":56228,"confidence":0.99949,"speaker":null},{"text":"of","start":56244,"end":56372,"confidence":0.9997,"speaker":null},{"text":"doubt.","start":56396,"end":56676,"confidence":0.90359,"speaker":null},{"text":"Hitting.","start":56708,"end":57236,"confidence":0.99543,"speaker":null},{"text":"Not","start":57348,"end":57620,"confidence":0.9995,"speaker":null},{"text":"a","start":57660,"end":57764,"confidence":0.99994,"speaker":null},{"text":"perfect","start":57772,"end":58052,"confidence":0.89322,"speaker":null},{"text":"program,","start":58116,"end":58724,"confidence":0.99976,"speaker":null},{"text":"just","start":58892,"end":59220,"confidence":0.99845,"speaker":null},{"text":"one","start":59260,"end":59460,"confidence":0.99984,"speaker":null},{"text":"line.","start":59500,"end":59988,"confidence":0.99998,"speaker":null},{"text":"After","start":60124,"end":60420,"confidence":0.99946,"speaker":null},{"text":"a","start":60460,"end":60612,"confidence":0.9998,"speaker":null},{"text":"year,","start":60636,"end":60868,"confidence":0.66533,"speaker":null},{"text":"she","start":60924,"end":61140,"confidence":0.99989,"speaker":null},{"text":"launched","start":61180,"end":61428,"confidence":0.99996,"speaker":null},{"text":"a","start":61444,"end":61620,"confidence":0.99975,"speaker":null},{"text":"six","start":61660,"end":61860,"confidence":0.9999,"speaker":null},{"text":"figure","start":61900,"end":62196,"confidence":0.99965,"speaker":null},{"text":"app.","start":62228,"end":62660,"confidence":0.99605,"speaker":null},{"text":"Her","start":62780,"end":63060,"confidence":0.88002,"speaker":null},{"text":"secret,","start":63100,"end":63396,"confidence":0.96061,"speaker":null},{"text":"the","start":63468,"end":63700,"confidence":0.99256,"speaker":null},{"text":"three","start":63740,"end":63940,"confidence":0.99967,"speaker":null},{"text":"second","start":63980,"end":64228,"confidence":0.99776,"speaker":null},{"text":"rule.","start":64284,"end":64564,"confidence":0.99538,"speaker":null},{"text":"When","start":64612,"end":64772,"confidence":0.99952,"speaker":null},{"text":"hesitation","start":64796,"end":65412,"confidence":0.99955,"speaker":null},{"text":"strikes,","start":65476,"end":65892,"confidence":0.97872,"speaker":null},{"text":"attack","start":65956,"end":66228,"confidence":0.99969,"speaker":null},{"text":"it","start":66284,"end":66452,"confidence":0.99618,"speaker":null},{"text":"head","start":66476,"end":66660,"confidence":0.98133,"speaker":null},{"text":"on.","start":66700,"end":67044,"confidence":0.84724,"speaker":null},{"text":"Write","start":67132,"end":67396,"confidence":0.98657,"speaker":null},{"text":"one","start":67428,"end":67620,"confidence":0.99845,"speaker":null},{"text":"word,","start":67660,"end":68116,"confidence":0.97533,"speaker":null},{"text":"do","start":68228,"end":68500,"confidence":0.99886,"speaker":null},{"text":"one","start":68540,"end":68740,"confidence":0.99969,"speaker":null},{"text":"rep,","start":68780,"end":69124,"confidence":0.99985,"speaker":null},{"text":"make","start":69212,"end":69412,"confidence":0.99989,"speaker":null},{"text":"one","start":69436,"end":69620,"confidence":0.99939,"speaker":null},{"text":"call.","start":69660,"end":70148,"confidence":0.99966,"speaker":null},{"text":"This","start":70284,"end":70532,"confidence":0.99985,"speaker":null},{"text":"isn\'t","start":70556,"end":70836,"confidence":0.99978,"speaker":null},{"text":"about","start":70868,"end":71060,"confidence":0.99981,"speaker":null},{"text":"perfection.","start":71100,"end":71764,"confidence":0.53087,"speaker":null},{"text":"It\'s","start":71892,"end":72228,"confidence":0.99711,"speaker":null},{"text":"about","start":72244,"end":72420,"confidence":0.99996,"speaker":null},{"text":"proving","start":72460,"end":72676,"confidence":0.93235,"speaker":null},{"text":"to","start":72708,"end":72852,"confidence":0.9989,"speaker":null},{"text":"yourself.","start":72876,"end":73300,"confidence":0.8926,"speaker":null},{"text":"I","start":73380,"end":73572,"confidence":0.99742,"speaker":null},{"text":"control","start":73596,"end":73876,"confidence":0.99969,"speaker":null},{"text":"my","start":73948,"end":74132,"confidence":0.99992,"speaker":null},{"text":"fear.","start":74156,"end":74596,"confidence":0.9994,"speaker":null},{"text":"Brutal","start":74708,"end":75156,"confidence":0.55336,"speaker":null},{"text":"truth","start":75188,"end":75444,"confidence":0.9841,"speaker":null},{"text":"2.","start":75492,"end":75748,"confidence":0.92756,"speaker":null},{"text":"Embrace","start":75804,"end":76244,"confidence":0.99726,"speaker":null},{"text":"the","start":76292,"end":76404,"confidence":0.99937,"speaker":null},{"text":"carnage.","start":76412,"end":76804,"confidence":0.99881,"speaker":null},{"text":"Mark","start":76852,"end":77108,"confidence":0.99311,"speaker":null},{"text":"failed","start":77164,"end":77524,"confidence":0.99938,"speaker":null},{"text":"seven","start":77572,"end":77828,"confidence":0.99954,"speaker":null},{"text":"times","start":77884,"end":78148,"confidence":0.9999,"speaker":null},{"text":"before","start":78204,"end":78516,"confidence":0.99996,"speaker":null},{"text":"launching","start":78588,"end":78996,"confidence":0.99973,"speaker":null},{"text":"his","start":79028,"end":79172,"confidence":0.99908,"speaker":null},{"text":"game.","start":79196,"end":79764,"confidence":0.99593,"speaker":null},{"text":"Seven","start":79932,"end":80308,"confidence":0.99859,"speaker":null},{"text":"times","start":80364,"end":80580,"confidence":0.99983,"speaker":null},{"text":"he","start":80620,"end":80772,"confidence":0.99925,"speaker":null},{"text":"faced","start":80796,"end":81076,"confidence":0.99984,"speaker":null},{"text":"ridicule,","start":81108,"end":81732,"confidence":0.9999,"speaker":null},{"text":"bankruptcy,","start":81796,"end":82532,"confidence":0.79812,"speaker":null},{"text":"despair.","start":82596,"end":83284,"confidence":0.9982,"speaker":null},{"text":"His","start":83412,"end":83700,"confidence":0.96652,"speaker":null},{"text":"secret,","start":83740,"end":84372,"confidence":0.9983,"speaker":null},{"text":"Celebrate","start":84556,"end":85076,"confidence":0.99954,"speaker":null},{"text":"the","start":85108,"end":85252,"confidence":0.9997,"speaker":null},{"text":"failures.","start":85276,"end":86020,"confidence":0.99924,"speaker":null},{"text":"Every","start":86180,"end":86500,"confidence":0.99994,"speaker":null},{"text":"rejection","start":86540,"end":86996,"confidence":0.98197,"speaker":null},{"text":"letter","start":87028,"end":87316,"confidence":0.99993,"speaker":null},{"text":"went","start":87348,"end":87492,"confidence":0.99986,"speaker":null},{"text":"on","start":87516,"end":87700,"confidence":0.99996,"speaker":null},{"text":"his","start":87740,"end":87940,"confidence":0.99974,"speaker":null},{"text":"wall.","start":87980,"end":88484,"confidence":0.99741,"speaker":null},{"text":"Every","start":88612,"end":88900,"confidence":0.99996,"speaker":null},{"text":"setback","start":88940,"end":89396,"confidence":0.99991,"speaker":null},{"text":"became","start":89428,"end":89636,"confidence":0.99955,"speaker":null},{"text":"a","start":89668,"end":89812,"confidence":0.99991,"speaker":null},{"text":"war","start":89836,"end":90020,"confidence":0.99954,"speaker":null},{"text":"story.","start":90060,"end":90596,"confidence":0.99747,"speaker":null},{"text":"By","start":90748,"end":91012,"confidence":0.99994,"speaker":null},{"text":"owning","start":91036,"end":91348,"confidence":0.70565,"speaker":null},{"text":"the","start":91364,"end":91492,"confidence":0.99993,"speaker":null},{"text":"carnage,","start":91516,"end":91876,"confidence":0.99981,"speaker":null},{"text":"he","start":91908,"end":92052,"confidence":0.99991,"speaker":null},{"text":"disarmed","start":92076,"end":92516,"confidence":0.99993,"speaker":null},{"text":"his","start":92548,"end":92692,"confidence":0.99996,"speaker":null},{"text":"fear","start":92716,"end":92868,"confidence":0.99985,"speaker":null},{"text":"of","start":92884,"end":92964,"confidence":0.99981,"speaker":null},{"text":"it.","start":92972,"end":93332,"confidence":0.99428,"speaker":null},{"text":"Your","start":93436,"end":93652,"confidence":0.81062,"speaker":null},{"text":"rule.","start":93676,"end":94052,"confidence":0.84079,"speaker":null},{"text":"Fail,","start":94116,"end":94388,"confidence":0.99165,"speaker":null},{"text":"fast,","start":94444,"end":95012,"confidence":0.92461,"speaker":null},{"text":"fail.","start":95156,"end":95508,"confidence":0.99429,"speaker":null},{"text":"Forward.","start":95564,"end":96116,"confidence":0.96263,"speaker":null},{"text":"Each","start":96268,"end":96628,"confidence":0.99988,"speaker":null},{"text":"scar","start":96684,"end":97044,"confidence":0.99996,"speaker":null},{"text":"is","start":97092,"end":97204,"confidence":0.99995,"speaker":null},{"text":"a","start":97212,"end":97332,"confidence":0.99982,"speaker":null},{"text":"badge","start":97356,"end":97588,"confidence":0.99995,"speaker":null},{"text":"of","start":97604,"end":97732,"confidence":0.99991,"speaker":null},{"text":"honor.","start":97756,"end":98004,"confidence":0.61231,"speaker":null},{"text":"A","start":98052,"end":98212,"confidence":0.98364,"speaker":null},{"text":"testament","start":98236,"end":98596,"confidence":0.95528,"speaker":null},{"text":"to","start":98628,"end":98772,"confidence":0.99997,"speaker":null},{"text":"your","start":98796,"end":98932,"confidence":0.99955,"speaker":null},{"text":"resilience.","start":98956,"end":99652,"confidence":0.99976,"speaker":null},{"text":"Brutal","start":99796,"end":100276,"confidence":0.8299,"speaker":null},{"text":"Truth","start":100308,"end":100516,"confidence":0.99133,"speaker":null},{"text":"three.","start":100548,"end":100788,"confidence":0.98806,"speaker":null},{"text":"The","start":100844,"end":100964,"confidence":0.99116,"speaker":null},{"text":"victory","start":100972,"end":101284,"confidence":0.99975,"speaker":null},{"text":"cry.","start":101332,"end":101652,"confidence":0.99158,"speaker":null},{"text":"Most","start":101716,"end":101940,"confidence":0.99318,"speaker":null},{"text":"people","start":101980,"end":102180,"confidence":0.99997,"speaker":null},{"text":"shrink","start":102220,"end":102516,"confidence":0.99363,"speaker":null},{"text":"in","start":102548,"end":102644,"confidence":0.99971,"speaker":null},{"text":"the","start":102652,"end":102772,"confidence":0.99987,"speaker":null},{"text":"face","start":102796,"end":102932,"confidence":0.99999,"speaker":null},{"text":"of","start":102956,"end":103140,"confidence":0.98592,"speaker":null},{"text":"challenges.","start":103180,"end":103892,"confidence":0.99842,"speaker":null},{"text":"They","start":104036,"end":104340,"confidence":0.99848,"speaker":null},{"text":"internalize","start":104380,"end":104964,"confidence":0.82735,"speaker":null},{"text":"doubt,","start":105012,"end":105284,"confidence":0.99535,"speaker":null},{"text":"letting","start":105332,"end":105508,"confidence":0.99927,"speaker":null},{"text":"it","start":105524,"end":105652,"confidence":0.99985,"speaker":null},{"text":"fester.","start":105676,"end":106342,"confidence":0.99931,"speaker":null},{"text":"The","start":106476,"end":106770,"confidence":0.99674,"speaker":null},{"text":"fix.","start":106810,"end":107314,"confidence":0.98109,"speaker":null},{"text":"Scream","start":107442,"end":107874,"confidence":0.56879,"speaker":null},{"text":"your","start":107922,"end":108082,"confidence":0.96675,"speaker":null},{"text":"intentions,","start":108106,"end":108882,"confidence":0.99843,"speaker":null},{"text":"literally.","start":109026,"end":109842,"confidence":0.99274,"speaker":null},{"text":"Before","start":109986,"end":110338,"confidence":0.99996,"speaker":null},{"text":"every","start":110394,"end":110658,"confidence":0.99997,"speaker":null},{"text":"big","start":110714,"end":110882,"confidence":0.99979,"speaker":null},{"text":"meeting.","start":110906,"end":111282,"confidence":0.67912,"speaker":null},{"text":"Before","start":111386,"end":111698,"confidence":0.99995,"speaker":null},{"text":"every","start":111754,"end":112018,"confidence":0.99995,"speaker":null},{"text":"lift.","start":112074,"end":112402,"confidence":0.9979,"speaker":null},{"text":"Before","start":112466,"end":112786,"confidence":0.99995,"speaker":null},{"text":"every","start":112858,"end":113090,"confidence":0.99994,"speaker":null},{"text":"risk.","start":113130,"end":113474,"confidence":0.99984,"speaker":null},{"text":"Roar","start":113562,"end":113874,"confidence":0.5607,"speaker":null},{"text":"your","start":113922,"end":114082,"confidence":0.99763,"speaker":null},{"text":"commitment.","start":114106,"end":114722,"confidence":0.99909,"speaker":null},{"text":"Visualize","start":114866,"end":115474,"confidence":0.98244,"speaker":null},{"text":"success.","start":115522,"end":116114,"confidence":0.99916,"speaker":null},{"text":"Feel","start":116282,"end":116610,"confidence":0.99961,"speaker":null},{"text":"the","start":116650,"end":116802,"confidence":0.99984,"speaker":null},{"text":"power","start":116826,"end":117058,"confidence":0.99995,"speaker":null},{"text":"surge.","start":117114,"end":117762,"confidence":0.99169,"speaker":null},{"text":"Say","start":117906,"end":118210,"confidence":0.99117,"speaker":null},{"text":"I","start":118250,"end":118402,"confidence":0.99865,"speaker":null},{"text":"am","start":118426,"end":118610,"confidence":0.99803,"speaker":null},{"text":"unstoppable.","start":118650,"end":119394,"confidence":0.53441,"speaker":null},{"text":"This","start":119522,"end":119810,"confidence":0.99963,"speaker":null},{"text":"ritual","start":119850,"end":120194,"confidence":0.99997,"speaker":null},{"text":"rewires","start":120242,"end":120786,"confidence":0.99827,"speaker":null},{"text":"your","start":120818,"end":120962,"confidence":0.99986,"speaker":null},{"text":"brain","start":120986,"end":121234,"confidence":0.99991,"speaker":null},{"text":"to","start":121282,"end":121490,"confidence":0.9999,"speaker":null},{"text":"associate","start":121530,"end":122034,"confidence":0.99991,"speaker":null},{"text":"action","start":122082,"end":122338,"confidence":0.99998,"speaker":null},{"text":"with","start":122394,"end":122610,"confidence":0.95782,"speaker":null},{"text":"victory,","start":122650,"end":123042,"confidence":0.99987,"speaker":null},{"text":"not","start":123106,"end":123330,"confidence":0.99917,"speaker":null},{"text":"fear.","start":123370,"end":123874,"confidence":0.99803,"speaker":null},{"text":"Train","start":124002,"end":124306,"confidence":0.99137,"speaker":null},{"text":"your","start":124338,"end":124482,"confidence":0.99877,"speaker":null},{"text":"mind","start":124506,"end":124690,"confidence":0.99998,"speaker":null},{"text":"to","start":124730,"end":124882,"confidence":0.99992,"speaker":null},{"text":"crave","start":124906,"end":125106,"confidence":0.9998,"speaker":null},{"text":"the","start":125138,"end":125282,"confidence":0.99973,"speaker":null},{"text":"battlefield.","start":125306,"end":126066,"confidence":0.79561,"speaker":null},{"text":"You\'re","start":126178,"end":126466,"confidence":0.54523,"speaker":null},{"text":"not","start":126498,"end":126642,"confidence":0.99995,"speaker":null},{"text":"seeking","start":126666,"end":126914,"confidence":0.8871,"speaker":null},{"text":"comfort.","start":126962,"end":127538,"confidence":0.96545,"speaker":null},{"text":"You\'re","start":127634,"end":127906,"confidence":0.97014,"speaker":null},{"text":"hunting","start":127938,"end":128194,"confidence":0.96109,"speaker":null},{"text":"greatness.","start":128242,"end":128914,"confidence":0.99652,"speaker":null},{"text":"Unleashing","start":129042,"end":129666,"confidence":0.99974,"speaker":null},{"text":"isn\'t","start":129698,"end":129986,"confidence":0.99957,"speaker":null},{"text":"something","start":130018,"end":130210,"confidence":0.99994,"speaker":null},{"text":"you","start":130250,"end":130450,"confidence":0.99992,"speaker":null},{"text":"achieve.","start":130490,"end":131026,"confidence":0.99848,"speaker":null},{"text":"It\'s","start":131138,"end":131426,"confidence":0.92108,"speaker":null},{"text":"someone","start":131458,"end":131650,"confidence":0.99985,"speaker":null},{"text":"you","start":131690,"end":131842,"confidence":0.99987,"speaker":null},{"text":"become.","start":131866,"end":132398,"confidence":0.99912,"speaker":null},{"text":"The","start":132554,"end":132822,"confidence":0.99776,"speaker":null},{"text":"world","start":132846,"end":133078,"confidence":0.9999,"speaker":null},{"text":"wants","start":133134,"end":133318,"confidence":0.99952,"speaker":null},{"text":"you","start":133334,"end":133462,"confidence":0.99968,"speaker":null},{"text":"to","start":133486,"end":133622,"confidence":0.99974,"speaker":null},{"text":"cower,","start":133646,"end":134150,"confidence":0.97872,"speaker":null},{"text":"but","start":134230,"end":134470,"confidence":0.99878,"speaker":null},{"text":"you.","start":134510,"end":134710,"confidence":0.99702,"speaker":null},{"text":"You\'re","start":134750,"end":134918,"confidence":0.70492,"speaker":null},{"text":"a","start":134934,"end":135014,"confidence":0.99955,"speaker":null},{"text":"force","start":135022,"end":135206,"confidence":0.9902,"speaker":null},{"text":"of","start":135238,"end":135382,"confidence":0.99969,"speaker":null},{"text":"nature.","start":135406,"end":135894,"confidence":0.99586,"speaker":null},{"text":"You\'ve","start":136022,"end":136406,"confidence":0.94963,"speaker":null},{"text":"got","start":136438,"end":136630,"confidence":0.9947,"speaker":null},{"text":"the","start":136670,"end":136870,"confidence":0.99418,"speaker":null},{"text":"three","start":136910,"end":137158,"confidence":0.99942,"speaker":null},{"text":"second","start":137214,"end":137478,"confidence":0.998,"speaker":null},{"text":"override.","start":137534,"end":138054,"confidence":0.99414,"speaker":null},{"text":"Embrace","start":138102,"end":138454,"confidence":0.99816,"speaker":null},{"text":"the","start":138502,"end":138614,"confidence":0.99943,"speaker":null},{"text":"carnage.","start":138622,"end":138966,"confidence":0.99811,"speaker":null},{"text":"The","start":138998,"end":139142,"confidence":0.99757,"speaker":null},{"text":"victory","start":139166,"end":139494,"confidence":0.99962,"speaker":null},{"text":"cry.","start":139542,"end":139766,"confidence":0.98927,"speaker":null},{"text":"Now","start":139798,"end":139990,"confidence":0.99528,"speaker":null},{"text":"go.","start":140030,"end":140230,"confidence":0.99496,"speaker":null},{"text":"Seize","start":140270,"end":140566,"confidence":0.91807,"speaker":null},{"text":"your","start":140598,"end":140742,"confidence":0.97621,"speaker":null},{"text":"destiny.","start":140766,"end":141030,"confidence":0.98292,"speaker":null}]',
+    '[{"text":"Empty","start":160,"end":480,"confidence":0.952,"speaker":null},{"text":"hands,","start":520,"end":1336,"confidence":0.99901,"speaker":null},{"text":"shattered","start":1528,"end":2184,"confidence":0.99672,"speaker":null},{"text":"smile.","start":2232,"end":2860,"confidence":0.95076,"speaker":null},{"text":"A","start":3200,"end":3464,"confidence":0.99924,"speaker":null},{"text":"soul","start":3472,"end":3784,"confidence":0.59149,"speaker":null},{"text":"laid","start":3832,"end":4104,"confidence":0.99991,"speaker":null},{"text":"bare.","start":4152,"end":4888,"confidence":0.99877,"speaker":null},{"text":"You","start":5064,"end":5352,"confidence":0.99789,"speaker":null},{"text":"thought","start":5376,"end":5560,"confidence":0.99993,"speaker":null},{"text":"enlightenment","start":5600,"end":6056,"confidence":0.99997,"speaker":null},{"text":"was","start":6088,"end":6232,"confidence":1,"speaker":null},{"text":"bliss.","start":6256,"end":6860,"confidence":0.99847,"speaker":null},{"text":"Prepare","start":7200,"end":7736,"confidence":0.99466,"speaker":null},{"text":"for","start":7768,"end":7864,"confidence":0.99998,"speaker":null},{"text":"the","start":7872,"end":7992,"confidence":0.99993,"speaker":null},{"text":"razor\'s","start":8016,"end":8456,"confidence":0.80191,"speaker":null},{"text":"edge.","start":8488,"end":9176,"confidence":0.98592,"speaker":null},{"text":"I\'ll","start":9368,"end":9816,"confidence":0.99894,"speaker":null},{"text":"show","start":9848,"end":9992,"confidence":0.99996,"speaker":null},{"text":"you","start":10016,"end":10152,"confidence":0.99999,"speaker":null},{"text":"how","start":10176,"end":10264,"confidence":0.99997,"speaker":null},{"text":"to","start":10272,"end":10392,"confidence":0.99992,"speaker":null},{"text":"truly","start":10416,"end":10696,"confidence":0.99998,"speaker":null},{"text":"awaken,","start":10728,"end":11176,"confidence":0.93603,"speaker":null},{"text":"not","start":11288,"end":11512,"confidence":0.99979,"speaker":null},{"text":"just","start":11536,"end":11672,"confidence":1,"speaker":null},{"text":"dream","start":11696,"end":11896,"confidence":0.84382,"speaker":null},{"text":"of","start":11928,"end":12072,"confidence":0.99992,"speaker":null},{"text":"it.","start":12096,"end":12712,"confidence":0.99976,"speaker":null},{"text":"Most","start":12896,"end":13240,"confidence":0.99932,"speaker":null},{"text":"seek","start":13280,"end":13576,"confidence":0.9284,"speaker":null},{"text":"knowledge,","start":13608,"end":14088,"confidence":0.9861,"speaker":null},{"text":"few","start":14184,"end":14440,"confidence":0.99998,"speaker":null},{"text":"dare","start":14480,"end":14696,"confidence":0.99989,"speaker":null},{"text":"to","start":14728,"end":14824,"confidence":0.99999,"speaker":null},{"text":"live","start":14832,"end":15000,"confidence":0.99995,"speaker":null},{"text":"it.","start":15040,"end":15624,"confidence":0.9999,"speaker":null},{"text":"The","start":15792,"end":16072,"confidence":0.99975,"speaker":null},{"text":"mind","start":16096,"end":16280,"confidence":0.99996,"speaker":null},{"text":"fears","start":16320,"end":16616,"confidence":0.79813,"speaker":null},{"text":"the","start":16648,"end":16792,"confidence":0.99997,"speaker":null},{"text":"abyss.","start":16816,"end":17656,"confidence":0.99994,"speaker":null},{"text":"It","start":17848,"end":18152,"confidence":0.99995,"speaker":null},{"text":"clings","start":18176,"end":18424,"confidence":0.99408,"speaker":null},{"text":"to","start":18472,"end":18632,"confidence":0.99994,"speaker":null},{"text":"what","start":18656,"end":18792,"confidence":0.99998,"speaker":null},{"text":"it","start":18816,"end":18952,"confidence":0.99999,"speaker":null},{"text":"knows,","start":18976,"end":19352,"confidence":0.98097,"speaker":null},{"text":"even","start":19416,"end":19592,"confidence":0.99996,"speaker":null},{"text":"if","start":19616,"end":19752,"confidence":0.9993,"speaker":null},{"text":"it\'s","start":19776,"end":19976,"confidence":0.76817,"speaker":null},{"text":"poison.","start":20008,"end":20620,"confidence":0.99626,"speaker":null},{"text":"The","start":21040,"end":21352,"confidence":0.90453,"speaker":null},{"text":"ego","start":21376,"end":21672,"confidence":0.99814,"speaker":null},{"text":"whispers,","start":21736,"end":22312,"confidence":0.99265,"speaker":null},{"text":"stay","start":22376,"end":22648,"confidence":0.99991,"speaker":null},{"text":"safe,","start":22704,"end":23340,"confidence":0.73105,"speaker":null},{"text":"I","start":23680,"end":24088,"confidence":0.88077,"speaker":null},{"text":"say","start":24144,"end":24408,"confidence":0.99499,"speaker":null},{"text":"leap.","start":24464,"end":25100,"confidence":0.96581,"speaker":null},{"text":"Rule","start":25450,"end":25874,"confidence":0.99505,"speaker":null},{"text":"one.","start":25922,"end":26226,"confidence":0.67812,"speaker":null},{"text":"The","start":26298,"end":26482,"confidence":0.99936,"speaker":null},{"text":"Alchemist\'s","start":26506,"end":27106,"confidence":0.70378,"speaker":null},{"text":"burn.","start":27138,"end":27858,"confidence":0.9975,"speaker":null},{"text":"Meet","start":28034,"end":28370,"confidence":0.99833,"speaker":null},{"text":"Maya,","start":28410,"end":28882,"confidence":0.88994,"speaker":null},{"text":"a","start":28946,"end":29122,"confidence":0.99752,"speaker":null},{"text":"Wall","start":29146,"end":29346,"confidence":0.99995,"speaker":null},{"text":"street","start":29378,"end":29570,"confidence":0.99827,"speaker":null},{"text":"shark","start":29610,"end":29954,"confidence":0.99988,"speaker":null},{"text":"drowning","start":30002,"end":30338,"confidence":0.99023,"speaker":null},{"text":"in","start":30354,"end":30530,"confidence":0.85964,"speaker":null},{"text":"gold.","start":30570,"end":31150,"confidence":0.99997,"speaker":null},{"text":"She","start":31610,"end":31922,"confidence":0.99975,"speaker":null},{"text":"chased","start":31946,"end":32274,"confidence":0.94904,"speaker":null},{"text":"pleasure,","start":32322,"end":32770,"confidence":0.99762,"speaker":null},{"text":"devoured","start":32850,"end":33298,"confidence":0.99973,"speaker":null},{"text":"experience,","start":33314,"end":33826,"confidence":0.99983,"speaker":null},{"text":"yet","start":33978,"end":34290,"confidence":0.99972,"speaker":null},{"text":"felt","start":34330,"end":34594,"confidence":0.85179,"speaker":null},{"text":"hollow.","start":34642,"end":35426,"confidence":0.8914,"speaker":null},{"text":"Her","start":35618,"end":35970,"confidence":0.99777,"speaker":null},{"text":"salvation.","start":36010,"end":36866,"confidence":0.99957,"speaker":null},{"text":"She","start":37058,"end":37410,"confidence":0.99988,"speaker":null},{"text":"burned","start":37450,"end":37714,"confidence":0.946,"speaker":null},{"text":"it","start":37762,"end":37922,"confidence":0.99996,"speaker":null},{"text":"all.","start":37946,"end":38562,"confidence":0.99958,"speaker":null},{"text":"Her","start":38746,"end":39042,"confidence":0.99776,"speaker":null},{"text":"penthouse,","start":39066,"end":39762,"confidence":0.57821,"speaker":null},{"text":"her","start":39826,"end":40050,"confidence":0.99964,"speaker":null},{"text":"portfolio,","start":40090,"end":40738,"confidence":0.85179,"speaker":null},{"text":"her","start":40834,"end":41090,"confidence":0.99905,"speaker":null},{"text":"pride.","start":41130,"end":41750,"confidence":0.96639,"speaker":null},{"text":"From","start":42170,"end":42482,"confidence":0.96675,"speaker":null},{"text":"the","start":42506,"end":42642,"confidence":0.99993,"speaker":null},{"text":"ashes,","start":42666,"end":43218,"confidence":0.81563,"speaker":null},{"text":"clarity.","start":43314,"end":44226,"confidence":0.99676,"speaker":null},{"text":"You","start":44418,"end":44770,"confidence":0.99978,"speaker":null},{"text":"must","start":44810,"end":44962,"confidence":1,"speaker":null},{"text":"incinerate","start":44986,"end":45506,"confidence":0.99977,"speaker":null},{"text":"your","start":45538,"end":45682,"confidence":0.99965,"speaker":null},{"text":"attachments.","start":45706,"end":46550,"confidence":0.99986,"speaker":null},{"text":"Not","start":47050,"end":47362,"confidence":0.99917,"speaker":null},{"text":"for","start":47386,"end":47522,"confidence":0.99999,"speaker":null},{"text":"poverty,","start":47546,"end":47986,"confidence":0.99997,"speaker":null},{"text":"but","start":48018,"end":48210,"confidence":0.5311,"speaker":null},{"text":"for","start":48250,"end":48402,"confidence":0.99996,"speaker":null},{"text":"purity.","start":48426,"end":49190,"confidence":0.99998,"speaker":null},{"text":"Feel","start":49610,"end":49922,"confidence":0.9998,"speaker":null},{"text":"the","start":49946,"end":50130,"confidence":0.99737,"speaker":null},{"text":"pain,","start":50170,"end":50824,"confidence":0.99787,"speaker":null},{"text":"then","start":51002,"end":51484,"confidence":0.95669,"speaker":null},{"text":"let","start":51572,"end":51772,"confidence":0.99978,"speaker":null},{"text":"it","start":51796,"end":51884,"confidence":0.9999,"speaker":null},{"text":"go.","start":51892,"end":52440,"confidence":0.99993,"speaker":null},{"text":"The","start":53540,"end":53852,"confidence":0.99992,"speaker":null},{"text":"Wanderer\'s","start":53876,"end":54396,"confidence":0.5951,"speaker":null},{"text":"wound.","start":54428,"end":55040,"confidence":0.99243,"speaker":null},{"text":"Kai,","start":55380,"end":55932,"confidence":0.94681,"speaker":null},{"text":"a","start":55996,"end":56172,"confidence":0.99946,"speaker":null},{"text":"Zen","start":56196,"end":56444,"confidence":0.99879,"speaker":null},{"text":"monk,","start":56492,"end":56812,"confidence":0.67911,"speaker":null},{"text":"meditated","start":56876,"end":57356,"confidence":0.9999,"speaker":null},{"text":"for","start":57388,"end":57580,"confidence":0.99087,"speaker":null},{"text":"decades,","start":57620,"end":58140,"confidence":0.90464,"speaker":null},{"text":"seeking","start":58220,"end":58556,"confidence":0.99982,"speaker":null},{"text":"nothingness.","start":58588,"end":59360,"confidence":0.99731,"speaker":null},{"text":"He","start":59780,"end":60140,"confidence":0.99997,"speaker":null},{"text":"found","start":60180,"end":60380,"confidence":0.99996,"speaker":null},{"text":"only","start":60420,"end":60668,"confidence":1,"speaker":null},{"text":"emptiness.","start":60724,"end":61520,"confidence":0.99999,"speaker":null},{"text":"One","start":62020,"end":62380,"confidence":0.99994,"speaker":null},{"text":"day,","start":62420,"end":62668,"confidence":1,"speaker":null},{"text":"he","start":62724,"end":62940,"confidence":0.99998,"speaker":null},{"text":"stumbled","start":62980,"end":63276,"confidence":0.73107,"speaker":null},{"text":"into","start":63308,"end":63500,"confidence":0.57734,"speaker":null},{"text":"a","start":63540,"end":63644,"confidence":0.99996,"speaker":null},{"text":"brothel.","start":63652,"end":64556,"confidence":0.99873,"speaker":null},{"text":"Embraced","start":64748,"end":65404,"confidence":0.99949,"speaker":null},{"text":"chaos,","start":65452,"end":65948,"confidence":0.99988,"speaker":null},{"text":"heartbreak,","start":66044,"end":66652,"confidence":0.94555,"speaker":null},{"text":"the","start":66716,"end":66892,"confidence":0.99124,"speaker":null},{"text":"raw","start":66916,"end":67196,"confidence":0.99986,"speaker":null},{"text":"animal","start":67228,"end":67548,"confidence":0.7981,"speaker":null},{"text":"of","start":67564,"end":67692,"confidence":0.99996,"speaker":null},{"text":"life.","start":67716,"end":68280,"confidence":0.99994,"speaker":null},{"text":"He","start":68580,"end":68940,"confidence":0.99986,"speaker":null},{"text":"emerged,","start":68980,"end":69484,"confidence":0.75482,"speaker":null},{"text":"transformed.","start":69532,"end":70588,"confidence":0.9946,"speaker":null},{"text":"You","start":70764,"end":71100,"confidence":0.99837,"speaker":null},{"text":"must","start":71140,"end":71340,"confidence":0.99999,"speaker":null},{"text":"bleed.","start":71380,"end":72156,"confidence":0.98757,"speaker":null},{"text":"Taste","start":72348,"end":72828,"confidence":0.99125,"speaker":null},{"text":"the","start":72844,"end":72972,"confidence":0.99998,"speaker":null},{"text":"bitter","start":72996,"end":73276,"confidence":0.99999,"speaker":null},{"text":"truth","start":73308,"end":73516,"confidence":0.91489,"speaker":null},{"text":"of","start":73548,"end":73644,"confidence":0.99999,"speaker":null},{"text":"the","start":73652,"end":73772,"confidence":0.99998,"speaker":null},{"text":"world.","start":73796,"end":74360,"confidence":0.99945,"speaker":null},{"text":"Only","start":74660,"end":75116,"confidence":0.99999,"speaker":null},{"text":"then","start":75188,"end":75372,"confidence":0.99998,"speaker":null},{"text":"can","start":75396,"end":75532,"confidence":0.99961,"speaker":null},{"text":"you","start":75556,"end":75692,"confidence":0.99998,"speaker":null},{"text":"understand","start":75716,"end":75996,"confidence":0.99998,"speaker":null},{"text":"what","start":76068,"end":76300,"confidence":0.99998,"speaker":null},{"text":"truly","start":76340,"end":76636,"confidence":0.99994,"speaker":null},{"text":"matters.","start":76668,"end":77360,"confidence":0.99839,"speaker":null},{"text":"Rule","start":77800,"end":78272,"confidence":0.98298,"speaker":null},{"text":"three.","start":78336,"end":78656,"confidence":0.95234,"speaker":null},{"text":"The","start":78728,"end":78912,"confidence":0.99913,"speaker":null},{"text":"Silent","start":78936,"end":79344,"confidence":0.67903,"speaker":null},{"text":"Vow.","start":79392,"end":80096,"confidence":0.99518,"speaker":null},{"text":"Imagine","start":80288,"end":80816,"confidence":0.95248,"speaker":null},{"text":"a","start":80848,"end":80992,"confidence":0.99997,"speaker":null},{"text":"king","start":81016,"end":81408,"confidence":0.99992,"speaker":null},{"text":"stripped","start":81504,"end":81856,"confidence":0.99983,"speaker":null},{"text":"of","start":81888,"end":81984,"confidence":0.99997,"speaker":null},{"text":"his","start":81992,"end":82112,"confidence":0.99999,"speaker":null},{"text":"crown.","start":82136,"end":82480,"confidence":0.74313,"speaker":null},{"text":"Kneeling","start":82560,"end":82896,"confidence":0.99999,"speaker":null},{"text":"in","start":82928,"end":83072,"confidence":0.99994,"speaker":null},{"text":"mud.","start":83096,"end":83776,"confidence":0.99899,"speaker":null},{"text":"He","start":83968,"end":84272,"confidence":0.99828,"speaker":null},{"text":"whispers","start":84296,"end":84688,"confidence":0.99994,"speaker":null},{"text":"a","start":84704,"end":84880,"confidence":0.99977,"speaker":null},{"text":"vow.","start":84920,"end":85232,"confidence":0.69148,"speaker":null},{"text":"I","start":85296,"end":85472,"confidence":0.99873,"speaker":null},{"text":"am","start":85496,"end":85680,"confidence":0.99985,"speaker":null},{"text":"nothing.","start":85720,"end":86416,"confidence":0.79807,"speaker":null},{"text":"I","start":86608,"end":86912,"confidence":0.99963,"speaker":null},{"text":"own","start":86936,"end":87168,"confidence":0.70582,"speaker":null},{"text":"nothing.","start":87224,"end":88016,"confidence":0.99996,"speaker":null},{"text":"I","start":88208,"end":88512,"confidence":0.9999,"speaker":null},{"text":"desire","start":88536,"end":88944,"confidence":0.5311,"speaker":null},{"text":"nothing.","start":88992,"end":89776,"confidence":0.99989,"speaker":null},{"text":"This","start":89968,"end":90272,"confidence":0.99999,"speaker":null},{"text":"isn\'t","start":90296,"end":90624,"confidence":0.96484,"speaker":null},{"text":"weakness.","start":90672,"end":91380,"confidence":0.9999,"speaker":null},{"text":"It\'s","start":91720,"end":92096,"confidence":0.57729,"speaker":null},{"text":"the","start":92128,"end":92272,"confidence":0.99997,"speaker":null},{"text":"ultimate","start":92296,"end":92672,"confidence":0.99987,"speaker":null},{"text":"power.","start":92736,"end":93340,"confidence":0.99982,"speaker":null},{"text":"Every","start":93720,"end":94128,"confidence":0.99994,"speaker":null},{"text":"morning,","start":94184,"end":94592,"confidence":0.99986,"speaker":null},{"text":"before","start":94696,"end":94960,"confidence":0.99999,"speaker":null},{"text":"you","start":95000,"end":95200,"confidence":0.99993,"speaker":null},{"text":"speak,","start":95240,"end":95552,"confidence":0.99961,"speaker":null},{"text":"bow","start":95616,"end":95904,"confidence":0.76632,"speaker":null},{"text":"to","start":95952,"end":96064,"confidence":1,"speaker":null},{"text":"the","start":96072,"end":96192,"confidence":1,"speaker":null},{"text":"universe.","start":96216,"end":96980,"confidence":0.99989,"speaker":null},{"text":"Acknowledge","start":97320,"end":97936,"confidence":0.84326,"speaker":null},{"text":"your","start":97968,"end":98112,"confidence":0.98962,"speaker":null},{"text":"insignificance.","start":98136,"end":99140,"confidence":0.67895,"speaker":null},{"text":"This","start":99560,"end":99872,"confidence":0.99999,"speaker":null},{"text":"act","start":99896,"end":100176,"confidence":0.96484,"speaker":null},{"text":"silences","start":100248,"end":100704,"confidence":0.99992,"speaker":null},{"text":"the","start":100752,"end":100912,"confidence":1,"speaker":null},{"text":"ego,","start":100936,"end":101328,"confidence":0.99951,"speaker":null},{"text":"opens","start":101424,"end":101776,"confidence":0.89381,"speaker":null},{"text":"the","start":101808,"end":101904,"confidence":0.99998,"speaker":null},{"text":"door","start":101912,"end":102096,"confidence":0.99999,"speaker":null},{"text":"to","start":102128,"end":102272,"confidence":0.99995,"speaker":null},{"text":"grace.","start":102296,"end":102900,"confidence":0.99827,"speaker":null},{"text":"Don\'t","start":103310,"end":103686,"confidence":0.98144,"speaker":null},{"text":"just","start":103718,"end":103910,"confidence":0.99997,"speaker":null},{"text":"seek","start":103950,"end":104166,"confidence":0.99998,"speaker":null},{"text":"enlightenment.","start":104198,"end":105206,"confidence":0.99931,"speaker":null},{"text":"Become","start":105398,"end":105750,"confidence":0.99981,"speaker":null},{"text":"the","start":105790,"end":105990,"confidence":0.9997,"speaker":null},{"text":"enlightened.","start":106030,"end":106998,"confidence":0.97612,"speaker":null},{"text":"A","start":107174,"end":107462,"confidence":0.99972,"speaker":null},{"text":"warrior","start":107486,"end":107846,"confidence":0.99991,"speaker":null},{"text":"of","start":107878,"end":107974,"confidence":0.99999,"speaker":null},{"text":"the","start":107982,"end":108102,"confidence":0.99993,"speaker":null},{"text":"soul,","start":108126,"end":108518,"confidence":0.98687,"speaker":null},{"text":"forged","start":108614,"end":109014,"confidence":0.99971,"speaker":null},{"text":"in","start":109062,"end":109222,"confidence":0.99998,"speaker":null},{"text":"fire","start":109246,"end":109430,"confidence":0.99995,"speaker":null},{"text":"and","start":109470,"end":109718,"confidence":0.99029,"speaker":null},{"text":"silence.","start":109774,"end":110570,"confidence":0.99849,"speaker":null},{"text":"You","start":110990,"end":111302,"confidence":0.99987,"speaker":null},{"text":"are","start":111326,"end":111462,"confidence":0.99986,"speaker":null},{"text":"not","start":111486,"end":111574,"confidence":0.99997,"speaker":null},{"text":"a","start":111582,"end":111702,"confidence":0.99986,"speaker":null},{"text":"seeker.","start":111726,"end":112598,"confidence":0.75432,"speaker":null},{"text":"You","start":112774,"end":113062,"confidence":0.99964,"speaker":null},{"text":"are","start":113086,"end":113222,"confidence":0.99997,"speaker":null},{"text":"the","start":113246,"end":113382,"confidence":0.99997,"speaker":null},{"text":"answer.","start":113406,"end":113670,"confidence":0.90406,"speaker":null}]',
   transcribedSubtitles: null,
   fps: 30,
-  totalDuration: 151030,
-  imageStyle: "cinematic",
+  totalDuration: 123670,
+  imageStyle: "cyberpunk",
   captionStyle: "caption-style-one",
   thumbnailUrl: "",
-  bgmId: 4,
+  bgmId: 13,
   aspectRatioId: 1,
   userId: "cma56j0q90000nnlb7uhulfpa",
-  createdAt: "2025-05-01T16:03:23.791Z",
-  updatedAt: "2025-05-01T16:05:12.480Z",
+  createdAt: "2025-05-04T09:45:27.870Z",
+  updatedAt: "2025-05-04T09:49:08.717Z",
   bgm: {
-    id: 4,
-    name: "badass-aggressive-smart-brass-drums",
+    id: 13,
+    name: "dark-intense-tension-orchestra",
     bgmUrl:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/badass-aggressive-smart-brass-drums.mp3",
+      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/dark-intense-tension-orchestra.mp3",
     volume: 100,
   },
   voiceOver: [
     {
-      id: "cma5k2g310002nn0qu92xsrxg",
+      id: "cma9gyd9p0003nn33q85z4n6o",
       audioUrl:
-        "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/videos/cma56j0q90000nnlb7uhulfpa/voiceovers/cb624be1-854d-4180-89a0-7cf1d8e79ef5.mp3",
-      voiceId: "en-US-BrianNeural",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+        "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/videos/cma56j0q90000nnlb7uhulfpa/voiceovers/4e44155d-fd81-4dee-81a8-f5ce7c991f3f.mp3",
+      voiceId: "en-US-ChristopherNeural",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
     {
-      id: "cma5k1i3r0001nn0qw3qc5cgb",
+      id: "cma9gwp3h0002nn33hw599xkx",
       audioUrl:
-        "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/videos/cma56j0q90000nnlb7uhulfpa/voiceovers/cb624be1-854d-4180-89a0-7cf1d8e79ef5.mp3",
-      voiceId: "en-US-BrianNeural",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+        "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/videos/cma56j0q90000nnlb7uhulfpa/voiceovers/4e44155d-fd81-4dee-81a8-f5ce7c991f3f.mp3",
+      voiceId: "en-US-ChristopherNeural",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gv9el0001nn33i9kp4q54",
+      audioUrl:
+        "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/videos/cma56j0q90000nnlb7uhulfpa/voiceovers/4e44155d-fd81-4dee-81a8-f5ce7c991f3f.mp3",
+      voiceId: "en-US-ChristopherNeural",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
   ],
   aspectRatio: {
     id: 1,
     name: "video",
-    width: 1920,
-    height: 1080,
+    width: 1280,
+    height: 720,
   },
   scenes: [
     {
-      id: "cma5k36vv0004nn0qw7aitge5",
+      id: "cma9gz3ee000inn33ihaiadhq",
       number: 1,
-      start: 320,
-      end: 3336,
-      motionTemplateId: "enter-slide-top-down-exit-left",
+      start: 160,
+      end: 3784,
+      motionTemplateId: "pan-left-right-zoom-in",
       imagePrompt:
-        "A dark, empty theater with a single spotlight shining on a closed curtain, creating a sense of foreboding, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
+        "Close-up of cracked hands reaching out, a faint smile on a weathered face, soft lighting, medium-shot eye-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
       imageUrl:
-        "https://image.pollinations.ai/prompt/A%20dark%2C%20empty%20theater%20with%20a%20single%20spotlight%20shining%20on%20a%20closed%20curtain%2C%20creating%20a%20sense%20of%20foreboding%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=3509166&nologo=true&private=true",
-      shotSize: "wide-shot",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k38xw000tnn0qrl92vtnm",
-      number: 2,
-      start: 3448,
-      end: 7192,
-      motionTemplateId: "scale-down-fade",
-      imagePrompt:
-        "A shadowy figure whispering into a person's ear, their face filled with anxiety and uncertainty, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20shadowy%20figure%20whispering%20into%20a%20person's%20ear%2C%20their%20face%20filled%20with%20anxiety%20and%20uncertainty%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=6257185&nologo=true&private=true",
-      shotSize: "close-up",
-      cameraAngle: "high-angle",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k37gm000inn0qjkp6h5o7",
-      number: 3,
-      start: 7216,
-      end: 10696,
-      motionTemplateId: "scale-down-up",
-      imagePrompt:
-        "A hand dramatically shattering a mirror into pieces, light bursting through the cracks, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20hand%20dramatically%20shattering%20a%20mirror%20into%20pieces%2C%20light%20bursting%20through%20the%20cracks%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=8451416&nologo=true&private=true",
+        "https://image.pollinations.ai/prompt/Close-up%20of%20cracked%20hands%20reaching%20out%2C%20a%20faint%20smile%20on%20a%20weathered%20face%2C%20soft%20lighting%2C%20medium-shot%20eye-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=3449257&nologo=true&private=true",
       shotSize: "medium-shot",
       cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
     {
-      id: "cma5k37g8000fnn0quxwgxepi",
+      id: "cma9gz5ic000mnn331mrbi2h3",
+      number: 2,
+      start: 3832,
+      end: 6860,
+      motionTemplateId: "pan-left-right-zoom-out",
+      imagePrompt:
+        "Person standing on a mountaintop, back to the camera, vast landscape stretching before them, sunlight breaking through clouds, wide-shot low-angle, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/Person%20standing%20on%20a%20mountaintop%2C%20back%20to%20the%20camera%2C%20vast%20landscape%20stretching%20before%20them%2C%20sunlight%20breaking%20through%20clouds%2C%20wide-shot%20low-angle%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=4326846&nologo=true&private=true",
+      shotSize: "wide-shot",
+      cameraAngle: "low-angle",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz607000tnn33xebyawik",
+      number: 3,
+      start: 7200,
+      end: 10696,
+      motionTemplateId: "pull-out",
+      imagePrompt:
+        "A person cautiously walking on a thin beam over a chasm, fog below, tension in their posture, medium-shot high-angle, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/A%20person%20cautiously%20walking%20on%20a%20thin%20beam%20over%20a%20chasm%2C%20fog%20below%2C%20tension%20in%20their%20posture%2C%20medium-shot%20high-angle%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=2986464&nologo=true&private=true",
+      shotSize: "medium-shot",
+      cameraAngle: "high-angle",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz3eb000fnn33jotcpt51",
       number: 4,
       start: 10728,
-      end: 14296,
-      motionTemplateId: "enter-slide-top-down-exit-left",
+      end: 14088,
+      motionTemplateId: "pan-left-right-zoom-out",
       imagePrompt:
-        "A blacksmith forging a sword in a fiery furnace, sparks flying as they hammer the metal, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
+        "Open book with faint glowing pages, a candle illuminating the scene, ancient library in the background, close-up eye-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
       imageUrl:
-        "https://image.pollinations.ai/prompt/A%20blacksmith%20forging%20a%20sword%20in%20a%20fiery%20furnace%2C%20sparks%20flying%20as%20they%20hammer%20the%20metal%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=4924050&nologo=true&private=true",
-      shotSize: "medium-shot",
+        "https://image.pollinations.ai/prompt/Open%20book%20with%20faint%20glowing%20pages%2C%20a%20candle%20illuminating%20the%20scene%2C%20ancient%20library%20in%20the%20background%2C%20close-up%20eye-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=3376614&nologo=true&private=true",
+      shotSize: "close-up",
       cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
     {
-      id: "cma5k37gf000gnn0qplpo033s",
+      id: "cma9gz3ee000hnn33pbi7lfya",
       number: 5,
-      start: 14328,
-      end: 18200,
+      start: 14184,
+      end: 17656,
+      motionTemplateId: "pan-top-down-zoom-out",
+      imagePrompt:
+        "A dark abyss with swirling shadows, faint light at the bottom, creating a sense of foreboding, extreme-wide-shot overhead-shot, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/A%20dark%20abyss%20with%20swirling%20shadows%2C%20faint%20light%20at%20the%20bottom%2C%20creating%20a%20sense%20of%20foreboding%2C%20extreme-wide-shot%20overhead-shot%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=758894&nologo=true&private=true",
+      shotSize: "extreme-wide-shot",
+      cameraAngle: "overhead-shot",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz68s000xnn339emxbwnz",
+      number: 6,
+      start: 17848,
+      end: 20620,
+      motionTemplateId: "zoom-out-pull-out",
+      imagePrompt:
+        "Hand tightly gripping a thorny vine, blood trickling down, contrast between fragility and resilience, close-up low-angle, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/Hand%20tightly%20gripping%20a%20thorny%20vine%2C%20blood%20trickling%20down%2C%20contrast%20between%20fragility%20and%20resilience%2C%20close-up%20low-angle%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=6808546&nologo=true&private=true",
+      shotSize: "close-up",
+      cameraAngle: "low-angle",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz3ef000jnn33s5rfp247",
+      number: 7,
+      start: 21040,
+      end: 24408,
+      motionTemplateId: "pan-left-right-zoom-in",
+      imagePrompt:
+        "A shadowy figure whispering into someone's ear, ominous atmosphere, dramatic lighting, medium-close-up shoulder-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/A%20shadowy%20figure%20whispering%20into%20someone's%20ear%2C%20ominous%20atmosphere%2C%20dramatic%20lighting%2C%20medium-close-up%20shoulder-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=7907192&nologo=true&private=true",
+      shotSize: "medium-close-up",
+      cameraAngle: "shoulder-level",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz3eg000lnn331wds53cn",
+      number: 8,
+      start: 24464,
+      end: 27858,
+      motionTemplateId: "pan-right-left-zoom-out",
+      imagePrompt:
+        "Burning ritual, flames consuming worldly possessions, intense heat radiating, medium-shot ground-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/Burning%20ritual%2C%20flames%20consuming%20worldly%20possessions%2C%20intense%20heat%20radiating%2C%20medium-shot%20ground-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=4179173&nologo=true&private=true",
+      shotSize: "medium-shot",
+      cameraAngle: "ground-level",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz3eg000knn330nw527i3",
+      number: 9,
+      start: 28034,
+      end: 31150,
+      motionTemplateId: "pan-bottom-up-zoom-out",
+      imagePrompt:
+        "Opulent penthouse overlooking a city, but the room is dark and empty, contrast between wealth and loneliness, wide-shot high-angle, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/Opulent%20penthouse%20overlooking%20a%20city%2C%20but%20the%20room%20is%20dark%20and%20empty%2C%20contrast%20between%20wealth%20and%20loneliness%2C%20wide-shot%20high-angle%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=7700916&nologo=true&private=true",
+      shotSize: "wide-shot",
+      cameraAngle: "high-angle",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz67c000wnn3334p3cpkd",
+      number: 10,
+      start: 31610,
+      end: 35426,
+      motionTemplateId: "enter-slide-top-down-exit-left",
+      imagePrompt:
+        "A person reaching for a shining object that fades upon touch, leaving them empty handed, medium-shot eye-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/A%20person%20reaching%20for%20a%20shining%20object%20that%20fades%20upon%20touch%2C%20leaving%20them%20empty%20handed%2C%20medium-shot%20eye-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=5167692&nologo=true&private=true",
+      shotSize: "medium-shot",
+      cameraAngle: "eye-level",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz37g000cnn339qs98xlw",
+      number: 11,
+      start: 35618,
+      end: 39762,
+      motionTemplateId: "scale-down-fade",
+      imagePrompt:
+        "A luxurious penthouse engulfed in flames, silhouette of a figure watching it burn, dramatic lighting, wide-shot low-angle, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/A%20luxurious%20penthouse%20engulfed%20in%20flames%2C%20silhouette%20of%20a%20figure%20watching%20it%20burn%2C%20dramatic%20lighting%2C%20wide-shot%20low-angle%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=2998173&nologo=true&private=true",
+      shotSize: "wide-shot",
+      cameraAngle: "low-angle",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz378000ann33hejq37a9",
+      number: 12,
+      start: 39826,
+      end: 43218,
+      motionTemplateId: "scale-down-up",
+      imagePrompt:
+        "A heap of ashes with a single diamond sparkling amidst them, contrast between loss and enduring beauty, close-up eye-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/A%20heap%20of%20ashes%20with%20a%20single%20diamond%20sparkling%20amidst%20them%2C%20contrast%20between%20loss%20and%20enduring%20beauty%2C%20close-up%20eye-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=3666679&nologo=true&private=true",
+      shotSize: "close-up",
+      cameraAngle: "eye-level",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz61f000vnn330nh6xh62",
+      number: 13,
+      start: 43314,
+      end: 46550,
+      motionTemplateId: "zoom-out-pull-out",
+      imagePrompt:
+        "Figure standing in a field of tall grass, looking towards a bright horizon, peaceful yet resolute, medium-wide-shot eye-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/Figure%20standing%20in%20a%20field%20of%20tall%20grass%2C%20looking%20towards%20a%20bright%20horizon%2C%20peaceful%20yet%20resolute%2C%20medium-wide-shot%20eye-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=2764344&nologo=true&private=true",
+      shotSize: "medium-wide-shot",
+      cameraAngle: "eye-level",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz2z00007nn3383xydzdy",
+      number: 14,
+      start: 47050,
+      end: 50824,
+      motionTemplateId: "pan-left-right-zoom-in",
+      imagePrompt:
+        "Close-up of a clenched fist gradually opening, revealing a small, fragile flower, symbolic of resilience, close-up ground-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/Close-up%20of%20a%20clenched%20fist%20gradually%20opening%2C%20revealing%20a%20small%2C%20fragile%20flower%2C%20symbolic%20of%20resilience%2C%20close-up%20ground-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=9645057&nologo=true&private=true",
+      shotSize: "close-up",
+      cameraAngle: "ground-level",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz5va000rnn33tnd7yobc",
+      number: 15,
+      start: 51002,
+      end: 55040,
+      motionTemplateId: "pan-right-left-zoom-out",
+      imagePrompt:
+        "A lone figure wandering through a desolate landscape, wind blowing, a sense of searching and hardship, wide-shot hip-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/A%20lone%20figure%20wandering%20through%20a%20desolate%20landscape%2C%20wind%20blowing%2C%20a%20sense%20of%20searching%20and%20hardship%2C%20wide-shot%20hip-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=2833561&nologo=true&private=true",
+      shotSize: "wide-shot",
+      cameraAngle: "hip-level",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz5nm000onn33yaoj4io6",
+      number: 16,
+      start: 55380,
+      end: 59360,
+      motionTemplateId: "pan-bottom-up-zoom-in",
+      imagePrompt:
+        "Zen monk meditating under a waterfall, serene yet powerful scene, sunlight filtering through trees, medium-shot low-angle, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/Zen%20monk%20meditating%20under%20a%20waterfall%2C%20serene%20yet%20powerful%20scene%2C%20sunlight%20filtering%20through%20trees%2C%20medium-shot%20low-angle%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=8522467&nologo=true&private=true",
+      shotSize: "medium-shot",
+      cameraAngle: "low-angle",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz37g000enn33a0wu22gg",
+      number: 17,
+      start: 59780,
+      end: 63500,
       motionTemplateId: "pull-out",
       imagePrompt:
-        "A group of determined athletes pushing through a grueling workout, sweat dripping and muscles straining, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
+        "Empty meditation mat in a quiet room, sunlight streaming through the window, feeling of absence, medium-shot eye-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
       imageUrl:
-        "https://image.pollinations.ai/prompt/A%20group%20of%20determined%20athletes%20pushing%20through%20a%20grueling%20workout%2C%20sweat%20dripping%20and%20muscles%20straining%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=3802106&nologo=true&private=true",
+        "https://image.pollinations.ai/prompt/Empty%20meditation%20mat%20in%20a%20quiet%20room%2C%20sunlight%20streaming%20through%20the%20window%2C%20feeling%20of%20absence%2C%20medium-shot%20eye-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=9402731&nologo=true&private=true",
       shotSize: "medium-shot",
       cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
     {
-      id: "cma5k39980011nn0qt6abfnat",
-      number: 6,
-      start: 18240,
-      end: 21368,
-      motionTemplateId: "scale-down-up",
+      id: "cma9gz5vy000snn334m27uao4",
+      number: 18,
+      start: 63540,
+      end: 67548,
+      motionTemplateId: "pan-right-left-zoom-in",
       imagePrompt:
-        "Two contrasting paths diverging in a forest, one overgrown and the other well-worn, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
+        "Ornate brothel interior, dimly lit, chaotic energy, mix of sadness and pleasure, medium-shot dutch-angle, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
       imageUrl:
-        "https://image.pollinations.ai/prompt/Two%20contrasting%20paths%20diverging%20in%20a%20forest%2C%20one%20overgrown%20and%20the%20other%20well-worn%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=5998124&nologo=true&private=true",
+        "https://image.pollinations.ai/prompt/Ornate%20brothel%20interior%2C%20dimly%20lit%2C%20chaotic%20energy%2C%20mix%20of%20sadness%20and%20pleasure%2C%20medium-shot%20dutch-angle%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=4538944&nologo=true&private=true",
+      shotSize: "medium-shot",
+      cameraAngle: "dutch-angle",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz1ug0004nn33kwkahl1x",
+      number: 19,
+      start: 67564,
+      end: 72156,
+      motionTemplateId: "zoom-out-pull-out",
+      imagePrompt:
+        "Face etched with lines of suffering and wisdom, eyes filled with understanding, close-up eye-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/Face%20etched%20with%20lines%20of%20suffering%20and%20wisdom%2C%20eyes%20filled%20with%20understanding%2C%20close-up%20eye-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=563081&nologo=true&private=true",
+      shotSize: "close-up",
+      cameraAngle: "eye-level",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz5of000pnn33r05sksx0",
+      number: 20,
+      start: 72348,
+      end: 75372,
+      motionTemplateId: "scale-down-fade",
+      imagePrompt:
+        "Close-up of blood dripping onto the earth, signifying sacrifice and raw reality, extreme-close-up ground-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/Close-up%20of%20blood%20dripping%20onto%20the%20earth%2C%20signifying%20sacrifice%20and%20raw%20reality%2C%20extreme-close-up%20ground-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=905272&nologo=true&private=true",
+      shotSize: "extreme-close-up",
+      cameraAngle: "ground-level",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz2z00008nn33ofkfol6s",
+      number: 21,
+      start: 75396,
+      end: 78656,
+      motionTemplateId: "pan-left-right-zoom-out",
+      imagePrompt:
+        "Two roads diverging in a forest, one bright and clear, the other dark and overgrown, creating a sense of choice, wide-shot eye-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/Two%20roads%20diverging%20in%20a%20forest%2C%20one%20bright%20and%20clear%2C%20the%20other%20dark%20and%20overgrown%2C%20creating%20a%20sense%20of%20choice%2C%20wide-shot%20eye-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=7870747&nologo=true&private=true",
       shotSize: "wide-shot",
       cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
     {
-      id: "cma5k38jn000mnn0qh26k747e",
-      number: 7,
-      start: 21504,
-      end: 24872,
-      motionTemplateId: "enter-slide-top-down-exit-left",
+      id: "cma9gz5ng000nnn3398akhy0v",
+      number: 22,
+      start: 78728,
+      end: 82480,
+      motionTemplateId: "pull-out",
       imagePrompt:
-        "A businessman in a suit walking on a tightrope, balancing precariously high above the ground, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
+        "King stripped of his royal garments, crown discarded, conveying vulnerability, medium-shot high-angle, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
       imageUrl:
-        "https://image.pollinations.ai/prompt/A%20businessman%20in%20a%20suit%20walking%20on%20a%20tightrope%2C%20balancing%20precariously%20high%20above%20the%20ground%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=5331617&nologo=true&private=true",
+        "https://image.pollinations.ai/prompt/King%20stripped%20of%20his%20royal%20garments%2C%20crown%20discarded%2C%20conveying%20vulnerability%2C%20medium-shot%20high-angle%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=5409802&nologo=true&private=true",
       shotSize: "medium-shot",
-      cameraAngle: "low-angle",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+      cameraAngle: "high-angle",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
     {
-      id: "cma5k37a80009nn0qr7e9djt7",
-      number: 8,
-      start: 24896,
-      end: 28866,
-      motionTemplateId: "scale-down-fade",
+      id: "cma9gz2z00006nn33e5du4gi4",
+      number: 23,
+      start: 82560,
+      end: 86416,
+      motionTemplateId: "pan-bottom-up-zoom-in",
       imagePrompt:
-        "A close-up of a brain with gears and cogs turning slowly, symbolizing procrastination, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
+        "King kneeling in mud, head bowed, hands clasped in prayer, humility and surrender, medium-shot eye-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
       imageUrl:
-        "https://image.pollinations.ai/prompt/A%20close-up%20of%20a%20brain%20with%20gears%20and%20cogs%20turning%20slowly%2C%20symbolizing%20procrastination%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=1846020&nologo=true&private=true",
-      shotSize: "close-up",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k38xf000rnn0qepqjmjrz",
-      number: 9,
-      start: 28978,
-      end: 32866,
-      motionTemplateId: "enter-slide-top-down-exit-left",
-      imagePrompt:
-        "A sculptor chipping away at a large stone block, revealing a hidden figure inside, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20sculptor%20chipping%20away%20at%20a%20large%20stone%20block%2C%20revealing%20a%20hidden%20figure%20inside%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=7188617&nologo=true&private=true",
+        "https://image.pollinations.ai/prompt/King%20kneeling%20in%20mud%2C%20head%20bowed%2C%20hands%20clasped%20in%20prayer%2C%20humility%20and%20surrender%2C%20medium-shot%20eye-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=8939082&nologo=true&private=true",
       shotSize: "medium-shot",
       cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
     {
-      id: "cma5k39jj0014nn0qr2aigw9j",
-      number: 10,
-      start: 32978,
-      end: 36914,
-      motionTemplateId: "scale-down-fade",
+      id: "cma9gz2z00009nn33k7fvizth",
+      number: 24,
+      start: 86608,
+      end: 90624,
+      motionTemplateId: "pan-top-down-zoom-in",
       imagePrompt:
-        "A clock with its hands frozen, surrounded by swirling sand, time slipping away, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
+        "Empty throne room, vast and echoing, suggesting relinquishment of power, wide-shot overhead-shot, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
       imageUrl:
-        "https://image.pollinations.ai/prompt/A%20clock%20with%20its%20hands%20frozen%2C%20surrounded%20by%20swirling%20sand%2C%20time%20slipping%20away%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=8512263&nologo=true&private=true",
-      shotSize: "close-up",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k37b1000cnn0qi5l9qxm2",
-      number: 11,
-      start: 36962,
-      end: 40706,
-      motionTemplateId: "scale-down-up",
-      imagePrompt:
-        "A person struggling to climb a steep hill covered in thick mud, representing inertia, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20person%20struggling%20to%20climb%20a%20steep%20hill%20covered%20in%20thick%20mud%2C%20representing%20inertia%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=1616400&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "low-angle",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k374i0007nn0qo08shqhn",
-      number: 12,
-      start: 40738,
-      end: 45042,
-      motionTemplateId: "enter-slide-top-down-exit-left",
-      imagePrompt:
-        "A domino effect with a series of tiles falling in rapid succession, symbolizing momentum, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20domino%20effect%20with%20a%20series%20of%20tiles%20falling%20in%20rapid%20succession%2C%20symbolizing%20momentum%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=6578040&nologo=true&private=true",
+        "https://image.pollinations.ai/prompt/Empty%20throne%20room%2C%20vast%20and%20echoing%2C%20suggesting%20relinquishment%20of%20power%2C%20wide-shot%20overhead-shot%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=8574486&nologo=true&private=true",
       shotSize: "wide-shot",
       cameraAngle: "overhead-shot",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
     {
-      id: "cma5k39g50013nn0q74p4cmbu",
-      number: 13,
-      start: 45186,
-      end: 48578,
-      motionTemplateId: "pull-out",
-      imagePrompt:
-        "A person frozen in place, their body encased in ice, fear consuming them, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20person%20frozen%20in%20place%2C%20their%20body%20encased%20in%20ice%2C%20fear%20consuming%20them%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=7556996&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k39aq0012nn0ql36c09hi",
-      number: 14,
-      start: 48634,
-      end: 51842,
-      motionTemplateId: "scale-down-up",
-      imagePrompt:
-        "A young woman sitting in front of a computer, overwhelmed by lines of code, feeling lost and insecure, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20young%20woman%20sitting%20in%20front%20of%20a%20computer%2C%20overwhelmed%20by%20lines%20of%20code%2C%20feeling%20lost%20and%20insecure%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=6269987&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k37gn000jnn0q075ya6dm",
-      number: 15,
-      start: 51906,
-      end: 55124,
-      motionTemplateId: "enter-slide-top-down-exit-left",
-      imagePrompt:
-        "A determined programmer typing furiously on a keyboard, focused on the screen, ignoring distractions, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20determined%20programmer%20typing%20furiously%20on%20a%20keyboard%2C%20focused%20on%20the%20screen%2C%20ignoring%20distractions%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=4322399&nologo=true&private=true",
-      shotSize: "close-up",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k374h0005nn0qu5p86bf5",
-      number: 16,
-      start: 55172,
-      end: 58724,
+      id: "cma9gz2yo0005nn33qqeeq5xa",
+      number: 25,
+      start: 90672,
+      end: 94592,
       motionTemplateId: "scale-down-fade",
       imagePrompt:
-        "A single line of code appearing on a screen, glowing brightly in the darkness, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
+        "A single lit candle in the darkness, representing inner strength, close-up low-angle, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
       imageUrl:
-        "https://image.pollinations.ai/prompt/A%20single%20line%20of%20code%20appearing%20on%20a%20screen%2C%20glowing%20brightly%20in%20the%20darkness%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=868097&nologo=true&private=true",
+        "https://image.pollinations.ai/prompt/A%20single%20lit%20candle%20in%20the%20darkness%2C%20representing%20inner%20strength%2C%20close-up%20low-angle%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=696969&nologo=true&private=true",
+      shotSize: "close-up",
+      cameraAngle: "low-angle",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz37g000bnn33czb0i2ee",
+      number: 26,
+      start: 94696,
+      end: 99140,
+      motionTemplateId: "pan-left-right-zoom-in",
+      imagePrompt:
+        "Person bowing deeply before a starlit sky, reverent gesture, awe-inspiring scene, medium-shot ground-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/Person%20bowing%20deeply%20before%20a%20starlit%20sky%2C%20reverent%20gesture%2C%20awe-inspiring%20scene%2C%20medium-shot%20ground-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=7064679&nologo=true&private=true",
+      shotSize: "medium-shot",
+      cameraAngle: "ground-level",
+      videoId: "cma9gujpu0000nn33ock9hari",
+    },
+    {
+      id: "cma9gz5ot000qnn331pljkh4v",
+      number: 27,
+      start: 99560,
+      end: 102900,
+      motionTemplateId: "pull-out",
+      imagePrompt:
+        "Mouth clamped shut, lips sealed, symbolizing silence and control, extreme-close-up eye-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
+      imageUrl:
+        "https://image.pollinations.ai/prompt/Mouth%20clamped%20shut%2C%20lips%20sealed%2C%20symbolizing%20silence%20and%20control%2C%20extreme-close-up%20eye-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=7834526&nologo=true&private=true",
       shotSize: "extreme-close-up",
       cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
     {
-      id: "cma5k394z000znn0q49izyefb",
-      number: 17,
-      start: 58892,
-      end: 62660,
-      motionTemplateId: "enter-slide-top-down-exit-left",
-      imagePrompt:
-        "A mobile app icon launching into the sky like a rocket, symbolizing success and achievement, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20mobile%20app%20icon%20launching%20into%20the%20sky%20like%20a%20rocket%2C%20symbolizing%20success%20and%20achievement%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=3401158&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "low-angle",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k37gv000knn0q0c8zja2m",
-      number: 18,
-      start: 62780,
-      end: 65892,
-      motionTemplateId: "scale-down-fade",
-      imagePrompt:
-        "A person standing at the edge of a cliff, contemplating a jump, feeling hesitant and afraid, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20person%20standing%20at%20the%20edge%20of%20a%20cliff%2C%20contemplating%20a%20jump%2C%20feeling%20hesitant%20and%20afraid%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=3830228&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k3905000wnn0qk4610igv",
-      number: 19,
-      start: 65956,
-      end: 69124,
-      motionTemplateId: "scale-down-up",
-      imagePrompt:
-        "A warrior charging into battle, sword raised high, fearlessly attacking the enemy, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20warrior%20charging%20into%20battle%2C%20sword%20raised%20high%2C%20fearlessly%20attacking%20the%20enemy%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=1822384&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "low-angle",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k38oe000nnn0qr8x8q582",
-      number: 20,
-      start: 69212,
-      end: 72676,
-      motionTemplateId: "enter-slide-top-down-exit-left",
-      imagePrompt:
-        "A person standing at the top of a mountain, planting a flag, celebrating a hard-fought victory, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20person%20standing%20at%20the%20top%20of%20a%20mountain%2C%20planting%20a%20flag%2C%20celebrating%20a%20hard-fought%20victory%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=8647035&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "low-angle",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k38xw000unn0q0jczn57j",
-      number: 21,
-      start: 72708,
-      end: 75748,
-      motionTemplateId: "pull-out",
-      imagePrompt:
-        "A person looking in the mirror, seeing a stronger, more confident version of themselves, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20person%20looking%20in%20the%20mirror%2C%20seeing%20a%20stronger%2C%20more%20confident%20version%20of%20themselves%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=8482855&nologo=true&private=true",
-      shotSize: "medium-close-up",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k38qq000qnn0qo69uihxi",
-      number: 22,
-      start: 75804,
-      end: 79172,
-      motionTemplateId: "scale-down-up",
-      imagePrompt:
-        "A video game character respawning after a defeat, ready to fight again, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20video%20game%20character%20respawning%20after%20a%20defeat%2C%20ready%20to%20fight%20again%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=2806735&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k39jj0015nn0qrnl4wpeq",
-      number: 23,
-      start: 79196,
-      end: 81732,
-      motionTemplateId: "enter-slide-top-down-exit-left",
-      imagePrompt:
-        "A person standing alone on a stage, being booed by a crowd, feeling humiliated and rejected, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20person%20standing%20alone%20on%20a%20stage%2C%20being%20booed%20by%20a%20crowd%2C%20feeling%20humiliated%20and%20rejected%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=3038053&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k37b1000dnn0qojqkdalo",
-      number: 24,
-      start: 81796,
-      end: 86020,
-      motionTemplateId: "scale-down-fade",
-      imagePrompt:
-        "Empty bank account statement next to an eviction notice on a desk, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/Empty%20bank%20account%20statement%20next%20to%20an%20eviction%20notice%20on%20a%20desk%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=3557603&nologo=true&private=true",
-      shotSize: "close-up",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k392b000ynn0qlcg0p1ag",
-      number: 25,
-      start: 86180,
-      end: 89812,
-      motionTemplateId: "enter-slide-top-down-exit-left",
-      imagePrompt:
-        "A wall covered in rejection letters, serving as a reminder of past failures, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20wall%20covered%20in%20rejection%20letters%2C%20serving%20as%20a%20reminder%20of%20past%20failures%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=1496136&nologo=true&private=true",
-      shotSize: "wide-shot",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k3905000xnn0qvlufonw6",
-      number: 26,
-      start: 89836,
-      end: 93332,
-      motionTemplateId: "scale-down-fade",
-      imagePrompt:
-        "A warrior displaying battle scars, each one representing a challenge overcome, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20warrior%20displaying%20battle%20scars%2C%20each%20one%20representing%20a%20challenge%20overcome%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=2778660&nologo=true&private=true",
-      shotSize: "medium-close-up",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k39980010nn0qeem11xmd",
-      number: 27,
-      start: 93436,
-      end: 97044,
-      motionTemplateId: "scale-down-up",
-      imagePrompt:
-        "A person falling down repeatedly, getting back up each time, determined to move forward, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20person%20falling%20down%20repeatedly%2C%20getting%20back%20up%20each%20time%2C%20determined%20to%20move%20forward%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=9878957&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k35sa0003nn0qv7xlu4hi",
+      id: "cma9gz3ed000gnn33d19u4ekp",
       number: 28,
-      start: 97092,
-      end: 100516,
-      motionTemplateId: "enter-slide-top-down-exit-left",
+      start: 103310,
+      end: 106998,
+      motionTemplateId: "pan-bottom-up-zoom-out",
       imagePrompt:
-        "A badge of honor pinned to a soldier's chest, symbolizing courage and resilience, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
+        "Figure ascending a staircase towards a blinding light, hopeful journey, medium-shot low-angle, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
       imageUrl:
-        "https://image.pollinations.ai/prompt/A%20badge%20of%20honor%20pinned%20to%20a%20soldier's%20chest%2C%20symbolizing%20courage%20and%20resilience%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=4916415&nologo=true&private=true",
-      shotSize: "close-up",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k37b8000enn0qq63k5ypt",
-      number: 29,
-      start: 100548,
-      end: 103892,
-      motionTemplateId: "pull-out",
-      imagePrompt:
-        "A person shrinking under the weight of a giant shadow, feeling small and insignificant, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20person%20shrinking%20under%20the%20weight%20of%20a%20giant%20shadow%2C%20feeling%20small%20and%20insignificant%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=4403079&nologo=true&private=true",
+        "https://image.pollinations.ai/prompt/Figure%20ascending%20a%20staircase%20towards%20a%20blinding%20light%2C%20hopeful%20journey%2C%20medium-shot%20low-angle%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=4694961&nologo=true&private=true",
       shotSize: "medium-shot",
-      cameraAngle: "high-angle",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+      cameraAngle: "low-angle",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
     {
-      id: "cma5k37b1000bnn0q40wezs9k",
-      number: 30,
-      start: 104036,
-      end: 107314,
-      motionTemplateId: "scale-down-up",
+      id: "cma9gz61f000unn33osn95rvx",
+      number: 29,
+      start: 107174,
+      end: 110570,
+      motionTemplateId: "pan-right-left-zoom-in",
       imagePrompt:
-        "A dark, shadowy figure consuming a person from the inside out, representing internalized doubt, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
+        "Sword being forged in fire, sparks flying, intense heat and creation, medium-close-up eye-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
       imageUrl:
-        "https://image.pollinations.ai/prompt/A%20dark%2C%20shadowy%20figure%20consuming%20a%20person%20from%20the%20inside%20out%2C%20representing%20internalized%20doubt%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=8768140&nologo=true&private=true",
+        "https://image.pollinations.ai/prompt/Sword%20being%20forged%20in%20fire%2C%20sparks%20flying%2C%20intense%20heat%20and%20creation%2C%20medium-close-up%20eye-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=5401229&nologo=true&private=true",
       shotSize: "medium-close-up",
       cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
     {
-      id: "cma5k37gh000hnn0qmhvg80uk",
-      number: 31,
-      start: 107442,
-      end: 110882,
-      motionTemplateId: "enter-slide-top-down-exit-left",
-      imagePrompt:
-        "A person screaming at the top of their lungs, releasing pent-up frustration and energy, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20person%20screaming%20at%20the%20top%20of%20their%20lungs%2C%20releasing%20pent-up%20frustration%20and%20energy%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=6634925&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "low-angle",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k38za000vnn0qzy233x2b",
-      number: 32,
-      start: 110906,
-      end: 114722,
+      id: "cma9gz37g000dnn33h5bv8c47",
+      number: 30,
+      start: 110990,
+      end: 113670,
       motionTemplateId: "scale-down-fade",
       imagePrompt:
-        "A group of people roaring with excitement before entering a stadium, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
+        "Mirror reflecting a peaceful, confident face, inner transformation, close-up eye-level, cyberpunk, futuristic, neon colors, dark atmosphere, highly detailed, neon lights, urban, dystopian, high-tech, low-life",
       imageUrl:
-        "https://image.pollinations.ai/prompt/A%20group%20of%20people%20roaring%20with%20excitement%20before%20entering%20a%20stadium%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=101731&nologo=true&private=true",
-      shotSize: "wide-shot",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k374i0006nn0q4fg3589d",
-      number: 33,
-      start: 114866,
-      end: 118610,
-      motionTemplateId: "enter-slide-top-down-exit-left",
-      imagePrompt:
-        "A person meditating, visualizing a clear path to success, feeling empowered and focused, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20person%20meditating%2C%20visualizing%20a%20clear%20path%20to%20success%2C%20feeling%20empowered%20and%20focused%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=2387452&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k374i0008nn0qejj1l4ne",
-      number: 34,
-      start: 118650,
-      end: 122338,
-      motionTemplateId: "scale-down-fade",
-      imagePrompt:
-        "Brain scans highlighting neural pathways firing rapidly, symbolizing rewiring the mind, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/Brain%20scans%20highlighting%20neural%20pathways%20firing%20rapidly%2C%20symbolizing%20rewiring%20the%20mind%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=7651385&nologo=true&private=true",
+        "https://image.pollinations.ai/prompt/Mirror%20reflecting%20a%20peaceful%2C%20confident%20face%2C%20inner%20transformation%2C%20close-up%20eye-level%2C%20cyberpunk%2C%20futuristic%2C%20neon%20colors%2C%20dark%20atmosphere%2C%20highly%20detailed%2C%20neon%20lights%2C%20urban%2C%20dystopian%2C%20high-tech%2C%20low-life?width=720&height=540&seed=2891238&nologo=true&private=true",
       shotSize: "close-up",
       cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k385e000lnn0qaxoi900a",
-      number: 35,
-      start: 122394,
-      end: 126066,
-      motionTemplateId: "scale-down-up",
-      imagePrompt:
-        "A gladiator entering an arena, craving the challenge and the roar of the crowd, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20gladiator%20entering%20an%20arena%2C%20craving%20the%20challenge%20and%20the%20roar%20of%20the%20crowd%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=8227736&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "low-angle",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k38pg000pnn0qvb0z8gtb",
-      number: 36,
-      start: 126178,
-      end: 129986,
-      motionTemplateId: "enter-slide-top-down-exit-left",
-      imagePrompt:
-        "A lone wolf hunting in the wilderness, driven by instinct and a thirst for greatness, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20lone%20wolf%20hunting%20in%20the%20wilderness%2C%20driven%20by%20instinct%20and%20a%20thirst%20for%20greatness%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=2465004&nologo=true&private=true",
-      shotSize: "wide-shot",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k37ax000ann0qsh8dg8vq",
-      number: 37,
-      start: 130018,
-      end: 133462,
-      motionTemplateId: "pull-out",
-      imagePrompt:
-        "A caterpillar transforming into a butterfly, emerging from its cocoon, embracing change, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20caterpillar%20transforming%20into%20a%20butterfly%2C%20emerging%20from%20its%20cocoon%2C%20embracing%20change%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=8251128&nologo=true&private=true",
-      shotSize: "close-up",
-      cameraAngle: "eye-level",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k38xv000snn0qmoaykiir",
-      number: 38,
-      start: 133486,
-      end: 137478,
-      motionTemplateId: "scale-down-up",
-      imagePrompt:
-        "A person cowering in fear, hiding in the shadows, avoiding confrontation, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20person%20cowering%20in%20fear%2C%20hiding%20in%20the%20shadows%2C%20avoiding%20confrontation%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=8302229&nologo=true&private=true",
-      shotSize: "medium-shot",
-      cameraAngle: "high-angle",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
-    },
-    {
-      id: "cma5k38oe000onn0qtkqxp84i",
-      number: 39,
-      start: 137534,
-      end: 141030,
-      motionTemplateId: "enter-slide-top-down-exit-left",
-      imagePrompt:
-        "A volcano erupting, spewing lava and ash, representing raw power and unstoppable force, cinematic look:1.4, soothing tones, insane details, intricate details, hyperdetailed, low contrast, soft cinematic light, dim colors, exposure blend, hdr, faded, slate gray atmosphere",
-      imageUrl:
-        "https://image.pollinations.ai/prompt/A%20volcano%20erupting%2C%20spewing%20lava%20and%20ash%2C%20representing%20raw%20power%20and%20unstoppable%20force%2C%20cinematic%20look%3A1.4%2C%20soothing%20tones%2C%20insane%20details%2C%20intricate%20details%2C%20hyperdetailed%2C%20low%20contrast%2C%20soft%20cinematic%20light%2C%20dim%20colors%2C%20exposure%20blend%2C%20hdr%2C%20faded%2C%20slate%20gray%20atmosphere?width=720&height=540&seed=3375882&nologo=true&private=true",
-      shotSize: "wide-shot",
-      cameraAngle: "low-angle",
-      videoId: "cma5k10cv0000nn0qs9oisu5i",
+      videoId: "cma9gujpu0000nn33ock9hari",
     },
   ],
 };

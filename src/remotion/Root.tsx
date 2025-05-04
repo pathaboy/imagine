@@ -6,8 +6,9 @@ import {
   delayRender,
 } from "remotion";
 import "../app/globals.css";
-import { FourByThreeVideo } from "./video-templates/four-by-three";
+import { SixteenByNineVideo } from "./video-templates/sixteen-by-nine";
 import { demoVideo } from "../lib/data";
+import { FullScreenVideo } from "./video-templates/full-screen";
 
 export const RemotionRoot: React.FC = () => {
   const videoId = demoVideo.id;
@@ -27,7 +28,7 @@ export const RemotionRoot: React.FC = () => {
   return (
     <Composition
       id="MyComp"
-      component={FourByThreeVideo}
+      component={SixteenByNineVideo}
       defaultProps={{
         audioUrl: demoVideo.voiceOver[0].audioUrl,
         bgmUrl: demoVideo.bgm.bgmUrl,
@@ -70,8 +71,8 @@ export const RemotionRoot: React.FC = () => {
       //     },
       //   };
       // }}
-      width={demoVideo.aspectRatio.width}
-      height={demoVideo.aspectRatio.height}
+      width={1280}
+      height={720}
       fps={demoVideo.fps || 30}
     />
   );

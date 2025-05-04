@@ -11,9 +11,9 @@ export const generateAudioFromScript = async (script: string, voiceId: string, u
     const cleanedScript = cleanText(script)
     const edge = new EdgeTTS()
     await edge.synthesize(cleanedScript, voiceId || "en-TZ-ImaniNeural", {
-      rate: '0%',      
-      volume: '0%',    
-      pitch: '-3Hz'
+      rate: '15%',      
+      volume: '100%',    
+      pitch: '10Hz'
     })
     const base64Audio = edge.toBase64()
     const audio = Buffer.from(base64Audio, "base64url")

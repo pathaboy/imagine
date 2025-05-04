@@ -4,13 +4,14 @@ import { getFormattedSubs, subs } from "../../lib/data";
 import { useEffect, useMemo, useState } from "react";
 import { AbsoluteFill } from "remotion";
 
+export type CaptionsType = {
+  currentTimeInMs: number;
+  captions: string;
+};
 export const CaptionStyleTwo = ({
   currentTimeInMs,
   captions,
-}: {
-  currentTimeInMs: number;
-  captions: string;
-}) => {
+}: CaptionsType) => {
   const transcribedWords = JSON.parse(captions);
   const formattedSubs = useMemo(
     () => getFormattedSubs(transcribedWords),

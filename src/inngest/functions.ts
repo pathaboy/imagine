@@ -13,16 +13,11 @@ export const GenerateTextToVideoData = inngest.createFunction(
   async ({ event, step }) => {
     const {userId, voiceId, videoId,  style, script} = event?.data
 
-    const audioUrl = await step.run("generate-audio-and-trancription", async () => {
-      const audioUrl = await generateAudioFromScript(script, voiceId, userId, videoId)
-      return audioUrl
-    })
-
     const transcriptionId = await step.run("generate-audio-and-trancription", async () => {
+      const audioUrl = await generateAudioFromScript(script, voiceId, userId, videoId)
       const transcriptId = await transcribeAudio(audioUrl, videoId)
       return transcriptId
     })
-
 
     const imagePrompts = await step.run("generate-image-prompts", async () => {
       const prompts = await generateImagePrompts(transcriptionId, style)
@@ -61,11 +56,11 @@ export const GenerateTextToVideoData = inngest.createFunction(
                   start: item.start,
                   end: item.end,
                   number: index + 1,
-                  motionTemplateId: `${motionTemplatesName.name}`,
+                  motionTemplateId: `${item.cameraMotion || motionTemplatesName.name}`,
                   imagePrompt: item.imagePrompt,
                   imageUrl: imageSourceurl,
                   shotSize: item.shotSize,
-                  cameraAngle: item.cameraAngle
+                  cameraAngle: item.cameraAngle,
                 }
               }}})
               return imageSourceurl
@@ -141,7 +136,7 @@ export const GenerateAudioToVideoData = inngest.createFunction(
                   start: item.start,
                   end: item.end,
                   number: index + 1,
-                  motionTemplateId: `${motionTemplatesName.name}`,
+                  motionTemplateId: `${item.cameraMotion || motionTemplatesName.name}`,
                   imagePrompt: item.imagePrompt,
                   imageUrl: imageSourceurl,
                   shotSize : item.shotSize,

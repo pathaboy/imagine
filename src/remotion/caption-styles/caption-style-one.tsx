@@ -1,28 +1,21 @@
 "use client";
 import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
 import { useMemo } from "react";
+import { CaptionsType } from "./caption-style.two";
+import { getFormattedSubs } from "../../lib/data";
 
-export interface Caption {
-  start: number;
-  end: number;
-  narration: string;
-}
-
-interface CaptionStyleProps {
-  captions: Caption[];
-}
-
-export const CaptionStyleOne = ({ captions }: CaptionStyleProps) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-
-  const caption = useMemo(() => {
-    return captions.find((item) => {
-      const startFrame = item.start * fps;
-      const endFrame = item.end * fps;
-      return frame >= startFrame && frame <= endFrame;
-    });
-  }, [captions, frame, fps]);
+export const CaptionStyleOne = ({
+  captions,
+  currentTimeInMs,
+}: CaptionsType) => {
+  const transcribedWords = JSON.parse(captions);
+  const formattedSubs = useMemo(
+    () => getFormattedSubs(transcribedWords),
+    [transcribedWords]
+  );
+  const textSegment = formattedSubs.find((item, index) => {
+    return item.start <= currentTimeInMs && item.end >= currentTimeInMs;
+  });
 
   return (
     <AbsoluteFill>
@@ -37,25 +30,23 @@ export const CaptionStyleOne = ({ captions }: CaptionStyleProps) => {
           padding: "24px",
         }}
       >
-        {caption && (
-          <h2
-            style={{
-              maxWidth: "80%",
-              fontSize: "48px",
-              lineHeight: 1.2,
-              color: "#f5f5f5",
-              textAlign: "center",
-              fontWeight: 500,
-              fontFamily: "'Georgia', 'serif'",
-              background: "rgba(0, 0, 0, 0.6)",
-              padding: "16px 24px",
-              borderRadius: "12px",
-              boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
-            }}
-          >
-            {caption.narration}
-          </h2>
-        )}
+        <h2
+          style={{
+            maxWidth: "80%",
+            fontSize: "48px",
+            lineHeight: 1.2,
+            color: "#f5f5f5",
+            textAlign: "center",
+            fontWeight: 500,
+            fontFamily: "'Georgia', 'serif'",
+            background: "rgba(0, 0, 0, 0.6)",
+            padding: "16px 24px",
+            borderRadius: "12px",
+            boxShadow: "0 4px 12px rgba(0,0,0,0.3)",
+          }}
+        >
+          {textSegment?.subs || ""}
+        </h2>
       </div>
     </AbsoluteFill>
   );
