@@ -14,16 +14,29 @@ export const PanRightToLeftAndZoomOut = ({ imgSrc, duration }: MotionProps) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const totalFrames = Math.floor((duration / 1000) * fps);
-  const panRightLeft = interpolate(frame, [0, totalFrames / 2], [100, 50], {
+
+  const panRightLeft = interpolate(
+    frame,
+    [0, totalFrames / 2, totalFrames],
+    [100, 50, 50],
+    {
+      extrapolateRight: "clamp",
+      easing: Easing.out(Easing.exp),
+    }
+  );
+
+  const rotate = interpolate(frame, [0, totalFrames], [-10, 10], {
     extrapolateRight: "clamp",
+    easing: Easing.circle,
   });
 
   const pullOut = interpolate(
     frame,
     [0, totalFrames / 2, totalFrames],
-    [3, 3, 1],
+    [2.1, 2.1, 1.1],
     {
-      easing: Easing.in(Easing.ease),
+      easing: Easing.in(Easing.exp),
+      extrapolateRight: "clamp",
     }
   );
   return (
@@ -38,7 +51,7 @@ export const PanRightToLeftAndZoomOut = ({ imgSrc, duration }: MotionProps) => {
         style={{
           width: "100%",
           height: "100%",
-          transform: `scale(${pullOut})`,
+          transform: `scale(${pullOut}) rotate(${rotate}deg)`,
           transformOrigin: `${panRightLeft}% ${50}%`,
         }}
       />

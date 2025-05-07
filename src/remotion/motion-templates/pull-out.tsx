@@ -14,8 +14,14 @@ export const PullOut = ({ imgSrc, duration }: MotionProps) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const totalFrames = Math.floor((duration / 1000) * fps);
-  const pullout = interpolate(frame, [0, totalFrames], [3, 1.2], {
-    easing: Easing.bezier(0.68, -0.6, 0.32, 1.6),
+
+  const pullout = interpolate(frame, [0, totalFrames], [2.5, 1.5], {
+    easing: Easing.in(Easing.bounce),
+  });
+
+  const rotate = interpolate(frame, [0, totalFrames], [-10, 30], {
+    extrapolateRight: "clamp",
+    easing: Easing.in(Easing.exp),
   });
 
   return (
@@ -25,18 +31,12 @@ export const PullOut = ({ imgSrc, duration }: MotionProps) => {
         height: "100%",
       }}
     >
-      <Audio
-        src={staticFile("/audio/sfx/silence-to-whoosh.mp3")}
-        startFrom={30}
-        volume={0.3}
-      />
-
       <Img
         src={imgSrc}
         style={{
           width: "100%",
           height: "100%",
-          transform: `scale(${pullout})`,
+          transform: `scale(${pullout}) rotate(${rotate}deg)`,
         }}
       />
     </div>

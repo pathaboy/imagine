@@ -20,7 +20,7 @@ type SixteenByNineVideoProps = {
   audioUrl: string;
 };
 
-export const SixteenByNineVideo: React.FC<SixteenByNineVideoProps> = ({
+export const FourByThreeMobileVideo: React.FC<SixteenByNineVideoProps> = ({
   audioUrl,
   bgmUrl,
   captionStyle,
@@ -53,12 +53,12 @@ export const SixteenByNineVideo: React.FC<SixteenByNineVideoProps> = ({
               key={index}
               durationInFrames={durationOfSegment}
             >
-              <SixteenNineByView>
+              <FourByThreeView>
                 <item.motion.component
                   duration={item.end - item.start}
                   imgSrc={item.imageUrl}
                 />
-              </SixteenNineByView>
+              </FourByThreeView>
             </TransitionSeries.Sequence>
           );
         })}
@@ -68,7 +68,7 @@ export const SixteenByNineVideo: React.FC<SixteenByNineVideoProps> = ({
   );
 };
 
-const SixteenNineByView = ({ children }: { children: React.ReactNode }) => {
+const FourByThreeView = ({ children }: { children: React.ReactNode }) => {
   return (
     <AbsoluteFill>
       <div
@@ -83,8 +83,8 @@ const SixteenNineByView = ({ children }: { children: React.ReactNode }) => {
       >
         <div
           style={{
-            width: "80vw",
-            aspectRatio: "16/9",
+            width: "100vw",
+            aspectRatio: "4/3",
             backgroundColor: "black",
             borderRadius: "40px",
             overflow: "clip",

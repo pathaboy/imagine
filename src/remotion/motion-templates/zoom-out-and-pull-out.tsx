@@ -18,7 +18,7 @@ export const ZoomOutAndPullOut = ({ imgSrc, duration }: MotionProps) => {
   const pullOut = interpolate(
     frame,
     [0, totalFrames / 3, totalFrames / 2, totalFrames],
-    [4, 2.6, 2.5, 1],
+    [3, 2.6, 2.5, 1],
     {
       easing: Easing.in(Easing.ease),
     }

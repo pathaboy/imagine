@@ -37,12 +37,13 @@ Available shot types: ${shots.join(" | ")}
 Available framing techniques: ${cameraFramingTechniques.join(" | ")}
 Available camera angles: ${cameraAngles.join(" | ")}
 Available camera motions: ${motionTemplatesNames.map(item => item.name).join(" | ")}
-Select camera motions like a professional editor, avoiding the repetition of the same motion back-to-back.
+Select camera motions like a professional editor, avoiding the repetition of the same camera motion back-to-back.
 🎯 Ensure:
 One-to-one mapping between SRT entries and image prompts.
 No imagePrompt contains literal quotes or any textual content.
 Descriptive, vivid, cinematic, shot size, camera angle image prompts based on the scene.
 All entries must be present in the output, no loss of data.
+No repetition of the same camera motion back-to-back.
 `
 
 interface ImagePrompt {

@@ -12,24 +12,35 @@ export const ScaleDownUp = ({ imgSrc, duration }: MotionProps) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const totalFrames = Math.floor((duration / 1000) * fps);
+
   const scale = interpolate(
     frame,
-    [0, totalFrames / 2, totalFrames],
-    [2, 1.2, 1.8],
+    [0, totalFrames / 3, totalFrames / 2, totalFrames],
+    [2.1, 1.8, 1.1, 1.8],
     {
       extrapolateRight: "clamp",
-      easing: Easing.bezier(0.68, -0.6, 0.32, 1.6),
+      easing: Easing.in(Easing.exp),
     }
   );
 
+  const rotate = interpolate(frame, [0, totalFrames], [-180, 0], {
+    extrapolateRight: "clamp",
+    easing: Easing.out(Easing.exp),
+  });
+
   return (
-    <div>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+    >
       <Img
         src={imgSrc}
         style={{
           width: "100%",
           height: "100%",
-          transform: `scale(${scale})`,
+          transform: `scale(${scale}) rotate(${rotate}deg)`,
           flexShrink: 0,
         }}
       />

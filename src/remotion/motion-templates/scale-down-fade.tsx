@@ -12,37 +12,38 @@ export const ScaleDownFade = ({ imgSrc, duration }: MotionProps) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const totalFrames = Math.floor((duration / 1000) * fps);
-  const panLeft = interpolate(frame, [0, totalFrames / 3], [90, 50], {
-    extrapolateRight: "clamp",
-    easing: Easing.out(Easing.ease),
-  });
 
-  const scale = interpolate(
-    frame,
-    [0, totalFrames / 3, totalFrames / 2, totalFrames],
-    [1.6, 1.6, 1.6, 1],
-    {
-      extrapolateRight: "clamp",
-      easing: Easing.inOut(Easing.ease),
-    }
-  );
+  const scale = interpolate(frame, [0, totalFrames], [2.1, 1.2], {
+    extrapolateRight: "clamp",
+    easing: Easing.out(Easing.exp),
+  });
 
   const fade = interpolate(
     frame,
     [0, totalFrames / 2, totalFrames],
     [1, 1, 0.3]
   );
+
+  const rotate = interpolate(frame, [0, totalFrames], [-20, 30], {
+    extrapolateRight: "clamp",
+    easing: Easing.in(Easing.exp),
+  });
+
   return (
-    <div>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+      }}
+    >
       <Img
         src={imgSrc}
         style={{
           width: "100%",
           height: "100%",
-          transform: `scale(${scale})`,
+          transform: `scale(${scale}) rotate(${rotate}deg)`,
           flexShrink: 0,
-          transformOrigin: `${panLeft}% 50%`,
-          // opacity: fade,
+          opacity: fade,
         }}
       />
     </div>

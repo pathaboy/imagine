@@ -9,11 +9,7 @@ export const CaptionStyleOne = ({
   currentTimeInMs,
 }: CaptionsType) => {
   const transcribedWords = JSON.parse(captions);
-  const formattedSubs = useMemo(
-    () => getFormattedSubs(transcribedWords),
-    [transcribedWords]
-  );
-  const textSegment = formattedSubs.find((item, index) => {
+  const textSegment = transcribedWords.find((item: any) => {
     return item.start <= currentTimeInMs && item.end >= currentTimeInMs;
   });
 

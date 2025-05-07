@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma"
 import { S3 } from "@/lib/s3"
 import { PutObjectCommand } from "@aws-sdk/client-s3"
 import axios from "axios"
-import { EdgeTTS } from "@andresaya/edge-tts";
+import { EdgeTTS } from "@/lib/edge"
 
 
 export const generateAudioFromScript = async (script: string, voiceId: string, userId: string, videoId: string) => {
@@ -15,8 +15,7 @@ export const generateAudioFromScript = async (script: string, voiceId: string, u
       volume: '100%',    
       pitch: '10Hz'
     })
-    const base64Audio = edge.toBase64()
-    const audio = Buffer.from(base64Audio, "base64url")
+    const audio = edge.toRaw()
     const audioKeyId = `videos/${userId}/voiceovers/${crypto.randomUUID()}.mp3`
     const uploadAudioCommand = new PutObjectCommand({
       Bucket: process.env.R2_BUCKET_NAME!,

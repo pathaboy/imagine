@@ -20,30 +20,31 @@ export const EnterSlideTopDownExitLeft = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const totalFrames = Math.floor((duration / 1000) * fps);
-  const slideDown = interpolate(frame, [0, totalFrames / 5], [-100, 0], {
+  const slideDown = interpolate(frame, [0, totalFrames / 2], [-50, 0], {
     extrapolateRight: "clamp",
-    easing: Easing.bezier(0.68, -0.6, 0.32, 1.6),
+    easing: Easing.out(Easing.exp),
   });
   const slideRight = interpolate(
     frame,
     [0, totalFrames / 2, totalFrames],
-    [0, 0, -300],
+    [0, 0, 150],
     {
       extrapolateRight: "clamp",
-      easing: Easing.ease,
+      easing: Easing.out(Easing.circle),
     }
   );
-  const opacity = interpolate(
-    frame,
-    [0, totalFrames / 2, totalFrames],
-    [1, 1, 0]
-  );
+
+  const scale = interpolate(frame, [0, totalFrames], [1, 1.5], {
+    extrapolateRight: "clamp",
+    easing: Easing.inOut(Easing.circle),
+  });
+
   return (
     <div
       style={{
         width: "100%",
         height: "100%",
-        display: "flex",
+        position: "relative",
       }}
     >
       <Img
@@ -51,9 +52,9 @@ export const EnterSlideTopDownExitLeft = ({
         style={{
           width: "100%",
           height: "100%",
-          opacity: opacity,
-          transform: `translateY(${slideDown}%) translateX(${slideRight}%)`,
-          flexShrink: 0,
+          transform: `translateY(${slideDown}%) translateX(${slideRight}%) scale(${scale})`,
+          zIndex: 20,
+          opacity: 0.9,
         }}
       />
       <Img
@@ -61,19 +62,11 @@ export const EnterSlideTopDownExitLeft = ({
         style={{
           width: "100%",
           height: "100%",
-          transform: `translateY(${slideDown}%) translateX(${slideRight}%)`,
-          flexShrink: 0,
-          opacity: opacity,
-        }}
-      />
-      <Img
-        src={imgSrc}
-        style={{
-          width: "100%",
-          height: "100%",
-          transform: `translateY(${slideDown}%) translateX(${slideRight}%)`,
-          flexShrink: 0,
-          opacity: opacity,
+          position: "absolute",
+          inset: 0,
+          zIndex: 0,
+          opacity: 0.3,
+          transform: `scale(${scale})`,
         }}
       />
     </div>

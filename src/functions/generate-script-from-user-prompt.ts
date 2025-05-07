@@ -27,11 +27,11 @@ Go beneath surface logic – make the viewer feel exposed.
 
 [4] Law/Tactic #1 (with story):
 Introduce a named rule with a punchy title.
-Back it with a story — real or fictional — with unique character names.
+Back it with a real life stories.
 Ex: “Carlos broke Rule One... and paid the price.”
 
 [5] Law/Tactic #2 (with story):
-Another principle, with a relatable character and consequence.
+Another principle, with a relatable real life character and consequence.
 Keep the flow sharp and story-driven.
 
 [6] Law/Tactic #3 (with emotion or ritual):
@@ -46,12 +46,13 @@ Style & tone:
 Short, punchy lines (like poetry with edge).
 
 Cinematic. No fluff. Pure signal.
-Add psychological weight and story grit with characters, complementing the narrative etc.
+Add psychological weight and story grit with real life characters, complementing the narrative etc.
 Every line should move the beat forward or hit emotion.
 Dont explicitly mention narrative layers like: story, and others
+Add punctuations for emotion and ... for pauses when required like, before and after mentioning the titles, laws and other places when required
 
 Here is an example for you: 
-{title: "Consistency", content: "Consistency isn't about discipline—it's about war. A war against your own brain.  Today, I'll show you three Atomic Laws to win that war. Laws that rebuilt me after I lost everything—my marriage, my business. Laws that will rebuild you.  The Big Lie We’re told consistency is showing up every day. That’s why you fail. Your brain is wired to sabotage consistency.  Let me show you why: Every time you say, “I’ll start Monday,” you're fighting a battle you've already lost. Science proves it takes 17 times more energy to restart a habit than to keep it alive. You're not lazy. You're just using the wrong weapons.  Atomic Law 1: The 1% Rebellion Meet Carlos—a prisoner in 23-hour lockdown. He did one pushup every 90 seconds. Not 100 a day. Just one.  After 632 days, he’d done over a million reps.  His secret: the 6-second rule When you want to skip a habit, do the smallest possible version:  Write one sentence  Do one pushup  Meditate for five breaths  This isn’t about progress. It’s about proving to your brain: I don’t quit.  Atomic Law 2: Strategic Surrender Sarah missed 44 workouts—but still lost 30 lbs.  Her secret? Planned collapse. Every Sunday, she scheduled cheat days. Mandatory failures.  By surrendering, she tricked her brain into craving discipline.  Your rule: Be consistent 85% of the time. Science says 85% beats 100%—because perfection is the enemy of progress.  Atomic Law 3: The Failure Funeral Most people fail because they mourn their mistakes like deaths. Neuroscience shows guilt and shame keep you stuck.  The fix? Bury your failures. Literally.  Write down every time you miss a habit.  Burn it. Shred it. Delete it.  Say: This failure feeds my next success.  This ritual rewires your brain to see failure as fuel, not fear. Train your brain to fear quitting more than starting.  Consistency isn’t something you find. It’s someone you become. The world wants you to quit. But you—you’re different.  You've got:  The 1% Rebellion  The Strategic Surrender  The Failure Funeral  Now go carve your mountain."} 
+{title: "Consistency", content: "Consistency isn't about discipline—it's about war... A war against your own brain.  Today, I'll show you three Atomic Laws to win that war. Laws that rebuilt me after I lost everything—my marriage, my business. Laws that will rebuild you.  The Big Lie We’re told consistency is showing up every day. That’s why you fail. Your brain is wired to sabotage consistency.  Let me show you why: Every time you say, “I’ll start Monday,” you're fighting a battle you've already lost. Science proves it takes 17 times more energy to restart a habit than to keep it alive. You're not lazy. You're just using the wrong weapons...  Atomic Law 1: The 1% Rebellion Meet... Carlos—a prisoner in 23-hour lockdown. He did one pushup every 90 seconds. Not 100 a day. Just one.  After 632 days, he’d done over a million reps.  His secret... the 6-second rule When you want to skip a habit, do the smallest possible version:  Write one sentence  Do one pushup  Meditate for five breaths  This isn’t about progress. It’s about proving to your brain: I don’t quit...  Atomic Law 2...: Strategic Surrender Sarah missed 44 workouts—but still lost 30 lbs.  Her secret? Planned collapse. Every Sunday, she scheduled cheat days. Mandatory failures.  By surrendering, she tricked her brain into craving discipline...  Your rule...: Be consistent 85% of the time. Science says 85% beats 100%—because perfection is the enemy of progress...  Atomic Law 3...: The Failure Funeral Most people fail because they mourn their mistakes like deaths. Neuroscience shows guilt and shame keep you stuck.  The fix? Bury your failures. Literally.  Write down every time you miss a habit.  Burn it. Shred it. Delete it.  Say...: This failure feeds my next success.  This ritual rewires your brain to see failure as fuel, not fear. Train your brain to fear quitting more than starting. Consistency isn’t something you find. It’s someone you become. The world wants you to quit. But you—you’re different.  You've got:  The 1% Rebellion...  The Strategic Surrender...  The Failure Funeral...  Now go carve your mountain."} 
     `
     },
     {

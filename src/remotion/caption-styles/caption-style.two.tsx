@@ -1,25 +1,21 @@
 "use client";
-import axios from "axios";
-import { getFormattedSubs, subs } from "../../lib/data";
-import { useEffect, useMemo, useState } from "react";
 import { AbsoluteFill } from "remotion";
+import { useVideoConfig } from "remotion";
 
 export type CaptionsType = {
   currentTimeInMs: number;
   captions: string;
 };
+
 export const CaptionStyleTwo = ({
   currentTimeInMs,
   captions,
 }: CaptionsType) => {
   const transcribedWords = JSON.parse(captions);
-  const formattedSubs = useMemo(
-    () => getFormattedSubs(transcribedWords),
-    [transcribedWords]
-  );
-  const textSegment = formattedSubs.find((item, index) => {
+  const textSegment = transcribedWords.find((item: any) => {
     return item.start <= currentTimeInMs && item.end >= currentTimeInMs;
   });
+  const { width } = useVideoConfig();
 
   return (
     <AbsoluteFill
@@ -34,14 +30,18 @@ export const CaptionStyleTwo = ({
         fontSize: textSegment?.textPosition === "center" ? "7rem" : "3rem",
         color: "white",
         paddingBottom: textSegment?.textPosition === "center" ? "0px" : "3rem",
+        fontFamily: "Kavoon, cursive",
       }}
     >
       <h2
         style={{
-          maxWidth: "60vw",
+          width: width > 800 ? "60vw" : "100%",
           textAlign: "center",
           lineHeight: 1,
-          marginBottom: "1rem",
+          marginBottom: "2rem",
+          textShadow: "3px 3px 0 #000, 6px 6px 0 #800",
+          letterSpacing: "2px",
+          textWrap: "wrap",
         }}
       >
         {textSegment?.subs || ""}
