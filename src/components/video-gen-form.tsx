@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import {
   Captions,
   Clapperboard,
+  Frame,
   Link,
   Loader,
   MicVocal,
@@ -21,14 +22,18 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import axios from "axios";
-import { captionStyles, imageStyles, vocals } from "@/lib/data";
+import { aspectRatios, captionStyles, imageStyles, vocals } from "@/lib/data";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
+import Signin from "./sign-in";
 
 const VideoGenForm = () => {
+  const session = useSession();
   const [userPrompt, setUserPrompt] = useState("");
   const [style, setStyle] = useState("anime");
   const [voiceId, setVoiceId] = useState("en-TZ-ImaniNeural");
   const [captionStyle, setCaptionStyle] = useState("caption-style-one");
+  const [aspectRatio, setAspectRatio] = useState("video-sixteen-by-nine");
   const voiceOver = useRef<HTMLInputElement>(null);
   const [voiceoverUrl, setVoiceoverUrl] = useState("");
   const [uploadingAudio, setUploadingAudio] = useState(false);
@@ -68,6 +73,7 @@ const VideoGenForm = () => {
           voiceId,
           captionStyle,
           voiceoverUrl,
+          aspectRatio,
         },
       });
     } catch (err: any) {
@@ -88,7 +94,7 @@ const VideoGenForm = () => {
           }}
           minLength={3}
           className="bg-inherit w-full h-24 focus:outline-none rounded-xl p-2 resize-none"
-          placeholder="Create a video on 3 life lessons by Bhagat Singh."
+          placeholder="Life is beautiful"
           onKeyDown={(e) => {
             if (e.ctrlKey && e.key === "Enter") {
               handleVideoGeneration();
@@ -233,19 +239,56 @@ const VideoGenForm = () => {
                 </div>
               </DialogContent>
             </Dialog>
+
+            {/* Aspect ratio Modal */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <button className="hover:text-primary transition-colors p-2">
+                  <Frame />
+                </button>
+              </DialogTrigger>
+              <DialogContent className="w-full max-w-4xl text-center h-full overflow-y-visible">
+                <DialogHeader>
+                  <DialogTitle>Choose the Aspect ratio</DialogTitle>
+                </DialogHeader>
+                <div className="w-full p-2 flex justify-center sm:justify-start items-start gap-4 h-full flex-wrap overflow-y-scroll">
+                  {aspectRatios.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className={`cursor-pointer ${
+                          item.name === aspectRatio
+                            ? "border-4 border-primary"
+                            : ""
+                        }`}
+                        onClick={() => {
+                          setAspectRatio(item.name);
+                        }}
+                      >
+                        <item.component />
+                      </div>
+                    );
+                  })}
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
 
-          <Button
-            disabled={userPrompt.length <= 3}
-            onClick={(e) => {
-              e.preventDefault();
-              handleVideoGeneration();
-            }}
-            className="flex disabled:bg-gray-600 items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg shadow-md active:scale-95 transition-all"
-          >
-            <Sparkles size={18} />
-            Generate
-          </Button>
+          {session.data?.user?.email ? (
+            <Button
+              disabled={userPrompt.length <= 3}
+              onClick={(e) => {
+                e.preventDefault();
+                handleVideoGeneration();
+              }}
+              className="flex disabled:bg-gray-600 items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg shadow-md active:scale-95 transition-all"
+            >
+              <Sparkles size={18} />
+              Generate
+            </Button>
+          ) : (
+            <Signin>Sign up</Signin>
+          )}
         </div>
       </form>
     </div>

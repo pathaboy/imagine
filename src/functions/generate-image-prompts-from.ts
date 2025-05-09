@@ -31,7 +31,7 @@ Respond with valid parsable JSON:
 }
 ⚠️ Important Constraints:
 Do not include any written text, quotes, phrases, or words in the image prompt.
-The visual should be purely scene-based: use settings, people, objects, mood, lighting, emotions, camera angle, shot type, framing technique.
+The visual should be purely scene-based with eye to details and grandeur: use settings, people, objects, mood, lighting, emotions, camera angle, shot type, framing technique.
 Avoid describing text, signs, titles, or captions in the prompt.
 Available shot types: ${shots.join(" | ")}
 Available framing techniques: ${cameraFramingTechniques.join(" | ")}

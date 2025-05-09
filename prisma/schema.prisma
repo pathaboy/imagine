@@ -48,11 +48,13 @@ model Video {
 }
 
 model AspectRatio {
-  id     Int     @id @default(autoincrement())
-  name   String  @unique
-  width  Int
-  height Int
-  videos Video[]
+  id          Int     @id @default(autoincrement())
+  name        String  @unique
+  width       Int
+  height      Int
+  frameWidth  Int
+  frameHeight Int
+  videos      Video[]
 }
 
 model Scene {

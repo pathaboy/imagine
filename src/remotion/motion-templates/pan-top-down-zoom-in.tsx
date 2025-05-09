@@ -28,7 +28,7 @@ export const PanTopToDownAndZoomIn = ({ imgSrc, duration }: MotionProps) => {
       easing: Easing.in(Easing.exp),
     }
   );
-  const rotate = interpolate(frame, [0, totalFrames], [5, -5], {
+  const rotate = interpolate(frame, [0, totalFrames], [-5, 5], {
     extrapolateRight: "clamp",
     easing: Easing.inOut(Easing.ease),
   });

@@ -24,7 +24,7 @@ export const ScaleDownFade = ({ imgSrc, duration }: MotionProps) => {
     [1, 1, 0.3]
   );
 
-  const rotate = interpolate(frame, [0, totalFrames], [-20, 30], {
+  const rotate = interpolate(frame, [0, totalFrames], [20, -30], {
     extrapolateRight: "clamp",
     easing: Easing.in(Easing.exp),
   });

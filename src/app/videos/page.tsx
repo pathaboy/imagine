@@ -56,8 +56,8 @@ const VideoPage = () => {
         durationInFrames={
           Math.floor(video.totalDuration / 1000) * video.fps || 3 * 60 * 30
         }
-        compositionWidth={1280}
-        compositionHeight={720}
+        compositionWidth={video.aspectRatio.width}
+        compositionHeight={video.aspectRatio.height}
         fps={video?.fps || 30}
       />
     </div>

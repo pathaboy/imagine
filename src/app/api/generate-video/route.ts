@@ -16,6 +16,7 @@ export async function POST(req: NextRequest) {
   }
   try {
     const {videoDetails} = await req.json()
+    console.log(videoDetails)
     
     if (!videoDetails.voiceoverUrl) {
       const script = await generateScriptFromUserPrompt(videoDetails.userPrompt)
@@ -27,6 +28,11 @@ export async function POST(req: NextRequest) {
           imageStyle: videoDetails.style,
           captionStyle: videoDetails.captionStyle,
           thumbnailUrl: "",
+          aspectRatio: {
+            connect: {
+              name: videoDetails.aspectRatio
+            }
+          },
           user: {
             connect: {
               id: session?.user?.id
@@ -41,7 +47,8 @@ export async function POST(req: NextRequest) {
           videoId: video.id,
           voiceId: videoDetails.voiceId,
           style: videoDetails.style,
-          script: script.content
+          script: script.content,
+          aspectRatio: videoDetails.aspectRatio
         }
       })
       return Response.json({
@@ -61,6 +68,11 @@ export async function POST(req: NextRequest) {
               voiceId: "custom"
             }
           },
+          aspectRatio: {
+            connect: {
+              name: videoDetails.aspectRatio
+            }
+          },
           user: {
             connect: {
               id: session?.user?.id
@@ -75,6 +87,7 @@ export async function POST(req: NextRequest) {
           style: videoDetails.style,
           voiceoverUrl: videoDetails.voiceoverUrl,
           videoId: video.id,
+          aspectRatio: videoDetails.aspectRatio
         }
       })
       return Response.json({

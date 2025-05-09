@@ -8,7 +8,7 @@ const Signin = ({ children }: { children: React.ReactNode }) => {
     <Button
       onClick={() => {
         signIn("google", {
-          redirectTo: "/dashboard",
+          redirectTo: "/",
         });
       }}
       variant={"default"}

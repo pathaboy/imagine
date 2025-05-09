@@ -694,69 +694,82 @@ const bgms = [
   },
   {
     id: 73,
-    name: "hybrid-cinematic-bgm-blending-orchestral-and-modern-electronic-elements",
-    bgmUrl:
-      "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/hybrid-cinematic-bgm-blending-orchestral-and-modern-electronic-elements.mp3",
-  },
-  {
-    id: 74,
     name: "zen-instrumental-with-soft-flute-koto-and-ambient-background",
     bgmUrl:
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/zen-instrumental-with-soft-flute-koto-and-ambient-background.mp3",
   },
   {
-    id: 75,
+    id: 74,
     name: "motivation-never-give-up-energy",
     bgmUrl:
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/motivation-never-give-up-energy.mp3",
   },
   {
-    id: 76,
+    id: 75,
     name: "overcoming-impossible",
     bgmUrl:
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/overcoming-impossible.mp3",
   },
   {
-    id: 77,
+    id: 76,
     name: "overcoming-impossible-2",
     bgmUrl:
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/overcoming-impossible-2.mp3",
   },
   {
-    id: 78,
+    id: 77,
     name: "emotional-comeback-transformation",
     bgmUrl:
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/emotional-comeback-transformation.mp3",
   },
   {
-    id: 79,
+    id: 78,
     name: "dare-to-do-motivation",
     bgmUrl:
       "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/dare-to-do-motivation.mp3",
   },
   {
-    id: 80,
+    id: 79,
     name: "dare-to-do-motivation-2",
     bgmUrl: "https://pub-b9db762600a24cd2a50cb385dae41ff9.r2.dev/bgm/dare-to-do-motivation-2.mp3",
   },
 ];
 
-const aspectRatios = [
+
+export const aspectRatios = [
   {
     id: 1,
-    name: "video",
+    name: "video-full-screen",
     width: 1280,
-    height: 720
+    height: 720,
+    frameWidth: 1280,
+    frameHeight: 720,
   },
   {
     id: 2,
-    name: "short",
+    name: "mobile-full-screen",
     width: 720,
-    height: 1280
+    height: 1280,
+    frameWidth: 720,
+    frameHeight: 1280,
   },
-  
+  {
+    id: 3,
+    name: "video-sixteen-by-nine",
+    width: 1280,
+    height: 720,
+    frameWidth: 720,
+    frameHeight: 540,
+  },
+  {
+    id: 4,
+    name: "mobile-four-by-three",
+    width: 720,
+    height: 1280,
+    frameWidth: 720,
+    frameHeight: 540,
+  },
 ]
-
 
 async function main() {
   console.log('Seeding vocals...')
@@ -771,7 +784,7 @@ async function main() {
   }
   console.log("Seeding aspect ratios")
   for (const ar of aspectRatios) {
-    await prisma.aspectRatio.upsert({where: {id: ar.id}, create: {name: ar.name, width: ar.width, height: ar.height}, update:{}})
+    await prisma.aspectRatio.upsert({where: {id: ar.id}, create: {name: ar.name, width: ar.width, height: ar.height, frameHeight: ar.frameHeight, frameWidth: ar.frameWidth}, update:{}})
   }
 }
 

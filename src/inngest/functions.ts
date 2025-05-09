@@ -4,14 +4,17 @@ import { generateAudioFromScript } from "@/functions/generate-audio-from-script"
 import { transcribeAudio } from "@/functions/transcribe-audio";
 import { generateImagePrompts } from "@/functions/generate-image-prompts-from";
 import { generateBgm } from "@/functions/generate-bgm";
-import { motionTemplatesNames } from "@/lib/data";
+import { aspectRatios, motionTemplatesNames } from "@/lib/data";
 import { assemblyAIClient } from "@/lib/assemblyai";
 
 export const GenerateTextToVideoData = inngest.createFunction(
   { id: "generate-text-to-video-data" },
   { event: "generate-text-to-video-data" },
   async ({ event, step }) => {
-    const {userId, voiceId, videoId,  style, script} = event?.data
+    const {userId, voiceId, videoId, aspectRatio, style, script} = event?.data
+    const imageDimensions = aspectRatios.find(item => item.name === aspectRatio)
+    const imageWidth = imageDimensions?.frameWidth || 720
+    const imageHeight = imageDimensions?.frameHeight || 540
 
     const transcriptionId = await step.run("generate-audio-and-trancription", async () => {
       const audioUrl = await generateAudioFromScript(script, voiceId, userId, videoId)
@@ -33,7 +36,7 @@ export const GenerateTextToVideoData = inngest.createFunction(
             async () => {
               // Image generation
               const seed = Math.floor(Math.random() * 10000000)
-              const imageSourceurl = `https://image.pollinations.ai/prompt/${encodeURIComponent(item.imagePrompt)}?width=${720}&height=${540}&seed=${seed}&nologo=${true}&private=${true}`
+              const imageSourceurl = `https://image.pollinations.ai/prompt/${encodeURIComponent(item.imagePrompt)}?width=${imageWidth}&height=${imageHeight}&seed=${seed}&nologo=${true}&private=${true}`
               // const res = await axios.get(url, {
               //   responseType: "arraybuffer"
               // })
@@ -83,7 +86,10 @@ export const GenerateAudioToVideoData = inngest.createFunction(
   {id: "generate-audio-to-video-data"},
   {event: "generate-audio-to-video-data"},
   async ({event, step}) => {
-    const {userId, style, voiceoverUrl, videoId} = event?.data
+    const {userId, style, voiceoverUrl,aspectRatio, videoId} = event?.data
+    const imageDimensions = aspectRatios.find(item => item.name === aspectRatio)
+    const imageWidth = imageDimensions?.frameWidth || 720
+    const imageHeight = imageDimensions?.frameHeight || 540
 
     const transcriptionId = await step.run("generate-audio-and-trancription", async () => {
       const transcriptId = await transcribeAudio(voiceoverUrl, videoId)
@@ -113,7 +119,7 @@ export const GenerateAudioToVideoData = inngest.createFunction(
             async () => {
               // Image generation
               const seed = Math.floor(Math.random() * 10000000)
-              const imageSourceurl = `https://image.pollinations.ai/prompt/${encodeURIComponent(item.imagePrompt)}?width=${720}&height=${540}&seed=${seed}&nologo=${true}&private=${true}`
+              const imageSourceurl = `https://image.pollinations.ai/prompt/${encodeURIComponent(item.imagePrompt)}?width=${imageWidth}&height=${imageHeight}&seed=${seed}&nologo=${true}&private=${true}`
               // const res = await axios.get(url, {
               //   responseType: "arraybuffer"
               // })

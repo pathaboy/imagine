@@ -15,14 +15,10 @@ export const ZoomOutAndPullOut = ({ imgSrc, duration }: MotionProps) => {
   const { fps } = useVideoConfig();
   const totalFrames = Math.floor((duration / 1000) * fps);
 
-  const pullOut = interpolate(
-    frame,
-    [0, totalFrames / 3, totalFrames / 2, totalFrames],
-    [3, 2.6, 2.5, 1],
-    {
-      easing: Easing.in(Easing.ease),
-    }
-  );
+  const pullOut = interpolate(frame, [0, totalFrames], [2.6, 1], {
+    easing: Easing.in(Easing.exp),
+  });
+
   return (
     <div
       style={{

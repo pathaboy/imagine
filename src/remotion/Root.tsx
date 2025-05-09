@@ -9,7 +9,7 @@ import "../app/globals.css";
 import { SixteenByNineVideo } from "./video-templates/sixteen-by-nine";
 import { demoVideo } from "../lib/data";
 import { FullScreenVideo } from "./video-templates/full-screen";
-import { FourByThreeMobileVideo } from "./video-templates/mobile-short-four-by-three";
+import { FourByThreeMobileVideo } from "./video-templates/mobile-four-by-three";
 
 export const RemotionRoot: React.FC = () => {
   const videoId = demoVideo.id;
@@ -29,7 +29,7 @@ export const RemotionRoot: React.FC = () => {
   return (
     <Composition
       id="MyComp"
-      component={SixteenByNineVideo}
+      component={FourByThreeMobileVideo}
       defaultProps={{
         audioUrl: demoVideo.voiceOver[0].audioUrl,
         bgmUrl: demoVideo.bgm.bgmUrl,
@@ -38,7 +38,7 @@ export const RemotionRoot: React.FC = () => {
         scenes: scenes,
       }}
       durationInFrames={Math.floor(
-        (demoVideo.totalDuration / 1000) * demoVideo.fps + 10 * demoVideo.fps
+        (demoVideo.totalDuration / 1000) * demoVideo.fps
       )}
       // calculateMetadata={async () => {
       //   const data = await fetchVideoData(videoId);
@@ -72,8 +72,8 @@ export const RemotionRoot: React.FC = () => {
       //     },
       //   };
       // }}
-      width={1280}
-      height={720}
+      height={1280}
+      width={720}
       fps={demoVideo.fps || 30}
     />
   );

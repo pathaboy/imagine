@@ -30,7 +30,7 @@ export const PanLeftToRightAndZoomIn = ({ imgSrc, duration }: MotionProps) => {
     }
   );
 
-  const rotate = interpolate(frame, [0, totalFrames], [10, -10], {
+  const rotate = interpolate(frame, [0, totalFrames], [-15, 10], {
     extrapolateRight: "clamp",
     easing: Easing.circle,
   });

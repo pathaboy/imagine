@@ -41,6 +41,8 @@ CREATE TABLE "AspectRatio" (
     "name" TEXT NOT NULL,
     "width" INTEGER NOT NULL,
     "height" INTEGER NOT NULL,
+    "frameWidth" INTEGER NOT NULL,
+    "frameHeight" INTEGER NOT NULL,
 
     CONSTRAINT "AspectRatio_pkey" PRIMARY KEY ("id")
 );
@@ -133,12 +135,6 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "AspectRatio_name_key" ON "AspectRatio"("name");
-
--- CreateIndex
-CREATE UNIQUE INDEX "VoiceOver_voiceId_key" ON "VoiceOver"("voiceId");
-
--- CreateIndex
-CREATE UNIQUE INDEX "VoiceOver_name_key" ON "VoiceOver"("name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Bgm_name_key" ON "Bgm"("name");

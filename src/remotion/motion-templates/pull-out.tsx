@@ -16,7 +16,7 @@ export const PullOut = ({ imgSrc, duration }: MotionProps) => {
   const totalFrames = Math.floor((duration / 1000) * fps);
 
   const pullout = interpolate(frame, [0, totalFrames], [2.5, 1.5], {
-    easing: Easing.in(Easing.bounce),
+    easing: Easing.out(Easing.exp),
   });
 
   const rotate = interpolate(frame, [0, totalFrames], [-10, 30], {
