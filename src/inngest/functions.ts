@@ -4,20 +4,29 @@ import { generateAudioFromScript } from "@/functions/generate-audio-from-script"
 import { transcribeAudio } from "@/functions/transcribe-audio";
 import { generateImagePrompts } from "@/functions/generate-image-prompts-from";
 import { generateBgm } from "@/functions/generate-bgm";
-import { aspectRatios, motionTemplatesNames } from "@/lib/data";
+import { aspectRatios, motionTemplatesNames, videoTypes } from "@/lib/data";
 import { assemblyAIClient } from "@/lib/assemblyai";
 
 export const GenerateTextToVideoData = inngest.createFunction(
   { id: "generate-text-to-video-data" },
   { event: "generate-text-to-video-data" },
   async ({ event, step }) => {
-    const {userId, voiceId, videoId, aspectRatio, style, script} = event?.data
+    const {userId, voiceId, videoId, aspectRatio, style, script, videoType} = event?.data
+    const vocals = videoTypes.find(item => item.videoType === videoType)
     const imageDimensions = aspectRatios.find(item => item.name === aspectRatio)
     const imageWidth = imageDimensions?.frameWidth || 720
     const imageHeight = imageDimensions?.frameHeight || 540
 
-    const transcriptionId = await step.run("generate-audio-and-trancription", async () => {
-      const audioUrl = await generateAudioFromScript(script, voiceId, userId, videoId)
+    const audioUrl = await step.run("generate-audio", async () => {
+      const audioUrl = await generateAudioFromScript(script, voiceId, userId, videoId, {
+        pitch: vocals?.narration.pitch || -20,
+        rate: vocals?.narration.rate || 30,
+        volume: vocals?.narration.volume || 100
+      })
+      return audioUrl
+    })
+
+    const transcriptionId = await step.run("generate-transcription", async () => {
       const transcriptId = await transcribeAudio(audioUrl, videoId)
       return transcriptId
     })

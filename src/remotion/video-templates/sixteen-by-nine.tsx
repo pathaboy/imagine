@@ -16,6 +16,7 @@ type SixteenByNineVideoProps = {
   scenes: MotionImage[];
   captions: string;
   captionStyle: string;
+  captionFont: string;
   bgmUrl: string;
   audioUrl: string;
 };
@@ -24,6 +25,7 @@ export const SixteenByNineVideo: React.FC<SixteenByNineVideoProps> = ({
   audioUrl,
   bgmUrl,
   captionStyle,
+  captionFont,
   scenes,
   captions,
 }) => {
@@ -63,7 +65,11 @@ export const SixteenByNineVideo: React.FC<SixteenByNineVideoProps> = ({
           );
         })}
       </TransitionSeries>
-      <CaptionStyleTwo captions={captions} currentTimeInMs={currentTimeInMs} />
+      <CaptionStyleTwo
+        fontFamily={captionFont}
+        captions={captions}
+        currentTimeInMs={currentTimeInMs}
+      />
     </AbsoluteFill>
   );
 };

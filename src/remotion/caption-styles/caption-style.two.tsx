@@ -5,11 +5,13 @@ import { useVideoConfig } from "remotion";
 export type CaptionsType = {
   currentTimeInMs: number;
   captions: string;
+  fontFamily: string;
 };
 
 export const CaptionStyleTwo = ({
   currentTimeInMs,
   captions,
+  fontFamily,
 }: CaptionsType) => {
   const transcribedWords = JSON.parse(captions);
   const textSegment = transcribedWords.find((item: any) => {
@@ -30,7 +32,7 @@ export const CaptionStyleTwo = ({
         fontSize: textSegment?.textPosition === "center" ? "7rem" : "3rem",
         color: "white",
         paddingBottom: textSegment?.textPosition === "center" ? "0px" : "3rem",
-        fontFamily: "Kavoon, cursive",
+        fontFamily: fontFamily,
       }}
     >
       <h2

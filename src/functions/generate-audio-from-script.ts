@@ -5,15 +5,19 @@ import { PutObjectCommand } from "@aws-sdk/client-s3"
 import axios from "axios"
 import { EdgeTTS } from "@/lib/edge"
 
-
-export const generateAudioFromScript = async (script: string, voiceId: string, userId: string, videoId: string) => {
+type VocalParams = {
+  pitch: number
+  rate: number
+  volume: number
+}
+export const generateAudioFromScript = async (script: string, voiceId: string, userId: string, videoId: string, vocals: VocalParams) => {
   try {
     const cleanedScript = cleanText(script)
     const edge = new EdgeTTS()
     await edge.synthesize(cleanedScript, voiceId || "en-TZ-ImaniNeural", {
-      rate: '15%',      
-      volume: '100%',    
-      pitch: '10Hz'
+      rate: `${vocals.rate}%` ||  '15%',      
+      volume: `${vocals.volume}%` || '100%',    
+      pitch: `${vocals.rate}Hz` || '10Hz'
     })
     const audio = edge.toRaw()
     const audioKeyId = `videos/${userId}/voiceovers/${crypto.randomUUID()}.mp3`

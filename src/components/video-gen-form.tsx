@@ -22,7 +22,14 @@ import {
   DialogClose,
 } from "@/components/ui/dialog";
 import axios from "axios";
-import { aspectRatios, captionStyles, imageStyles, vocals } from "@/lib/data";
+import {
+  aspectRatios,
+  captionFonts,
+  captionStyles,
+  imageStyles,
+  videoTypes,
+  vocals,
+} from "@/lib/data";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import Signin from "./sign-in";
@@ -32,8 +39,9 @@ const VideoGenForm = () => {
   const [userPrompt, setUserPrompt] = useState("");
   const [style, setStyle] = useState("anime");
   const [voiceId, setVoiceId] = useState("en-TZ-ImaniNeural");
-  const [captionStyle, setCaptionStyle] = useState("caption-style-one");
+  const [captionFont, setCaptionFont] = useState("Kavoon");
   const [aspectRatio, setAspectRatio] = useState("video-sixteen-by-nine");
+  const [videoType, setVideoType] = useState("motivational-laws");
   const voiceOver = useRef<HTMLInputElement>(null);
   const [voiceoverUrl, setVoiceoverUrl] = useState("");
   const [uploadingAudio, setUploadingAudio] = useState(false);
@@ -71,9 +79,10 @@ const VideoGenForm = () => {
           userPrompt,
           style,
           voiceId,
-          captionStyle,
+          captionFont,
           voiceoverUrl,
           aspectRatio,
+          videoType,
         },
       });
     } catch (err: any) {
@@ -102,7 +111,7 @@ const VideoGenForm = () => {
           }}
         />
         <div className="flex justify-between">
-          <div className="flex gap-1">
+          <div className="flex gap-1 flex-wrap">
             {/* Palette Modal */}
             <Dialog>
               <DialogTrigger asChild>
@@ -217,22 +226,25 @@ const VideoGenForm = () => {
                   <DialogTitle>Customize Captions</DialogTitle>
                   <p>Enable captions and adjust their settings.</p>
                 </DialogHeader>
-                <div className="w-full p-2 flex justify-center sm:justify-start items-start gap-4 h-full flex-wrap overflow-y-scroll">
-                  {captionStyles.map((item, index) => {
+                <div className="w-full p-2 grid grid-cols-2 sm:grid-cols-3 place-items-center gap-4 h-full overflow-y-scroll">
+                  {captionFonts.map((item, index) => {
                     return (
                       <div
                         key={index}
-                        className="cursor-pointer"
+                        className={`cursor-pointer w-full aspect-video flex justify-center items-center bg-black text-white ${
+                          item.fontFamily === captionFont
+                            ? "border-4 border-primary"
+                            : ""
+                        }`}
+                        style={{
+                          fontFamily: item.fontFamily,
+                          fontWeight: 600,
+                        }}
                         onClick={() => {
-                          setCaptionStyle(item.name);
+                          setCaptionFont(item.fontFamily);
                         }}
                       >
-                        <Image
-                          src={item.previewUrl}
-                          alt={item.name}
-                          width={300}
-                          height={100}
-                        />
+                        Hello, welcome to my world
                       </div>
                     );
                   })}
@@ -266,6 +278,38 @@ const VideoGenForm = () => {
                         }}
                       >
                         <item.component />
+                      </div>
+                    );
+                  })}
+                </div>
+              </DialogContent>
+            </Dialog>
+            {/* Video type Modal */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <button className="hover:text-primary transition-colors p-2">
+                  <Clapperboard />
+                </button>
+              </DialogTrigger>
+              <DialogContent className="w-full max-w-4xl text-center h-full overflow-y-visible">
+                <DialogHeader>
+                  <DialogTitle>Choose the style of video:</DialogTitle>
+                </DialogHeader>
+                <div className="w-full p-2 grid grid-cols-2 sm:grid-cols-3 place-items-center gap-4 h-full overflow-y-scroll">
+                  {videoTypes.map((item, index) => {
+                    return (
+                      <div
+                        key={index}
+                        className={`cursor-pointer w-full aspect-video flex justify-center items-center bg-black text-white ${
+                          item.videoType === videoType
+                            ? "border-4 border-primary"
+                            : ""
+                        }`}
+                        onClick={() => {
+                          setVideoType(item.videoType);
+                        }}
+                      >
+                        {item.videoType.split("-").join(" ")}
                       </div>
                     );
                   })}

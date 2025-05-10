@@ -1,12 +1,11 @@
 "use client";
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
-import { useMemo } from "react";
+import { AbsoluteFill } from "remotion";
 import { CaptionsType } from "./caption-style.two";
-import { getFormattedSubs } from "../../lib/data";
 
 export const CaptionStyleOne = ({
   captions,
   currentTimeInMs,
+  fontFamily,
 }: CaptionsType) => {
   const transcribedWords = JSON.parse(captions);
   const textSegment = transcribedWords.find((item: any) => {
@@ -34,7 +33,7 @@ export const CaptionStyleOne = ({
             color: "#f5f5f5",
             textAlign: "center",
             fontWeight: 500,
-            fontFamily: "'Georgia', 'serif'",
+            fontFamily: fontFamily,
             background: "rgba(0, 0, 0, 0.6)",
             padding: "16px 24px",
             borderRadius: "12px",

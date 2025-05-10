@@ -34,6 +34,7 @@ export const RemotionRoot: React.FC = () => {
         audioUrl: demoVideo.voiceOver[0].audioUrl,
         bgmUrl: demoVideo.bgm.bgmUrl,
         captionStyle: demoVideo.captionStyle,
+        captionFont: "Kavoon",
         captions: demoVideo.transcribedWords,
         scenes: scenes,
       }}

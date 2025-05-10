@@ -4002,18 +4002,6 @@ export const demoVideo = {
   ],
 };
 
-export const fetchVideoData = async (videoId: string) => {
-  try {
-    const res = await fetch(
-      `http://localhost:3000/api/video-data?videoid=${videoId}`
-    );
-    const data = await res.json();
-    return data;
-  } catch (err: any) {
-    throw new Error(err);
-  }
-};
-
 export const aspectRatios = [
   {
     id: 1,
@@ -4050,6 +4038,75 @@ export const aspectRatios = [
     frameWidth: 720,
     frameHeight: 540,
     component: MobileFourByThree,
+  },
+];
+
+export const captionFonts = [
+  {
+    id: 1,
+    fontFamily: "Kavoon",
+  },
+  {
+    id: 2,
+    fontFamily: "Roboto",
+  },
+  {
+    id: 3,
+    fontFamily: "Montserrat",
+  },
+  {
+    id: 4,
+    fontFamily: "Montserrat",
+  },
+  {
+    id: 5,
+    fontFamily: "Open Sans",
+  },
+  {
+    id: 6,
+    fontFamily: "Inter",
+  },
+  {
+    id: 7,
+    fontFamily: "Lato",
+  },
+  {
+    id: 8,
+    fontFamily: "Bebas Neue",
+  },
+  {
+    id: 9,
+    fontFamily: "Poppins",
+  },
+];
+
+export const videoTypes = [
+  {
+    id: 1,
+    videoType: "motivational-laws",
+    narration: {
+      pitch: -40,
+      volume: 100,
+      rate: 30,
+    },
+  },
+  {
+    id: 2,
+    videoType: "emotional-growth-stories",
+    narration: {
+      pitch: -40,
+      volume: 100,
+      rate: -10,
+    },
+  },
+  {
+    id: 3,
+    videoType: "motivational-warrior-stories",
+    narration: {
+      pitch: -40,
+      volume: 100,
+      rate: -10,
+    },
   },
 ];
 

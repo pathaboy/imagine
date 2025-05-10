@@ -10,9 +10,10 @@ const getScriptPrompts = (type: string) => {
   const prompts = [
     {
       id: 1,
-      type: "short-high-impact-motivation",
+      type: "motivational-laws",
       prompt: `
-    Write a 1 min high-impact script on user prompt given below following this structure and tone and Respond with valid parsable JSON - {title: "", content: ""}:
+    Write a 1 min high-impact script on user prompt given below following this guidelines and Respond with valid parsable JSON - {title: "", content: ""}:
+Guidelines:
 [1] Hook (Emotional punch):
 Start with a visceral moment – a breakdown, a betrayal, a fatal mistake.
 Hit the nerve. Break a belief. Ask a bold question.
@@ -51,61 +52,103 @@ Every line should move the beat forward or hit emotion.
 Dont explicitly mention narrative layers like: story, and others
 Add ... for pauses and punctuations to emphasize modulation, rhythm, and delivery impact
 
-Here is an example for you: 
+Here is an example for you, please don't copy: 
 {title: "Consistency", content: "Consistency isn't about discipline—it's about war... A war against your own brain.  Today, I'll show you three Atomic Laws to win that war. Laws that rebuilt me after I lost everything—my marriage, my business. Laws that will rebuild you.  The Big Lie We’re told consistency is showing up every day. That’s why you fail. Your brain is wired to sabotage consistency.  Let me show you why: Every time you say, “I’ll start Monday,” you're fighting a battle you've already lost. Science proves it takes 17 times more energy to restart a habit than to keep it alive. You're not lazy. You're just using the wrong weapons...  Atomic Law 1: The 1% Rebellion Meet... Carlos—a prisoner in 23-hour lockdown. He did one pushup every 90 seconds. Not 100 a day. Just one.  After 632 days, he’d done over a million reps.  His secret... the 6-second rule When you want to skip a habit, do the smallest possible version:  Write one sentence  Do one pushup  Meditate for five breaths  This isn’t about progress. It’s about proving to your brain: I don’t quit...  Atomic Law 2...: Strategic Surrender Sarah missed 44 workouts—but still lost 30 lbs.  Her secret? Planned collapse. Every Sunday, she scheduled cheat days. Mandatory failures.  By surrendering, she tricked her brain into craving discipline...  Your rule...: Be consistent 85% of the time. Science says 85% beats 100%—because perfection is the enemy of progress...  Atomic Law 3...: The Failure Funeral Most people fail because they mourn their mistakes like deaths. Neuroscience shows guilt and shame keep you stuck.  The fix? Bury your failures. Literally.  Write down every time you miss a habit.  Burn it. Shred it. Delete it.  Say...: This failure feeds my next success.  This ritual rewires your brain to see failure as fuel, not fear. Train your brain to fear quitting more than starting. Consistency isn’t something you find. It’s someone you become. The world wants you to quit. But you—you’re different.  You've got:  The 1% Rebellion...  The Strategic Surrender...  The Failure Funeral...  Now go carve your mountain."} 
     `
     },
     {
       id: 2,
-      type: "calm-narration-wisdom",
+      type: "emotional-growth-stories",
       prompt: `
-      Write a 1-2 min motivational, self improvement, wisdom script on user prompt given below following this structure and tone and Respond with valid parsable JSON - {title: "", content: ""}:
-      1. [Hook / Situation Setup] 
-Introduce the setting and draw the audience in with a curious, emotional or unusual scenario.
+      Create a short, emotionally resonant story that highlights inner struggle, self-awareness, and healing — using metaphor and calm narration to guide the audience toward a quiet realization based on user prompt given below following this guidelines and Respond with valid parsable JSON - {title: "", content: ""}:
+Guidelines:
+1. The Encounter (Hook + Character Introduction)
+Introduce the main character in a brief but striking way.
+Show something admirable about them (e.g. smart, driven) but hint at inner struggle.
+Purpose: Pull the audience in with contrast — successful on the outside, struggling inside.
 
-2. [Character Takes Action]
-Show the main character making a decision to help, fix, or change something.
+2. The Silent Struggle
+Let the character reveal their pain (disillusionment, emptiness, burnout).
+Often expressed in a single powerful question or confession.
+Purpose: Make it deeply relatable. Many people feel this but rarely express it.
 
-3. [The Illusion of Belonging / Conflict Builds]
-The character grows in the wrong environment, unaware of their true potential.
+3. The Gentle Response (No Advice, Just Presence)
+The narrator doesn’t “fix” the person — instead, they offer a symbolic experience (e.g. the cup and the well).
+Use metaphor or a small action to illustrate a bigger truth.
+Purpose: Teach through metaphor — soft, visual, and lasting.
 
-4. [Inner Urge / Hidden Identity] 
-Plant the idea that something feels off. The character senses there’s more.
+4. The Realization
+The character sees their life or actions in a new light.
+Usually ends in a shift in behavior, not just thought.
+Purpose: Show change by example, not lecture. Let the viewer feel it.
 
-5. [Revelation / Catalyst Moment]
-An external event awakens the character’s true nature.
+5. The Message (Closing Reflection)
+One or two lines that reflect the lesson clearly and gently.
+Purpose: Give a shareable takeaway that resonates beyond the story.
 
-6. [Tragic Irony OR Redemption Message]
-The character either realizes too late or the narrator delivers a call to action for the audience.
-
-7. [Narrator’s Message / Call to Action] 
-The narrator talks directly to the audience, turning the story into a personal motivational message.
-
-Keep it cinematic: every line should feel visual, deliberate.
-No fluff: every sentence should either build emotion or push the narrative forward.
-Infuse psychological weight into the simplest moments.
-Avoid breaking the fourth wall. Never mention “this is a story” or “lesson.”
-Use metaphors and nature to mirror internal states.
-Dialogues should be understated but sharp — especially from the master.
-Lean into stillness, paradox, and subtle transformation.
+Ensure
+Tone: Calm, reflective, and nurturing. Avoid hype or urgency.
+Length: 2–3 minutes or ~300–500 words.
+Narration style: Minimalist, slow-paced, emotionally rich.
+Use pauses for rhythm and reflection.
+Keep dialogue short, realistic, and impactful.
+Avoid advice — guide through experience, not instruction.
 Add ... for pauses and punctuations to emphasize modulation, rhythm, and delivery impact
 
-      Here is an example for you:
-    {title: "How can you achieve anything in life", content: "Once upon a time, there lived a young boy named Koji. Koji was always curious about the world around him and sought answers to life’s big questions. One day, he heard about a wise Zen master who lived atop the tallest hill in the village. Determined to learn from the master, Koji climbed up the hill and found the Zen temple where the master resided. With eager eyes and a hopeful heart, Koji approached the master and asked: 'Master, how can I find Zen?' The master, a gentle old man with a twinkle in his eye, smiled at Koji’s enthusiasm. '10 years,' he replied calmly. Koji’s determination only grew stronger. 'But what if I work even harder, Master? How soon can I find Zen then?' The master paused for a moment before answering: '20 years.' Confused but undeterred, Koji persisted. 'What if I devote myself entirely to the practice? How long would it take?' With a wise nod, the master replied: '30 years.' Koji’s spirit sank. He couldn’t help but express his confusion. 'Master, I don’t understand. The more I promise to work hard, the longer it seems to take. Why is that?' The master looked at Koji with a serene smile and said: 'When you have one eye fixed on the goal, you have only one eye on your path.'
-Koji pondered the master's words for a moment, realizing the wisdom hidden within them. He understood that focusing solely on the end result wouldn’t lead him to true understanding. Instead, he needed to embrace the journey itself—with all its ups and downs.
-Imagine you're climbing a big, tall tree. Your goal is to reach the top, to grab the ripe, juicy fruit waiting there. But here’s the thing—if you keep looking up at the fruit, thinking about how delicious it will taste, you might lose your balance and fall. Instead, focus on each step you take as you climb. Pay attention to where you place your hands and feet. Feel the rough bark under your fingers. Breathe in the fresh air around you. Enjoy the process of climbing, knowing that with every step, you're getting closer to your goal.
-In life, it’s just like climbing that tree. If you focus too much on the reward at the end, you might miss out on the journey itself. So whether you're learning something new, practicing a skill, or working towards a dream—remember to focus on the effort you put in along the way. Enjoy the process. Learn from it. Celebrate every step forward you take. Because sometimes… the true reward lies in the effort itself."
+      Here is an example for you please dont copy:
+    {title: "You can't give what you don't have", content: "I met a 23-year-old woman at the monastery. Smart... Driven... Had a good job. Solid resume. From the outside... she was winning. But she looked... tired. Not the kind of tired you fix with sleep... The kind that comes from trying to hold it all together... when you're falling apart... inside. She said... 'I got everything I worked for... the degree... the job... the apartment... So why do I feel... nothing?' I didn’t give her advice... I took her to the garden. We sat near the old stone well... I handed her a ceramic cup. 'Fill it,' I said. She dipped it in... pulled it out... full of water. She smiled... easy enough. Then... I handed her another empty cup. 'Now fill this one... with the water that you have in your cup.' She hesitated... 'I only have one cup...', she said. 'Right,' I said. 'So... share what you’ve got... in your cup.' And so she poured... Now... both cups were half-full. Then I gave her a third... and a fourth. She kept pouring. Each time... less water... less joy. She looked at the cups... All of them barely filled. Hers... nearly empty. I asked... 'Why do you think you feel the way you do?' Silence. I said... 'You’re not broken... you’re just out of water.' 'You’ve been pouring yourself into everything... and everyone... without ever... refilling.' She just stared at the cups... Then whispered... 'I thought burnout was about... time management...'. I said... 'It’s not. It’s about... capacity.' 'And no one teaches you... how to protect your own.' The next morning... I saw her sitting by the well. No phone. No journal. Just... breathing. Still. Not trying to be better... Just... being. The thing about life is... Stop pouring into others... before you are... empty. Refill... Then give. Heal... Before you hustle. It’s okay. Don’t judge yourself too hard. Give yourself time... And everything... will be okay."
 }
       `
+    },
+    {
+      id: 3,
+      type: "motivational-warrior-stories",
+      prompt: `
+      Create short, emotionally-resonant warrior wisdom stories with a historical or mythical setup, a twist, and a motivational takeaway on user prompt given below following this guidelines and Respond with valid parsable JSON - {title: "", content: ""}:
+Guidelines:
+1. Historical Setup / Character Introduction
+Start with a named warrior, general, or leader
+Set the historical or legendary context briefly.
+Mention a problem or imbalance
+
+2. The Psychological Tension
+Introduce doubt, fear, or uncertainty 
+Warrior takes a ritual action to reassure 
+Present it as fate or symbolism.
+
+3. The Strategic Twist 
+After the victory, reveal a simple trick or clever strategy
+It reframes the story from fate... to intentional leadership.
+
+4. Philosophical Reflection
+Begin the motivational transition with a twist line that reframes the story’s meaning.
+Link it to personal power and responsibility.
+
+5. Direct Message to the Listener 
+Apply the moral personally to the viewer.
+Use short, poetic sentences to inspire action and reflection.
+Echo warrior values: discipline, clarity, control, self-authorship
+
+Ensure:
+Use ‘...’ liberally for natural pause, weight, and emphasis.
+Keep dialogue minimal but meaningful.
+Use symbolic objects: coins, cups, swords, shrines, scrolls.
+Emphasize inner clarity over outer strength.
+End with a twist that flips fate into intentional action.
+
+Here is a reference for you, please don't copy:
+    {title: "Your destiny", content: "Once upon a time... a great Japanese warrior named Nobunaga... decided to attack the enemy. Although he had only one-tenth the number of men the opposition commanded... he knew he would win. But... his soldiers were in doubt. On the way to the battlefield... he stopped at a Shinto shrine. He told his men... 'After I visit the shrine... I will toss a coin. If heads comes... we will win. If tails... we will lose. Destiny... holds us in her hand.' Nobunaga entered the shrine... and offered a silent prayer. Then he came forth... and tossed the coin. Heads appeared. His soldiers, filled with confidence... were so eager to fight... that they won the battle easily. After the victory... his attendant said, 'No one can change the hand of destiny.' 'Indeed not,' Nobunaga replied... revealing a coin... with heads on both sides. It seemed like fate... But it was confidence... crafted. Some say destiny is written... But Nobunaga wrote his. And so can you. Your life may feel like it flies in the wind of destiny... But the truth is... destiny lies in your own hands. So write the story you want to live. Forge the outcome you desire. And you... will conquer your destiny."}
+      `
+
     }
   ]
 
   return prompts.find(item => item.type === type)?.prompt || prompts[0].prompt
 }
 
-export async function generateScriptFromUserPrompt(prompt: string): Promise<Story> {
+export async function generateScriptFromUserPrompt(prompt: string, videoType: string): Promise<Story> {
   try {
-    const scriptPrompt = getScriptPrompts("short-high-impact-motivation")
+    const scriptPrompt = getScriptPrompts(videoType || "motivational-laws")
 
     const res = await gemini.models.generateContent({
       model: "gemini-2.0-flash",

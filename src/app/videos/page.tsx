@@ -37,6 +37,7 @@ const VideoPage = () => {
     bgmUrl: video?.bgm?.bgmUrl || "",
     audioUrl: video.voiceOver[0]?.audioUrl || "",
     captionStyle: video?.captionStyle || "caption-style-two",
+    captionFont: video?.captionFont,
     scenes: video?.scenes?.map((scene: any) => ({
       number: scene.number,
       start: scene.start,

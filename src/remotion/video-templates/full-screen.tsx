@@ -21,6 +21,7 @@ type FullScreenVideoProps = {
   scenes: MotionImage[];
   captions: string;
   captionStyle: string;
+  captionFont: string;
   bgmUrl: string;
   audioUrl: string;
 };
@@ -29,6 +30,7 @@ export const FullScreenVideo: React.FC<FullScreenVideoProps> = ({
   audioUrl,
   bgmUrl,
   captionStyle,
+  captionFont,
   scenes,
   captions,
 }) => {
@@ -68,7 +70,11 @@ export const FullScreenVideo: React.FC<FullScreenVideoProps> = ({
           );
         })}
       </TransitionSeries>
-      <CaptionStyleOne captions={captions} currentTimeInMs={currentTimeInMs} />
+      <CaptionStyleOne
+        fontFamily={captionFont}
+        captions={captions}
+        currentTimeInMs={currentTimeInMs}
+      />
     </AbsoluteFill>
   );
 };

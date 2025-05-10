@@ -17,16 +17,17 @@ export async function POST(req: NextRequest) {
   try {
     const {videoDetails} = await req.json()
     console.log(videoDetails)
+    console.log(videoDetails.videoType)
     
     if (!videoDetails.voiceoverUrl) {
-      const script = await generateScriptFromUserPrompt(videoDetails.userPrompt)
+      const script = await generateScriptFromUserPrompt(videoDetails.userPrompt, videoDetails.videoType)
       const video = await prisma.video.create({
         data: {
           prompt: videoDetails.userPrompt,
           script: script.content,
           title: script.title,
           imageStyle: videoDetails.style,
-          captionStyle: videoDetails.captionStyle,
+          captionFont: videoDetails.captionFont,
           thumbnailUrl: "",
           aspectRatio: {
             connect: {
@@ -48,7 +49,8 @@ export async function POST(req: NextRequest) {
           voiceId: videoDetails.voiceId,
           style: videoDetails.style,
           script: script.content,
-          aspectRatio: videoDetails.aspectRatio
+          aspectRatio: videoDetails.aspectRatio,
+          videoType: videoDetails.videoType
         }
       })
       return Response.json({
@@ -60,7 +62,7 @@ export async function POST(req: NextRequest) {
           prompt: videoDetails.userPrompt,
           title: videoDetails.userPrompt,
           imageStyle: videoDetails.style,
-          captionStyle: videoDetails.captionStyle,
+          captionFont: videoDetails.captionFont,
           thumbnailUrl: "",
           voiceOver: {
             create: {

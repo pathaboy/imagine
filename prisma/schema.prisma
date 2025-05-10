@@ -35,7 +35,8 @@ model Video {
   fps                  Int                @default(30)
   totalDuration        Int? // in ms
   imageStyle           String
-  captionStyle         String
+  captionStyle         String             @default("caption-style-two")
+  captionFont          String             @default("Kavoon")
   thumbnailUrl         String?
   bgmId                Int?
   bgm                  Bgm?               @relation(fields: [bgmId], references: [id])
