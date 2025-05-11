@@ -11,8 +11,10 @@ const Logout = () => {
           redirectTo: "/",
         });
       }}
+      className="w-full p-2 bg-red-300/30 flex justify-center items-center gap-2 rounded-lg"
     >
-      <LogOut className="w-5" />
+      <p className="text-md font-medium">Logout</p>
+      <LogOut className="w-4 text-red-500" />
     </button>
   );
 };

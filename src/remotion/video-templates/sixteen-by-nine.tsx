@@ -46,7 +46,7 @@ export const SixteenByNineVideo: React.FC<SixteenByNineVideoProps> = ({
       }}
     >
       <Audio src={audioUrl} volume={1} />
-      <Audio src={bgmUrl} startFrom={300} volume={vol} loop />
+      <Audio src={bgmUrl} volume={vol} loop />
       <TransitionSeries>
         {motionImages?.map((item, index) => {
           const durationOfSegment = ((item.end - item.start) / 1000) * fps;

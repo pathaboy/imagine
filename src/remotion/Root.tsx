@@ -29,7 +29,7 @@ export const RemotionRoot: React.FC = () => {
   return (
     <Composition
       id="MyComp"
-      component={FourByThreeMobileVideo}
+      component={SixteenByNineVideo}
       defaultProps={{
         audioUrl: demoVideo.voiceOver[0].audioUrl,
         bgmUrl: demoVideo.bgm.bgmUrl,
@@ -73,8 +73,8 @@ export const RemotionRoot: React.FC = () => {
       //     },
       //   };
       // }}
-      height={1280}
-      width={720}
+      height={demoVideo.aspectRatio.height}
+      width={demoVideo.aspectRatio.width}
       fps={demoVideo.fps || 30}
     />
   );

@@ -13,7 +13,7 @@ Your task is to map each subtitle entry (based on its time range and text) to on
 Parse each subtitle block from the SRT.
 For each subtitle, generate exactly one descriptive image prompt with shot type, framing technique and camera angle that reflects the subtitle’s content, inferred tone, and relevant surrounding context from the full script.
 Output should contain the same number of image prompts as subtitle entries. No merging or skipping.
-Convert start and end times to milliseconds.
+The 'start' and 'end' times in the subtitles are in milliseconds (ms), so keep them in milliseconds in the output too
 Respond with valid parsable JSON:
 {
   "imagePrompts": [
@@ -31,7 +31,13 @@ Respond with valid parsable JSON:
 }
 ⚠️ Important Constraints:
 Do not include any written text, quotes, phrases, or words in the image prompt.
-The visual should be purely scene-based with eye to details and grandeur: use settings, people, objects, mood, lighting, emotions, camera angle, shot type, framing technique.
+Image prompt guide:
+A detailed scene of [SETTING], during [TIME_OF_DAY]. [DESCRIPTION_OF_ENVIRONMENT], [SPECIFIC_DETAILS ABOUT THE SCENE]. 
+In the foreground, [MAIN_CHARACTER] is [ACTION], wearing [CLOTHING_DESCRIPTION]. 
+Around them are [OTHER_CHARACTERS_OR_OBJECTS]. 
+The atmosphere is [MOOD], with lighting that is [LIGHTING_DESCRIPTION]. 
+Shot using a [CAMERA_ANGLE] and [SHOT_TYPE], framed with [FRAMING_TECHNIQUE], with emphasis on {{VISUAL_EMPHASIS}}.
+
 Avoid describing text, signs, titles, or captions in the prompt.
 Available shot types: ${shots.join(" | ")}
 Available framing techniques: ${cameraFramingTechniques.join(" | ")}
@@ -82,11 +88,12 @@ export const generateImagePrompts = async (transcriptionId: string, imageStyle: 
             return item.name.toLowerCase() === imageStyle.toLowerCase()
           })
     const imagePrompts: ImagePrompt[] = response.imagePrompts
-    const enhancedImagePrompts = imagePrompts.map((item) => {
+    const enhancedImagePrompts = imagePrompts.map((item, index) => {
       return (
         {
           ...item,
-          imagePrompt: item.imagePrompt + styleTags?.tags
+          imagePrompt: item.imagePrompt + styleTags?.tags,
+          start: index === 0 ? item.start: imagePrompts[index-1].end+1
         }
       )
     })
