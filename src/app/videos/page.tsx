@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Player } from "@remotion/player";
-// import { VideoOne } from "@/remotion/video-templates/full-screen";
 import { redirect, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import axios from "axios";

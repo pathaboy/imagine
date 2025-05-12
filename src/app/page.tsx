@@ -1,19 +1,17 @@
 import React from "react";
-import Header from "@/components/header";
 import Hero from "@/components/hero";
 import { auth } from "@/auth";
-import { prisma } from "@/lib/prisma";
 import { displayVideos } from "@/lib/data";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { ThumbnailCard } from "@/components/thumbnail-card";
+import Pricing from "@/components/pricing";
 
 const Home = async () => {
   const session = await auth();
   // console.log(videos);
 
   return (
-    <div>
+    <main>
       <Hero />
       <section className="w-full p-4 my-8">
         <h2 className="text-4xl text-white font-medium text-center">
@@ -44,7 +42,8 @@ const Home = async () => {
           )}
         </div>
       </section>
-    </div>
+      <Pricing />
+    </main>
   );
 };
 

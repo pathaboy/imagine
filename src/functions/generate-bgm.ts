@@ -1,7 +1,6 @@
 import { bgms } from "@/lib/data"
 import { gemini } from "@/lib/gemini"
 import { prisma } from "@/lib/prisma"
-import axios from "axios"
 
 export const generateBgm = async (videoId: string) => {
   try {

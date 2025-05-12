@@ -34,6 +34,7 @@ export async function GET(req: NextRequest) {
     video
   }, {status: 200})
   } catch (err) {
+    console.log(err)
     return Response.json({
       message: "Failed to get video data"
     }, {status: 500})

@@ -31,6 +31,7 @@ export async function POST(req: NextRequest ) {
   const publicUrl = `${process.env.R2_DOMAIN}/${audioKey}`
   return Response.json({ url, publicUrl }, {status: 200});
   } catch (err) {
+    console.log(err)
     return Response.json({
       success: false,
       message: "Failed to upload file",

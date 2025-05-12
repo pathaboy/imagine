@@ -3,10 +3,8 @@ import {
   Easing,
   Img,
   interpolate,
-  Audio,
   useCurrentFrame,
   useVideoConfig,
-  staticFile,
 } from "remotion";
 import { MotionProps } from "./enter-slide-top-down-exit-left";
 

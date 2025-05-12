@@ -63,7 +63,7 @@ export const GenerateTextToVideoData = inngest.createFunction(
               const motionTemplatesName = motionTemplatesNames[index % motionTemplatesNames.length]
 
               // Updating the database
-              const result = await prisma.video.update({where: {id: videoId}, data: {scenes: {
+              await prisma.video.update({where: {id: videoId}, data: {scenes: {
                 create: {
                   start: item.start,
                   end: item.end,
@@ -86,7 +86,11 @@ export const GenerateTextToVideoData = inngest.createFunction(
       return bgm
     })
 
-    return result
+    return {
+      result,
+      bgm,
+
+    }
   },
 );
 
@@ -95,7 +99,7 @@ export const GenerateAudioToVideoData = inngest.createFunction(
   {id: "generate-audio-to-video-data"},
   {event: "generate-audio-to-video-data"},
   async ({event, step}) => {
-    const {userId, style, voiceoverUrl,aspectRatio, videoId} = event?.data
+    const {style, voiceoverUrl,aspectRatio, videoId} = event?.data
     const imageDimensions = aspectRatios.find(item => item.name === aspectRatio)
     const imageWidth = imageDimensions?.frameWidth || 720
     const imageHeight = imageDimensions?.frameHeight || 540
@@ -105,7 +109,7 @@ export const GenerateAudioToVideoData = inngest.createFunction(
       return transcriptId
     })
 
-    const script = await step.run("generate-script-from-audiourl", async () => {
+    await step.run("generate-script-from-audiourl", async () => {
       const transcript = await assemblyAIClient.transcripts.get(transcriptionId)
       const video = await prisma.video.update({where: {id: videoId}, data: {
         script: transcript.text
@@ -146,7 +150,7 @@ export const GenerateAudioToVideoData = inngest.createFunction(
               const motionTemplatesName = motionTemplatesNames[index % motionTemplatesNames.length]
 
               // Updating the database
-              const result = await prisma.video.update({where: {id: videoId}, data: {scenes: {
+              await prisma.video.update({where: {id: videoId}, data: {scenes: {
                 create: {
                   start: item.start,
                   end: item.end,
@@ -164,7 +168,7 @@ export const GenerateAudioToVideoData = inngest.createFunction(
         )
       })
     )
-    const bgm = await step.run("generate-bgm", async () => {
+    await step.run("generate-bgm", async () => {
       const bgm = await generateBgm(videoId)
       return bgm
     })

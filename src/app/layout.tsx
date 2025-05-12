@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import Provider from "./provider";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -23,10 +24,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${outfit.variable} antialiased`}>
         <Provider>
-          <main className="max-w-6xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <Header />
             {children}
-          </main>
+            <Footer />
+          </div>
         </Provider>
       </body>
     </html>

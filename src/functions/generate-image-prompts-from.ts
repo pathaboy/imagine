@@ -1,7 +1,6 @@
 import { assemblyAIClient } from "@/lib/assemblyai"
 import { cameraAngles, cameraFramingTechniques, imageStyles, motionTemplatesNames, shots } from "@/lib/data"
 import { gemini } from "@/lib/gemini"
-import axios from "axios"
 
 
 const systemImagePrompt = `
@@ -84,7 +83,7 @@ export const generateImagePrompts = async (transcriptionId: string, imageStyle: 
     const text = res.text?.replace("```json", "").replace("```", "")
     const response = JSON.parse(text || "")
 
-    const styleTags = imageStyles.find((item, _index) => {
+    const styleTags = imageStyles.find((item) => {
             return item.name.toLowerCase() === imageStyle.toLowerCase()
           })
     const imagePrompts: ImagePrompt[] = response.imagePrompts

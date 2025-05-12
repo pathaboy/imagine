@@ -1,18 +1,9 @@
-import {
-  AbsoluteFill,
-  cancelRender,
-  Composition,
-  continueRender,
-  delayRender,
-} from "remotion";
+import { Composition } from "remotion";
 import "../app/globals.css";
 import { SixteenByNineVideo } from "./video-templates/sixteen-by-nine";
 import { demoVideo } from "../lib/data";
-import { FullScreenVideo } from "./video-templates/full-screen";
-import { FourByThreeMobileVideo } from "./video-templates/mobile-four-by-three";
 
 export const RemotionRoot: React.FC = () => {
-  const videoId = demoVideo.id;
   const scenes = demoVideo?.scenes.map((item) => {
     return {
       id: item.number,

@@ -3,18 +3,12 @@ import {
   AbsoluteFill,
   Audio,
   interpolate,
-  staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 import { TransitionSeries } from "@remotion/transitions";
-import {
-  addMotionToImages,
-  MotionImage,
-  motionTemplates,
-} from "../../lib/data";
-import { CaptionStyleTwo } from "../caption-styles/caption-style.two";
+import { addMotionToImages, MotionImage } from "../../lib/data";
 import { CaptionStyleOne } from "../caption-styles/caption-style-one";
 
 type FullScreenVideoProps = {
@@ -29,7 +23,6 @@ type FullScreenVideoProps = {
 export const FullScreenVideo: React.FC<FullScreenVideoProps> = ({
   audioUrl,
   bgmUrl,
-  captionStyle,
   captionFont,
   scenes,
   captions,

@@ -8,7 +8,6 @@ import { ScaleDownFade } from "../remotion/motion-templates/scale-down-fade";
 import { ScaleDownUp } from "../remotion/motion-templates/scale-down-up";
 import { CaptionStyleTwo } from "../remotion/caption-styles/caption-style.two";
 import { PullOut } from "../remotion/motion-templates/pull-out";
-import axios from "axios";
 import { ZoomOutAndPullOut } from "../remotion/motion-templates/zoom-out-and-pull-out";
 import { PanBottomToUpAndZoomOut } from "../remotion/motion-templates/pan-bottom-up-zoom-out";
 import { PanTopToDownAndZoomOut } from "../remotion/motion-templates/pan-top-down-zoom-out";

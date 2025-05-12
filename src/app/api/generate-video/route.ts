@@ -1,10 +1,7 @@
 import { auth } from "@/auth";
 import { generateScriptFromUserPrompt } from "@/functions/generate-script-from-user-prompt";
-import { generateStoryVisualization } from "@/functions/generate-story-visualization";
-import { generateVideoMetadata } from "@/functions/generate-video-metadata";
 import { inngest } from "@/inngest/client";
 import { prisma } from "@/lib/prisma";
-import axios from "axios";
 import { NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {

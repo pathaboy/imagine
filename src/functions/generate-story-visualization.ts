@@ -96,15 +96,15 @@ export async function generateStoryVisualization({storyMetadata, story, imageSty
     const storyVisualization: StoryVisualizationFormat = response.data
     const script: Scene[] = storyVisualization.script
 
-    const scriptWithEnhancedImagePrompts = script.map((item, _index) => {
+    const scriptWithEnhancedImagePrompts = script.map((item) => {
       let image = item.imagePrompt.toLowerCase()
 
       // Add character details to image prompt
-      storyMetadata.characters.forEach((character, _index) => {
+      storyMetadata.characters.forEach((character) => {
         image = image.replace(character.name.toLowerCase(), `${character.name}, ${character.age} years old, ${character.gender}, ${character.hairColor} ${character.hairstyle} hair, ${character.outfitUpperBody} ${character.upperClothingColor}, ${character.outfitLowerBody} ${character.lowerClothingColor}`)
       })
 
-      const styleTags = imageStyles.find((item, _index) => {
+      const styleTags = imageStyles.find((item) => {
         return item.name.toLowerCase() === imageStyle.toLowerCase()
       })
       // Add image style to the prompt

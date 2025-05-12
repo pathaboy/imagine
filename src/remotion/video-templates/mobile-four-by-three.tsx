@@ -3,7 +3,6 @@ import {
   AbsoluteFill,
   Audio,
   interpolate,
-  staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
@@ -24,7 +23,6 @@ type SixteenByNineVideoProps = {
 export const FourByThreeMobileVideo: React.FC<SixteenByNineVideoProps> = ({
   audioUrl,
   bgmUrl,
-  captionStyle,
   captionFont,
   scenes,
   captions,

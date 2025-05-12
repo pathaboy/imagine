@@ -6,7 +6,8 @@ import { signIn } from "next-auth/react";
 const Signin = ({ children }: { children: React.ReactNode }) => {
   return (
     <Button
-      onClick={() => {
+      onClick={(e) => {
+        e.preventDefault();
         signIn("google", {
           redirectTo: "/",
         });

@@ -2,7 +2,6 @@ import { cleanText } from "@/lib/data"
 import { prisma } from "@/lib/prisma"
 import { S3 } from "@/lib/s3"
 import { PutObjectCommand } from "@aws-sdk/client-s3"
-import axios from "axios"
 import { EdgeTTS } from "@/lib/edge"
 
 type VocalParams = {

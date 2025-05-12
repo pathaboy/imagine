@@ -1,9 +1,7 @@
 import React from "react";
 import Logo from "./logo";
 import Signin from "./sign-in";
-import Image from "next/image";
 import { auth } from "@/auth";
-import Logout from "./logout";
 import { UserInfo } from "./user-info";
 import { navitems } from "@/lib/nav-items";
 import Link from "next/link";
@@ -23,7 +21,7 @@ const Header = async () => {
             </li>
           ))}
         </ul>
-        {session?.user?.email ? <UserInfo /> : <Signin>Sign in</Signin>}
+        {session?.user?.email ? <UserInfo /> : <Signin>Create</Signin>}
       </div>
     </header>
   );

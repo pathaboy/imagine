@@ -8,7 +8,6 @@ import {
   Link,
   Loader,
   MicVocal,
-  Music,
   Palette,
   Sparkles,
 } from "lucide-react";
@@ -19,22 +18,21 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  DialogClose,
 } from "@/components/ui/dialog";
 import axios from "axios";
 import {
   aspectRatios,
   captionFonts,
-  captionStyles,
   imageStyles,
   videoTypes,
   vocals,
 } from "@/lib/data";
-import Image from "next/image";
 import { useSession } from "next-auth/react";
 import Signin from "./sign-in";
+import { useRouter } from "next/navigation";
 
 const VideoGenForm = () => {
+  const router = useRouter();
   const session = useSession();
   const [userPrompt, setUserPrompt] = useState("");
   const [style, setStyle] = useState("anime");
@@ -45,6 +43,7 @@ const VideoGenForm = () => {
   const voiceOver = useRef<HTMLInputElement>(null);
   const [voiceoverUrl, setVoiceoverUrl] = useState("");
   const [uploadingAudio, setUploadingAudio] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -74,7 +73,8 @@ const VideoGenForm = () => {
 
   const handleVideoGeneration = async () => {
     try {
-      const response = await axios.post("/api/generate-video", {
+      setLoading(true);
+      await axios.post("/api/generate-video", {
         videoDetails: {
           userPrompt,
           style,
@@ -85,8 +85,11 @@ const VideoGenForm = () => {
           videoType,
         },
       });
+      router.push("/my-videos");
     } catch (err: any) {
       console.error(err.message || err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -320,18 +323,18 @@ const VideoGenForm = () => {
 
           {session.data?.user?.email ? (
             <Button
-              disabled={userPrompt.length <= 3}
+              disabled={userPrompt.length <= 3 || loading}
               onClick={(e) => {
                 e.preventDefault();
                 handleVideoGeneration();
               }}
-              className="flex disabled:bg-gray-600 items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg shadow-md active:scale-95 transition-all"
+              className="flex disabled:bg-gray-600 disabled:cursor-not-allowed items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg shadow-md active:scale-95 transition-all"
             >
               <Sparkles size={18} />
               Generate
             </Button>
           ) : (
-            <Signin>Sign up</Signin>
+            <Signin>Create</Signin>
           )}
         </div>
       </form>

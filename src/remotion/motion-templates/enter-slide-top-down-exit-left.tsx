@@ -4,7 +4,6 @@ import {
   interpolate,
   Easing,
   Img,
-  staticFile,
   useVideoConfig,
 } from "remotion";
 
