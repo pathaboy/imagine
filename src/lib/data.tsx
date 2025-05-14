@@ -3494,6 +3494,7 @@ export const demoVideo = {
   imageStyle: "digital-painting",
   captionStyle: "caption-style-two",
   captionFont: "Kavoon",
+  videoSize: "video-sixteen-by-nine",
   thumbnailUrl: "",
   bgmId: 16,
   aspectRatioId: 1,
@@ -3516,6 +3517,7 @@ export const demoVideo = {
       videoId: "cmaibtv9t0021nnddj2esu7cy",
     },
   ],
+
   aspectRatio: {
     id: 1,
     name: "video-full-screen",

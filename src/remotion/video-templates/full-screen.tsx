@@ -11,6 +11,134 @@ import { TransitionSeries } from "@remotion/transitions";
 import { addMotionToImages, MotionImage } from "../../lib/data";
 import { CaptionStyleOne } from "../caption-styles/caption-style-one";
 
+const FullScreenView = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <AbsoluteFill>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundColor: "black",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {children}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const FourByThreeView = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <AbsoluteFill>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundColor: "black",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            width: "100vw",
+            aspectRatio: "4/3",
+            backgroundColor: "black",
+            borderRadius: "40px",
+            overflow: "clip",
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const SixteenByNineView = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <AbsoluteFill>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundColor: "black",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            width: "80vw",
+            aspectRatio: "16/9",
+            backgroundColor: "black",
+            borderRadius: "40px",
+            overflow: "clip",
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const screenSizes = [
+  {
+    id: 1,
+    name: "video-full-screen",
+    component: FullScreenView,
+  },
+  {
+    id: 2,
+    name: "mobile-full-screen",
+    component: FullScreenView,
+  },
+  {
+    id: 3,
+    name: "video-sixteen-by-nine",
+    component: SixteenByNineView,
+  },
+  {
+    id: 4,
+    name: "mobile-four-by-three",
+    component: FourByThreeView,
+  },
+];
+
+const Screen = ({
+  videoSize,
+  children,
+}: {
+  videoSize: string;
+  children: React.ReactNode;
+}) => {
+  const ScreenView =
+    screenSizes.find((item) => item.name === videoSize)?.component ||
+    FullScreenView;
+  return (
+    <AbsoluteFill>
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          backgroundColor: "black",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <ScreenView>{children}</ScreenView>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 type FullScreenVideoProps = {
   scenes: MotionImage[];
   captions: string;
@@ -18,6 +146,7 @@ type FullScreenVideoProps = {
   captionFont: string;
   bgmUrl: string;
   audioUrl: string;
+  videoSize: string;
 };
 
 export const FullScreenVideo: React.FC<FullScreenVideoProps> = ({
@@ -26,6 +155,7 @@ export const FullScreenVideo: React.FC<FullScreenVideoProps> = ({
   captionFont,
   scenes,
   captions,
+  videoSize,
 }) => {
   const { fps, durationInFrames } = useVideoConfig();
   const frame = useCurrentFrame();
@@ -53,12 +183,12 @@ export const FullScreenVideo: React.FC<FullScreenVideoProps> = ({
               key={index}
               durationInFrames={durationOfSegment}
             >
-              <FullScreenView>
+              <Screen videoSize={videoSize}>
                 <item.motion.component
                   duration={item.end - item.start}
                   imgSrc={item.imageUrl}
                 />
-              </FullScreenView>
+              </Screen>
             </TransitionSeries.Sequence>
           );
         })}
@@ -68,25 +198,6 @@ export const FullScreenVideo: React.FC<FullScreenVideoProps> = ({
         captions={captions}
         currentTimeInMs={currentTimeInMs}
       />
-    </AbsoluteFill>
-  );
-};
-
-const FullScreenView = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <AbsoluteFill>
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          backgroundColor: "black",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        {children}
-      </div>
     </AbsoluteFill>
   );
 };

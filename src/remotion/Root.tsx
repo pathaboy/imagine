@@ -1,7 +1,8 @@
 import { Composition } from "remotion";
 import "../app/globals.css";
-import { SixteenByNineVideo } from "./video-templates/sixteen-by-nine";
 import { demoVideo } from "../lib/data";
+import { WhatsappDiaries } from "./video-templates/whatsapp-diaries";
+import { FullScreenVideo } from "./video-templates/full-screen";
 
 export const RemotionRoot: React.FC = () => {
   const scenes = demoVideo?.scenes.map((item) => {
@@ -20,7 +21,7 @@ export const RemotionRoot: React.FC = () => {
   return (
     <Composition
       id="MyComp"
-      component={SixteenByNineVideo}
+      component={FullScreenVideo}
       defaultProps={{
         audioUrl: demoVideo.voiceOver[0].audioUrl,
         bgmUrl: demoVideo.bgm.bgmUrl,
@@ -28,6 +29,7 @@ export const RemotionRoot: React.FC = () => {
         captionFont: "Kavoon",
         captions: demoVideo.transcribedWords,
         scenes: scenes,
+        videoSize: demoVideo.videoSize,
       }}
       durationInFrames={Math.floor(
         (demoVideo.totalDuration / 1000) * demoVideo.fps
@@ -64,22 +66,9 @@ export const RemotionRoot: React.FC = () => {
       //     },
       //   };
       // }}
-      height={demoVideo.aspectRatio.height}
-      width={demoVideo.aspectRatio.width}
+      height={1280}
+      width={720}
       fps={demoVideo.fps || 30}
     />
   );
 };
-
-// export const RemotionRoot: React.FC = () => {
-//   return (
-//     <Composition
-//       id="MyComp"
-//       component={MyComposition}
-//       width={1280}
-//       height={720}
-//       fps={30}
-//       durationInFrames={demoVideo.scenes[demoVideo.scenes.length - 1].end}
-//     />
-//   );
-// };

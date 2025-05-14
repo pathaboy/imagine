@@ -4,7 +4,8 @@ import { Player } from "@remotion/player";
 import { redirect, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
 import axios from "axios";
-import { SixteenByNineVideo } from "@/remotion/video-templates/sixteen-by-nine";
+import { FullScreenVideo } from "@/remotion/video-templates/full-screen";
+import { toast } from "sonner";
 
 const VideoPage = () => {
   const searchParams = useSearchParams();
@@ -23,6 +24,11 @@ const VideoPage = () => {
         const res = await axios.get(`/api/video-data?videoid=${videoId}`);
         setVideo(res.data.video);
       } catch (err) {
+        toast("Failed to fetch video", {
+          style: {
+            accentColor: "red",
+          },
+        });
         console.error("Failed to fetch video:", err);
       }
     };
@@ -45,13 +51,14 @@ const VideoPage = () => {
       imageUrl: scene.imageUrl,
     })),
     captions: video?.transcribedWords,
+    videoSize: video.aspectRatio.name,
   };
 
   return (
     <div className="w-full h-full">
       <Player
         controls
-        component={SixteenByNineVideo}
+        component={FullScreenVideo}
         inputProps={inputsProps}
         durationInFrames={
           Math.floor(video.totalDuration / 1000) * video.fps || 3 * 60 * 30

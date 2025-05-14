@@ -4,6 +4,7 @@ import "./globals.css";
 import Provider from "./provider";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { Toaster } from "@/components/ui/sonner";
 
 const outfit = Outfit({
   variable: "--font-outfit",
@@ -30,6 +31,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </Provider>
+        <Toaster />
       </body>
     </html>
   );
