@@ -2,7 +2,9 @@
 import {
   AbsoluteFill,
   Audio,
+  Img,
   interpolate,
+  staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";

@@ -5,6 +5,8 @@ import {
   Easing,
   Img,
   useVideoConfig,
+  staticFile,
+  Video,
 } from "remotion";
 import { MotionProps } from "./enter-slide-top-down-exit-left";
 
@@ -20,8 +22,8 @@ export const ScaleDownFade = ({ imgSrc, duration }: MotionProps) => {
 
   const fade = interpolate(
     frame,
-    [0, totalFrames / 2, totalFrames],
-    [1, 1, 0.3]
+    [0, totalFrames - (totalFrames - 30), totalFrames / 2, totalFrames],
+    [0, 1, 1, 0.3]
   );
 
   const rotate = interpolate(frame, [0, totalFrames], [20, -30], {
@@ -34,6 +36,7 @@ export const ScaleDownFade = ({ imgSrc, duration }: MotionProps) => {
       style={{
         width: "100%",
         height: "100%",
+        position: "relative",
       }}
     >
       <Img
@@ -46,6 +49,19 @@ export const ScaleDownFade = ({ imgSrc, duration }: MotionProps) => {
           opacity: fade,
         }}
       />
+      {frame < 60 && (
+        <Video
+          src={staticFile("/assets/transitions/fire-transition-1.mp4")}
+          style={{
+            width: "100%",
+            height: "100%",
+            position: "absolute",
+            inset: 0,
+            zIndex: 10,
+            opacity: 0.7,
+          }}
+        />
+      )}
     </div>
   );
 };

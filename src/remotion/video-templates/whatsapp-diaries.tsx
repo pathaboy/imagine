@@ -37,6 +37,7 @@ type FullScreenVideoProps = {
   captionFont: string;
   bgmUrl: string;
   audioUrl: string;
+  videoSize: string
 };
 
 const chatInterval = 30 * 3;

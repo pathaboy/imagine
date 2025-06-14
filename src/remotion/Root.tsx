@@ -1,7 +1,9 @@
 import { Composition } from "remotion";
 import "../app/globals.css";
 import { demoVideo } from "../lib/data";
-import { WhatsappDiaries } from "./video-templates/whatsapp-diaries";
+import WhatsappScreen, {
+  WhatsappDiaries,
+} from "./video-templates/whatsapp-diaries";
 import { FullScreenVideo } from "./video-templates/full-screen";
 
 export const RemotionRoot: React.FC = () => {
@@ -29,7 +31,7 @@ export const RemotionRoot: React.FC = () => {
         captionFont: "Kavoon",
         captions: demoVideo.transcribedWords,
         scenes: scenes,
-        videoSize: demoVideo.videoSize,
+        videoSize: demoVideo.aspectRatio.name,
       }}
       durationInFrames={Math.floor(
         (demoVideo.totalDuration / 1000) * demoVideo.fps
@@ -66,8 +68,8 @@ export const RemotionRoot: React.FC = () => {
       //     },
       //   };
       // }}
-      height={1280}
-      width={720}
+      height={demoVideo.aspectRatio.height}
+      width={demoVideo.aspectRatio.width}
       fps={demoVideo.fps || 30}
     />
   );
